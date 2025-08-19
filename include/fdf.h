@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_main.c                                         :+:      :+:    :+:   */
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/19 12:50:41 by kchiang          ###   ########.fr       */
+/*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
+/*   Updated: 2025/08/19 12:55:20 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef FDF_H
+# define FDF_H
 
-int	main(void)
+# include <mlx.h>
+
+typedef struct s_data
 {
-	void	*mlx;
 	void	*img;
+	char	*addr;
+	int		bits_per_px;
+	int		line_len;
+	int		endian;
+}			t_data;
 
-	mlx = mlx_init();
-	img = mlx_new_image(mlx, 1920, 1080);
-}
+#endif
