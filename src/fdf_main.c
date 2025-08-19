@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/19 12:50:41 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/19 15:11:21 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 int	main(void)
 {
 	void	*mlx;
-	void	*img;
+	//t_data	render;
 
 	mlx = mlx_init();
-	img = mlx_new_image(mlx, 1920, 1080);
+	//render.img = mlx_new_image(mlx, 1920, 1080);
+	mlx_destroy_display(mlx);
+	free(mlx);
+	return (EXIT_SUCCESS);
 }
