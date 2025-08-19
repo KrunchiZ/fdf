@@ -19,25 +19,26 @@ CYAN	= \e[36m
 WHITE	= \e[0m
 
 .PHONY: all fclean clean re
+.SILENT:
 
 all: $(NAME)
 
 $(NAME): $(SRC) $(LIBFT)
-	@$(CC) $(CFLAGS) $(IFLAGS) $^ $(MLX_FLAGS) -o $@
-	@echo "Compiling $(GREEN)$(NAME)$(WHITE)..."
+	$(CC) $(CFLAGS) $(IFLAGS) $^ $(MLX_FLAGS) -o $@
+	echo "Compiling $(GREEN)$(NAME)$(WHITE)..."
 
 $(LIBFT):
-	@echo "Making $(GREEN)$(LIBFT)$(WHITE)..."
-	@make -C $(LIBFT_DIR)
-	@cp $(addprefix $(LIBFT_DIR), $(LIBFT)) $(LIBFT)
+	echo "Making $(GREEN)$(LIBFT)$(WHITE)..."
+	make -C $(LIBFT_DIR)
+	cp $(addprefix $(LIBFT_DIR), $(LIBFT)) $(LIBFT)
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "Removing program files..."
+	rm -f $(NAME)
+	echo "Removing program files..."
 
 clean:
-	@make -C $(LIBFT_DIR) clean
-	@rm -f $(LIBFT) $(LIBFT_DIR)/$(LIBFT)
-	@echo "Removing $(GREEN)$(LIBFT)$(WHITE)..."
+	make -C $(LIBFT_DIR) clean
+	rm -f $(LIBFT) $(LIBFT_DIR)/$(LIBFT)
+	echo "Removing $(GREEN)$(LIBFT)$(WHITE)..."
 
 re: fclean all
