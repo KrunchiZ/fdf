@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/23 15:11:23 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/23 16:33:01 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(void)
 
 	/* Event Handler setup when render loop starts */
 	mlx_loop_hook(data.mlx_ptr, &fn_handle_idle, &data);
+	mlx_expose_hook(data.win_ptr, &fn_handle_idle, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask,
 			&fn_handle_keypress, &data);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask,
