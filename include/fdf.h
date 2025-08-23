@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/23 13:32:55 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/23 15:15:26 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct s_data
 	int		endian;
 }			t_data;
 
-//int	fn_handle_idle(t_data *data);
-//int	fn_handle_input(int keysym, t_data *data);
+int	fn_handle_idle(t_data *data);
+int	fn_handle_keypress(int keysym, t_data *data);
+int	fn_handle_keyrelease(int keysym, t_data *data);
 
 #endif
