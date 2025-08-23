@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/23 15:11:13 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/23 15:26:46 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int	fn_handle_keypress(int keysym, t_data *data)
 int	fn_handle_keyrelease(int keysym, t_data *data)
 {
 	(void)data;
+	(void)keysym;
 	return (FN_SUCCESS);
 }
