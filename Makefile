@@ -8,7 +8,7 @@ MLX_FLAGS	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 SRC		= \
 		  fdf_main.c	\
-		  fdf_event_handler.c	fdf_color_handler.c
+		  fdf_event_handler.c	fdf_color_handler.c	fdf_render.c
 
 LIBFT_DIR	= libft/
 SRC_DIR		= src/
