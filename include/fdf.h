@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/26 16:10:27 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/26 16:30:49 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_data
 }			t_data;
 
 void	fn_error_exit(int exit_code);
-int		fn_init_mlx(t_data *data);
 int		fn_handle_idle(t_data *data);
 int		fn_handle_keypress(int keysym, t_data *data);
 int		fn_render_img(t_data *data);
