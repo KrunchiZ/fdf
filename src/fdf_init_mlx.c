@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 15:46:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/26 16:11:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/26 16:23:00 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	fn_init_mlx(t_data *data)
 	data->img.px = mlx_get_data_addr(data->img.img_ptr, &data->img.bpp,
 			&data->img.line_len, &data->img.endian);
 	if (!data->img.px)
-		return (free(data->window), free(data->mlx), free(data->img.img_ptr),
-			FN_FAILURE);
+		return (free(data->window),
+			free(data->mlx), free(data->img.img_ptr), FN_FAILURE);
 	return (FN_SUCCESS);
 }
