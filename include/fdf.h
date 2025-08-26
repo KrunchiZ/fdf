@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/26 16:30:49 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/26 18:42:57 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@
 # define PIXEL_GREEN	0xFF00
 # define PIXEL_BLUE		0xFF
 
+typedef struct s_vect
+{
+	int	x;
+	int	y;
+	int	z;
+}		t_vect;
+
+typedef struct s_map
+{
+	t_vect	*vertex;
+	t_vect	*coord;
+	int		width;
+	int		depth;
+	int		height;
+	int		max_y;
+	int		min_y;
+}			t_map;
+
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -44,6 +62,7 @@ typedef struct s_data
 	void	*mlx;
 	void	*window;
 	t_img	img;
+	t_map	map;
 }			t_data;
 
 void	fn_error_exit(int exit_code);

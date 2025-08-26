@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/26 16:29:31 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/26 18:57:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(void)
 {
 	t_data	data;
 
+	/* fn_parse_map */
 	if (fn_init_mlx(&data) == FN_FAILURE)
 		fn_error_exit(EXIT_FAILURE);
 	fn_setup_mlx_loop(&data);
