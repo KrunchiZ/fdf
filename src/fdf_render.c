@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/26 15:44:29 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/27 01:12:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	fn_render_rect(t_img *img, int color)
 
 int	fn_render_img(t_data *data)
 {
-	fn_render_rect(&data->img, PIXEL_RED);
+	fn_render_rect(&data->img, PIXEL_BLUE);
 	mlx_put_image_to_window(data->mlx, data->window, data->img.img_ptr, 0, 0);
 	return (FN_SUCCESS);
 }
