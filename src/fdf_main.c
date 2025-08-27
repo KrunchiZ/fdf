@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/27 16:34:00 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/28 01:32:45 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,28 @@ static int	fn_init_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		return (FN_FAILURE);
+		return (fn_delete_map(&data->map), FN_FAILURE);
 	data->window = mlx_new_window(data->mlx, FRAME_WIDTH, FRAME_HEIGHT, "fdf");
 	if (!data->window)
-		return (free(data->mlx), FN_FAILURE);
+		return (fn_delete_map(&data->map),
+			mlx_destroy_display(data->mlx), free(data->mlx), FN_FAILURE);
 	data->img.img_ptr = mlx_new_image(data->mlx, FRAME_WIDTH, FRAME_HEIGHT);
 	if (!data->img.img_ptr)
-		return (free(data->window), free(data->mlx), FN_FAILURE);
+	{
+		mlx_destroy_window(data->mlx, data->window);
+		mlx_destroy_display(data->mlx);
+		return (free(data->mlx), fn_delete_map(&data->map), FN_FAILURE);
+	}
 	data->img.px = mlx_get_data_addr(data->img.img_ptr, &data->img.bpp,
 			&data->img.line_len, &data->img.endian);
 	if (!data->img.px)
-		return (free(data->window),
-			free(data->mlx), free(data->img.img_ptr), FN_FAILURE);
+	{
+		mlx_destroy_image(data.mlx, data.img.img_ptr);
+		mlx_destroy_window(data->mlx, data->window);
+		mlx_destroy_display(data->mlx);
+		(void)(free(data->mlx) + fn_delete_map(&data->map));
+		fn_error_exit("mlx_get_data_addr failure");
+	}
 	return (FN_SUCCESS);
 }
 

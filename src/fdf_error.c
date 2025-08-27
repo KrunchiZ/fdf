@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:06:19 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/27 16:28:06 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/28 00:49:56 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,15 @@ void	fn_perror_exit(char *str)
 	exit(EXIT_FAILURE);
 }
 
+void	fn_delete_map(t_map *map)
+{
+	free(map->vertices);
+	free(map->px_pos);
+	*map = (t_map){0};
+}
+
 void	fn_argc_check(int argc)
 {
 	if (argc != 2)
-		fn_error_exit("Input = fdf [FILE]...");
-	return ;
+		fn_error_exit("Wrong arguments\nformat = ./fdf [FILE]");
 }

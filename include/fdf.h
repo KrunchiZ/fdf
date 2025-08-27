@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/27 16:33:44 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/28 00:49:37 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ typedef struct s_vect
 
 typedef struct s_map
 {
-	t_vect	*vertex;
-	t_vect	*coord;
+	t_vect	*vertices;
+	t_vect	*px_pos;
+	int		vertex_count;
 	int		width;
 	int		depth;
 	int		height;
@@ -68,8 +69,10 @@ typedef struct s_data
 void	fn_argc_check(int argc);
 void	fn_error_exit(char *str);
 void	fn_perror_exit(char *str);
+void	fn_delete_map(t_map *map);
 
 void	fn_parse_map(t_map *map, char *file);
+void	fn_count_vertex(t_map *map, char *file);
 
 int		fn_handle_idle(t_data *data);
 int		fn_handle_keypress(int keysym, t_data *data);
