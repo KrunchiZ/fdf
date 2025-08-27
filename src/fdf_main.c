@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/28 01:32:45 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/28 01:39:03 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	fn_argc_check(argc);
+	if (argc != 2)
+		fn_error_exit("Wrong arguments\nformat = ./fdf [FILE]");
 	data = (t_data){0};
 	fn_parse_map(&data.map, argv[1]);
 	if (fn_init_mlx(&data) == FN_FAILURE)

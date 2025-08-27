@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/28 00:49:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/28 01:39:15 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_data
 	t_map	map;
 }			t_data;
 
-void	fn_argc_check(int argc);
 void	fn_error_exit(char *str);
 void	fn_perror_exit(char *str);
 void	fn_delete_map(t_map *map);
