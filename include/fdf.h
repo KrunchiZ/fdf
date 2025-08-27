@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/26 18:42:57 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/27 16:33:44 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,12 @@ typedef struct s_data
 	t_map	map;
 }			t_data;
 
-void	fn_error_exit(int exit_code);
+void	fn_argc_check(int argc);
+void	fn_error_exit(char *str);
+void	fn_perror_exit(char *str);
+
+void	fn_parse_map(t_map *map, char *file);
+
 int		fn_handle_idle(t_data *data);
 int		fn_handle_keypress(int keysym, t_data *data);
 int		fn_render_img(t_data *data);
