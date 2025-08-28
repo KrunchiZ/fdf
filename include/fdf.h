@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/28 01:39:15 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/28 16:48:47 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_vect
 	int	x;
 	int	y;
 	int	z;
+	int	color;
 }		t_vect;
 
 typedef struct s_map
