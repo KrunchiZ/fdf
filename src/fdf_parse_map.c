@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:34:37 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/28 00:46:35 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/28 13:41:05 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	fn_parse_map(t_map *map, char *file)
 	fn_count_vertex(map, file);
 	fn_init_vector_arr(map);
 	fn_parse_vertices(map, file);
-	/* PARSE_VERTICES */
 }
 
 static void	fn_init_vector_arr(t_map *map)
