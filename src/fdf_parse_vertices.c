@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/28 19:35:25 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/29 16:26:29 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	fn_parse_vertices(t_map *map, char *file)
 	z = 0;
 	i = 0;
 	line = get_next_line(fd);
-	while (line && z < map->depth)
+	while (line && z < map->depth && i < map->vertex_count)
 	{
 		fn_extract_coord(line, map, i, z++);
 		i += map->width;
@@ -49,20 +49,23 @@ static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 	x = 0;
 	while (arr[x])
 	{
+		map->vertices[i + x].x = x;
+		map->vertices[i + x].z = z;
 		map->vertices[i + x].y = ft_atoi(arr[x]);
 		map->vertices[i + x].color = fn_get_color(arr[x]);
-		x++;
+		free(arr[x++]);
 	}
+	free[arr];
 }
 
 static int	fn_get_color(char *s)
 {
 	int	color;
 
-	color = 0;
+	color = PIXEL_BLUE;
 	while (*s && *s != ',')
 		s++;
-	if (*s == ',')
+	if (*s == ',' && *(s + 1))
 	{
 		s++;
 		if (ft_strncmp(s, "0x", 2) || ft_strncmp(s, "0X", 2))
