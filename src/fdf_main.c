@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 22:00:25 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 23:10:18 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,14 @@ static void	fn_set_modifier(t_mod *mod, t_map *map)
 		mod->multiplier = d_quotient;
 	else
 		mod->multiplier = h_quotient;
+	if (mod->multiplier == 1 && map->width * 2 < FRAME_WIDTH
+			&& map->height * 2 < FRAME_HEIGHT)
+		mod->multiplier = 2;
 	mod->x_offset = (FRAME_WIDTH - map->width * mod->multiplier) / 2;
-	mod->y_offset = FRAME_HEIGHT / 2;
+	if (ft_abs(map->min_y) > ft_abs(map->max_y))
+		mod->y_offset = (map->height + 5) * mod->multiplier;
+	else
+		mod->y_offset = FRAME_HEIGHT - (map->depth + 5) * mod->multiplier;
 	return ;
 }
 
