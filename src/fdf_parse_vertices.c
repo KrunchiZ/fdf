@@ -6,14 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 14:48:13 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 14:51:54 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static void	fn_extract_coord(char *line, t_map *map, int i, int z);
-static int	fn_get_color(char *s);
+static void	fn_get_color(t_vect *vertices, char *s);
 static void	fn_str_tolower(char *str);
 static void	fn_set_height(t_map *map, t_vect *vertices);
 
@@ -58,7 +58,7 @@ static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 		map->vertices[i + x].x = x;
 		map->vertices[i + x].z = z;
 		map->vertices[i + x].y = ft_atoi(ar[x]);
-		map->vertices[i + x].color = fn_get_color(&map->vertices[i + x], ar[x]);
+		fn_get_color(&map->vertices[i + x], ar[x]);
 		fn_set_height(map, &map->vertices[i + x]);
 		free(ar[x++]);
 	}
@@ -66,7 +66,7 @@ static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 	return ;
 }
 
-static int	fn_get_color(t_vect *vertices, char *s)
+static void	fn_get_color(t_vect *vertices, char *s)
 {
 	vertices->color = PIXEL_BLUE;
 	while (*s && *s != ',')
