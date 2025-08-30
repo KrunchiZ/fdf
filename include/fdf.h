@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 18:15:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 18:39:45 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 # define FN_SUCCESS		0
 # define FN_FAILURE		1
-# define FRAME_WIDTH	1280
-# define FRAME_HEIGHT	720
+# define FRAME_WIDTH	1920
+# define FRAME_HEIGHT	1080
 
 # define PIXEL_WHITE	0xFFFFFF
 # define PIXEL_GREY		0x757575
