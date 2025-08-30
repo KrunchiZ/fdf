@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 13:28:28 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 13:42:54 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	fn_extract_coord(char *line, t_map *map, int i, int z);
 static int	fn_get_color(char *s);
 static void	fn_str_tolower(char *str);
+static void	fn_set_height(t_map *map, t_vect *vertices);
 
 void	fn_parse_vertices(t_map *map, char *file)
 {
@@ -57,6 +58,7 @@ static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 		map->vertices[i + x].z = z;
 		map->vertices[i + x].y = ft_atoi(arr[x]);
 		map->vertices[i + x].color = fn_get_color(arr[x]);
+		fn_set_height(map, &map->vertices[i + x]);
 		free(arr[x++]);
 	}
 	free[arr];
@@ -93,5 +95,15 @@ static void	fn_str_tolower(char *str)
 		*str = ft_tolower(*str);
 		str++;
 	}
+	return ;
+}
+
+static void	fn_set_height(t_map *map, t_vect *vertices)
+{
+	if (vertices->y > map->max_y)
+		map->max_y = vertices->y;
+	if (vertices->y < map->min_y)
+		map->min_y = vertices->y;
+	map->height = map->max_y - map->min_y + 1;
 	return ;
 }

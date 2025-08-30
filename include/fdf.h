@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 13:18:45 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 13:35:25 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	fn_perror_exit(char *str);
 void	fn_delete_map(t_map *map);
 
 void	fn_parse_map(t_map *map, char *file);
-void	fn_count_vertex(t_map *map, char *file);
+void	fn_parse_vertices(t_map *map, char *file);
 
 int		fn_handle_idle(t_data *data);
 int		fn_handle_keypress(int keysym, t_data *data);
