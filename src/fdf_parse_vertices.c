@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 14:51:54 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 15:12:01 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 static void	fn_get_color(t_vect *vertices, char *s)
 {
 	vertices->color = PIXEL_BLUE;
+	vertices->blue = PIXEL_BLUE;
 	while (*s && *s != ',')
 		s++;
 	if (*s == ',' && *(s + 1))
@@ -78,8 +79,7 @@ static void	fn_get_color(t_vect *vertices, char *s)
 			s++;
 		if (ft_strncmp(s, "0x", 2) || ft_strncmp(s, "0X", 2))
 			return ;
-		if (!ft_strncmp(s, "0x", 2) || !ft_strncmp(s, "0X", 2))
-			s += 2;
+		s += 2;
 		fn_str_tolower(s);
 		vertices->color = ft_atoi_base(s, BASE16_LOWER);
 		vertices->red = fn_get_red(vertices->color);
