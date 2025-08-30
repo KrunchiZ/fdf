@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 17:17:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 17:29:11 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_vect
 typedef struct s_map
 {
 	t_vect	*vertices;
-	t_vect	*px_pos;
+	t_vect	*render_pt;
 	t_vect	center;
 	int		vertex_count;
 	int		width;

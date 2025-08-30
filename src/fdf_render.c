@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 16:50:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 17:29:58 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	fn_img_px_put(t_img *img, int x, int y, int color)
 	return ;
 }
 
-static int	fn_render_map(t_img *img, t_map *map, t_mod *mod)
+static int	fn_render_map(t_img *img, t_map *map)
 {
 	int		i;
 	t_vect	pt;
@@ -38,16 +38,15 @@ static int	fn_render_map(t_img *img, t_map *map, t_mod *mod)
 	i = 0;
 	while (i < map->vertex_count)
 	{
-		pt = map->vertices[i++];
-		/* fn_apply_modifier; */
-		fn_img_px_put(img, pt.x, pt.z, pt.color);
+		pt = map->render_pt[i++];
+		fn_img_px_put(img, pt.x, pt.y, pt.color);
 	}
 	return (FN_SUCCESS);
 }
 
 int	fn_render_img(t_data *data)
 {
-	fn_render_map(&data->img, &data->map, &data->mod);
+	fn_render_map(&data->img, &data->map);
 	mlx_put_image_to_window(data->mlx, data->window, data->img.img_ptr, 0, 0);
 	return (FN_SUCCESS);
 }
