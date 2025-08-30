@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 14:03:25 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 14:48:13 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,35 +42,33 @@ void	fn_parse_vertices(t_map *map, char *file)
 
 static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 {
-	char	**arr;
+	char	**ar;
 	int		x;
 
-	arr = ft_split(line, WHITESPACE);
-	if (!arr)
+	ar = ft_split(line, WHITESPACE);
+	if (!ar)
 	{
 		free(line);
 		fn_delete_map(map);
 		fn_error_exit("ft_split failure");
 	}
 	x = 0;
-	while (arr[x] && x < map->width)
+	while (ar[x] && x < map->width)
 	{
 		map->vertices[i + x].x = x;
 		map->vertices[i + x].z = z;
-		map->vertices[i + x].y = ft_atoi(arr[x]);
-		map->vertices[i + x].color = fn_get_color(arr[x]);
+		map->vertices[i + x].y = ft_atoi(ar[x]);
+		map->vertices[i + x].color = fn_get_color(&map->vertices[i + x], ar[x]);
 		fn_set_height(map, &map->vertices[i + x]);
-		free(arr[x++]);
+		free(ar[x++]);
 	}
-	free(arr);
+	free(ar);
 	return ;
 }
 
-static int	fn_get_color(char *s)
+static int	fn_get_color(t_vect *vertices, char *s)
 {
-	int	color;
-
-	color = PIXEL_BLUE;
+	vertices->color = PIXEL_BLUE;
 	while (*s && *s != ',')
 		s++;
 	if (*s == ',' && *(s + 1))
@@ -79,13 +77,16 @@ static int	fn_get_color(char *s)
 		while (*s == '+' || *s == '-')
 			s++;
 		if (ft_strncmp(s, "0x", 2) || ft_strncmp(s, "0X", 2))
-			return (PIXEL_BLUE);
+			return ;
 		if (!ft_strncmp(s, "0x", 2) || !ft_strncmp(s, "0X", 2))
 			s += 2;
 		fn_str_tolower(s);
-		color = ft_atoi_base(s, BASE16_LOWER);
+		vertices->color = ft_atoi_base(s, BASE16_LOWER);
+		vertices->red = fn_get_red(vertices->color);
+		vertices->green = fn_get_green(vertices->color);
+		vertices->blue = fn_get_blue(vertices->color);
 	}
-	return (color);
+	return ;
 }
 
 static void	fn_str_tolower(char *str)
