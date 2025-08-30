@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 16:17:34 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 17:17:43 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,9 @@ typedef struct s_img
 
 typedef struct s_mod
 {
-	int		multiplier;
-	int		x_offset;
-	int		y_offset;
-}			t_mod;
+	int	scale;
+	int	offset;
+}		t_mod;
 
 typedef struct s_data
 {
