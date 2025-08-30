@@ -2,6 +2,7 @@ fdf_doc
 mlx_linux
 libft
 fdf
+*.fdf
 # Prerequisites
 *.d
 
