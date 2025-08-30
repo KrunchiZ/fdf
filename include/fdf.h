@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 13:58:42 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 14:00:27 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <stdio.h>
+# include <fcntl.h>
 # include <mlx.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
