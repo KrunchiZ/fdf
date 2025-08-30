@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 14:08:56 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 14:11:48 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	fn_setup_mlx_loop(&data);
 	mlx_destroy_image(data.mlx, data.img.img_ptr);
 	mlx_destroy_display(data.mlx);
-	return (free(data.mlx), EXIT_SUCCESS);
+	return (free(data.mlx), fn_delete_map(&data.map), EXIT_SUCCESS);
 }
 
 static int	fn_init_mlx(t_data *data)
