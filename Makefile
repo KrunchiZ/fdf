@@ -36,7 +36,7 @@ $(LIBFT):
 
 fclean: clean
 	rm -f $(NAME)
-	echo "Removing program files..."
+	echo "Removing $(GREEN)$(NAME)$(WHITE)..."
 
 clean:
 	make -C $(LIBFT_DIR) clean
