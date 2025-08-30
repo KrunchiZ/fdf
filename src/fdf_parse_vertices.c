@@ -6,11 +6,15 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/29 16:26:29 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 13:28:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static void	fn_extract_coord(char *line, t_map *map, int i, int z);
+static int	fn_get_color(char *s);
+static void	fn_str_tolower(char *str);
 
 void	fn_parse_vertices(t_map *map, char *file)
 {
@@ -47,7 +51,7 @@ static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 		fn_error_exit("ft_split failure");
 	}
 	x = 0;
-	while (arr[x])
+	while (arr[x] && x < map->width)
 	{
 		map->vertices[i + x].x = x;
 		map->vertices[i + x].z = z;
@@ -68,13 +72,26 @@ static int	fn_get_color(char *s)
 	if (*s == ',' && *(s + 1))
 	{
 		s++;
-		if (ft_strncmp(s, "0x", 2) || ft_strncmp(s, "0X", 2))
-			return (PIXEL_BLUE);
 		while (*s == '+' || *s == '-')
 			s++;
+		if (ft_strncmp(s, "0x", 2) || ft_strncmp(s, "0X", 2))
+			return (PIXEL_BLUE);
 		if (!ft_strncmp(s, "0x", 2) || !ft_strncmp(s, "0X", 2))
 			s += 2;
-		color = ft_atoi_base(s);
+		fn_str_tolower(s);
+		color = fn_atoi_base(s, BASE16_LOWER);
 	}
 	return (color);
+}
+
+static void	fn_str_tolower(char *str)
+{
+	if (!str)
+		return ;
+	while(*str)
+	{
+		*str = ft_tolower(*str);
+		str++;
+	}
+	return ;
 }

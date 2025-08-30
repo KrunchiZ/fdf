@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/28 16:48:47 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 13:18:45 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define PIXEL_RED		0xFF0000
 # define PIXEL_GREEN	0xFF00
 # define PIXEL_BLUE		0xFF
+
+# define BASE16_LOWER	"0123456789abcdef"
 
 typedef struct s_vect
 {
