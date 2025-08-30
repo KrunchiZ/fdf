@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 13:47:55 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 13:55:08 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void	fn_str_tolower(char *str)
 {
 	if (!str)
 		return ;
-	while(*str)
+	while (*str)
 	{
 		*str = ft_tolower(*str);
 		str++;
