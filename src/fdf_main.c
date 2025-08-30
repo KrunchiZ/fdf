@@ -6,12 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 17:19:27 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 17:36:01 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+static void	fn_set_modifier(t_mod *mod, t_map *map);
 static int	fn_init_mlx(t_data *data);
 static void	fn_setup_mlx_loop(t_data *data);
 
@@ -32,22 +33,22 @@ int	main(int argc, char **argv)
 	return (free(data.mlx), fn_delete_map(&data.map), EXIT_SUCCESS);
 }
 
-static void	fn_set_modifier(t_map *map, t_mod *mod)
+static void	fn_set_modifier(t_mod *mod, t_map *map)
 {
 	int	w_quotient;
 	int	d_quotient;
 	int	h_quotient;
 
-	map->scale = 1;
+	mod->scale = 1;
 	w_quotient = FRAME_WIDTH / 2 / map->width;
 	d_quotient = FRAME_HEIGHT / 2 / map->depth;
 	h_quotient = FRAME_HEIGHT / 3 / map->height;
 	if (w_quotient < d_quotient && w_quotient < h_quotient)
-		map->offset = w_quotient;
+		mod->offset = w_quotient;
 	else if (d_quotient < h_quotient)
-		map->offset = d_quotient;
+		mod->offset = d_quotient;
 	else
-		map->offset = h_quotient;
+		mod->offset = h_quotient;
 	return ;
 }
 

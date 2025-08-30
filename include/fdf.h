@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 17:29:11 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 17:54:45 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define FRAME_HEIGHT	720
 
 # define PIXEL_WHITE	0xFFFFFF
-# define PIXEL_GREY		0x808080
+# define PIXEL_GREY		0x757575
 # define PIXEL_BLACK	0x0
 # define PIXEL_RED		0xFF0000
 # define PIXEL_GREEN	0xFF00

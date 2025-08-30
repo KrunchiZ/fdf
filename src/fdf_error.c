@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:06:19 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/28 01:39:09 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 17:36:23 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	fn_perror_exit(char *str)
 void	fn_delete_map(t_map *map)
 {
 	free(map->vertices);
-	free(map->px_pos);
+	free(map->render_pt);
 	*map = (t_map){0};
 }

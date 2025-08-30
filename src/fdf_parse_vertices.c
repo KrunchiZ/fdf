@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 16:42:20 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 17:37:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	fn_parse_vertices(t_map *map, char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
+	{
+		fn_delete_map(map);
 		fn_perror_exit("fdf: open");
+	}
 	z = 0;
 	i = 0;
 	line = get_next_line(fd);
