@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 13:42:54 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 13:47:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	fn_parse_vertices(t_map *map, char *file)
 		free(line);
 		line = get_next_line(fd);
 	}
+	return ;
 }
 
 static void	fn_extract_coord(char *line, t_map *map, int i, int z)
@@ -62,6 +63,7 @@ static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 		free(arr[x++]);
 	}
 	free[arr];
+	return ;
 }
 
 static int	fn_get_color(char *s)

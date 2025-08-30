@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:34:37 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 13:33:48 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 13:50:30 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	fn_init_vector_arr(t_map *map)
 		fn_delete_map(map);
 		fn_error_exit("ft_calloc failure");
 	}
+	return ;
 }
 
 static void	fn_count_vertex(t_map *map, char *file)
@@ -55,6 +56,7 @@ static void	fn_count_vertex(t_map *map, char *file)
 	}
 	close(fd);
 	map->vertex_count = map->width * map->depth;
+	return ;
 }
 
 static void	fn_check_width(t_map *map, char *line)
@@ -67,7 +69,7 @@ static void	fn_check_width(t_map *map, char *line)
 		free(line);
 		fn_error_exit("input: Map is not rectangular");
 	}
-	return;
+	return ;
 }
 
 static int	fn_get_width(t_map *map, char *line)
