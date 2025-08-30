@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:34:37 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 15:02:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 16:17:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	fn_count_vertex(t_map *map, char *file)
 	if (map->width < 2 || map->depth < 2)
 		fn_error_exit("input: Map is not rectangular");
 	map->vertex_count = map->width * map->depth;
+	map->center = (t_vect){x = map->width / 2, z = map->depth / 2};
 	return ;
 }
 

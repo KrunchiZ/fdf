@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 14:36:39 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 16:17:34 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_map
 {
 	t_vect	*vertices;
 	t_vect	*px_pos;
+	t_vect	center;
 	int		vertex_count;
 	int		width;
 	int		depth;
@@ -66,10 +67,18 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
+typedef struct s_mod
+{
+	int		multiplier;
+	int		x_offset;
+	int		y_offset;
+}			t_mod;
+
 typedef struct s_data
 {
 	t_map	map;
 	t_img	img;
+	t_mod	mod;
 	void	*mlx;
 	void	*window;
 }			t_data;
