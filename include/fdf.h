@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 17:54:45 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 18:15:53 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ typedef struct s_img
 typedef struct s_mod
 {
 	int	scale;
-	int	offset;
+	int	multiplier;
+	int	x_offset;
+	int	y_offset;
 }		t_mod;
 
 typedef struct s_data
@@ -90,6 +92,7 @@ void	fn_parse_vertices(t_map *map, char *file);
 int		fn_handle_idle(t_data *data);
 int		fn_handle_keypress(int keysym, t_data *data);
 
+void	fn_set_render_point(t_map *map, t_mod *mod);
 int		fn_render_img(t_data *data);
 int		fn_encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
 uint8_t	fn_get_red(int rgb);

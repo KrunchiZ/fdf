@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 17:33:32 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 18:04:43 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	fn_handle_idle(t_data *data)
 {
 	if (data->window)
 	{
-/*		fn_set_render_point(&data->map, &data->mod); */
+		fn_set_render_point(&data->map, &data->mod);
 		fn_render_img(data);
 	}
 	return (FN_SUCCESS);

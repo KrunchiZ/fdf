@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 17:48:30 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 18:20:15 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static int	fn_render_map(t_img *img, t_map *map)
 	i = 0;
 	while (i < map->vertex_count)
 	{
-		pt = map->vertices[i++];
-		fn_img_px_put(img, pt.x * 20, pt.z * 20, pt.color);
+		pt = map->render_pt[i++];
+		fn_img_px_put(img, pt.x, pt.y, pt.color);
 	}
 	return (FN_SUCCESS);
 }
