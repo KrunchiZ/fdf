@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/31 01:14:04 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/31 01:16:59 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void	fn_set_modifier(t_mod *mod, t_map *map)
 	int	h_quotient;
 
 	mod->scale = 1;
-	w_quotient = FRAME_WIDTH / 2 / map->width;
-	d_quotient = FRAME_WIDTH / 2 / map->depth;
+	w_quotient = FRAME_HEIGHT / 2 / map->width;
+	d_quotient = FRAME_HEIGHT / 2 / map->depth;
 	h_quotient = FRAME_HEIGHT / 2 / map->height;
 	if (w_quotient < d_quotient && w_quotient < h_quotient)
 		mod->multiplier = w_quotient;
