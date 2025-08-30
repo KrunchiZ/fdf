@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 14:00:27 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 14:36:39 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@
 
 typedef struct s_vect
 {
-	int	x;
-	int	y;
-	int	z;
-	int	color;
+	int		x;
+	int		y;
+	int		z;
+	int		color;
+	uint8_t	red;
+	uint8_t	green;
+	uint8_t	blue;
 }		t_vect;
 
 typedef struct s_map
@@ -65,23 +68,24 @@ typedef struct s_img
 
 typedef struct s_data
 {
+	t_map	map;
+	t_img	img;
 	void	*mlx;
 	void	*window;
-	t_img	img;
-	t_map	map;
 }			t_data;
 
 void	fn_error_exit(char *str);
 void	fn_perror_exit(char *str);
 void	fn_delete_map(t_map *map);
-
 void	fn_parse_map(t_map *map, char *file);
 void	fn_parse_vertices(t_map *map, char *file);
-
 int		fn_handle_idle(t_data *data);
 int		fn_handle_keypress(int keysym, t_data *data);
+
 int		fn_render_img(t_data *data);
-int		fn_encode_trgb(uint8_t transparency,
-			uint8_t red, uint8_t green, uint8_t blue);
+int		fn_encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
+uint8_t	fn_get_red(int rgb);
+uint8_t	fn_get_green(int rgb);
+uint8_t	fn_get_blue(int rgb);
 
 #endif
