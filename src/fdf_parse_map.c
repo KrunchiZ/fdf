@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:34:37 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 13:50:30 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 14:07:35 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	fn_count_vertex(t_map *map, char *file);
 static void	fn_check_width(t_map *map, char *line);
-static int	fn_get_width(t_map *map, char *line);
+static int	fn_get_width(char *line);
 static void	fn_init_vector_arr(t_map *map);
 
 void	fn_parse_map(t_map *map, char *file)
@@ -41,12 +41,12 @@ static void	fn_count_vertex(t_map *map, char *file)
 	int		fd;
 	char	*line;
 
-	fd == open(file, O_RDONLY);
+	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		fn_perror_exit("fdf: open");
 	line = get_next_line(fd);
 	if (line)
-		map->width = fn_get_width(map, line);
+		map->width = fn_get_width(line);
 	while (line)
 	{
 		fn_check_width(map, line);
@@ -63,7 +63,7 @@ static void	fn_check_width(t_map *map, char *line)
 {
 	int	width;
 
-	width = fn_get_width(map, line);
+	width = fn_get_width(line);
 	if (width != map->width)
 	{
 		free(line);
@@ -72,7 +72,7 @@ static void	fn_check_width(t_map *map, char *line)
 	return ;
 }
 
-static int	fn_get_width(t_map *map, char *line)
+static int	fn_get_width(char *line)
 {
 	char	**arr;
 	int		i;
@@ -85,6 +85,7 @@ static int	fn_get_width(t_map *map, char *line)
 		fn_error_exit("ft_split failure");
 	}
 	i = 0;
+	width = 0;
 	while (arr[i])
 	{
 		width++;

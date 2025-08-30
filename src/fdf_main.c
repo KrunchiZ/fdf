@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/28 01:39:03 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 14:08:56 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc != 2)
-		fn_error_exit("Wrong arguments\nformat = ./fdf [FILE]");
+		fn_error_exit("Wrong arguments\n<format = ./fdf [FILE]>");
 	data = (t_data){0};
 	fn_parse_map(&data.map, argv[1]);
 	if (fn_init_mlx(&data) == FN_FAILURE)
@@ -51,10 +51,10 @@ static int	fn_init_mlx(t_data *data)
 			&data->img.line_len, &data->img.endian);
 	if (!data->img.px)
 	{
-		mlx_destroy_image(data.mlx, data.img.img_ptr);
+		mlx_destroy_image(data->mlx, data->img.img_ptr);
 		mlx_destroy_window(data->mlx, data->window);
 		mlx_destroy_display(data->mlx);
-		(void)(free(data->mlx) + fn_delete_map(&data->map));
+		(void)(free(data->mlx), fn_delete_map(&data->map));
 		fn_error_exit("mlx_get_data_addr failure");
 	}
 	return (FN_SUCCESS);

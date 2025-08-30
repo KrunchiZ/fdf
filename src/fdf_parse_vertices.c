@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 13:55:08 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/08/30 14:03:25 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	fn_parse_vertices(t_map *map, char *file)
 	int		i;
 	char	*line;
 
-	fd == open(file, O_RDONLY);
+	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		fn_perror_exit("fdf: open");
 	z = 0;
@@ -62,7 +62,7 @@ static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 		fn_set_height(map, &map->vertices[i + x]);
 		free(arr[x++]);
 	}
-	free[arr];
+	free(arr);
 	return ;
 }
 
@@ -83,7 +83,7 @@ static int	fn_get_color(char *s)
 		if (!ft_strncmp(s, "0x", 2) || !ft_strncmp(s, "0X", 2))
 			s += 2;
 		fn_str_tolower(s);
-		color = fn_atoi_base(s, BASE16_LOWER);
+		color = ft_atoi_base(s, BASE16_LOWER);
 	}
 	return (color);
 }
