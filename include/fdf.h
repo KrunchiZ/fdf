@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/01 14:46:30 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/01 16:54:08 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,6 @@
 
 # define BASE16_LOWER	"0123456789abcdef"
 
-typedef struct s_line
-{
-	int	dx;
-	int	dy;
-	int	x_step;
-	int	y_step;
-}		t_line;
-
 typedef struct s_vect
 {
 	int		x;
@@ -52,6 +44,21 @@ typedef struct s_vect
 	uint8_t	green;
 	uint8_t	blue;
 }		t_vect;
+
+typedef struct s_line
+{
+	t_vect	pt;
+	int		dx;
+	int		dy;
+	int		x_step;
+	int		y_step;
+	uint8_t	r_step;
+	uint8_t	g_step;
+	uint8_t	b_step;
+	uint8_t	r_mod;
+	uint8_t	g_mod;
+	uint8_t	b_mod;
+}			t_line;
 
 typedef struct s_map
 {
@@ -103,7 +110,8 @@ int		fn_handle_keypress(int keysym, t_data *data);
 void	fn_set_render_point(t_map *map, t_mod *mod);
 void	fn_img_px_put(t_img *img, int x, int y, int color);
 int		fn_render_img(t_data *data);
-int		fn_put_map(t_img *img, t_map *map);
+int		fn_draw_map(t_img *img, t_map *map);
+void	fn_draw_line(t_img *img, t_vect pt0, t_vect pt1);
 int		fn_encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
 uint8_t	fn_get_red(int rgb);
 uint8_t	fn_get_green(int rgb);
