@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/01 17:12:55 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/01 23:55:43 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void	fn_draw_along_x(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line)
 	i = 0;
 	while (i <= line->dx && line->pt.x >= 0 && line->pt.x <= FRAME_WIDTH)
 	{
+		if (line->pt.y < 0 || line->pt.y > FRAME_HEIGHT)
+			break ;
 		fn_img_px_put(img, line->pt.x, line->pt.y, line->pt.color);
 		line->pt.x += line->x_step;
 		deviation_error += line->dy;
@@ -69,6 +71,8 @@ static void	fn_draw_along_y(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line)
 	i = 0;
 	while (i <= line->dy && line->pt.y >= 0 && line->pt.y <= FRAME_HEIGHT)
 	{
+		if (line->pt.x < 0 || line->pt.x > FRAME_WIDTH)
+			break ;
 		fn_img_px_put(img, line->pt.x, line->pt.y, line->pt.color);
 		line->pt.y += line->y_step;
 		deviation_error += line->dx;
