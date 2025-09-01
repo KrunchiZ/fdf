@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_render.c                                       :+:      :+:    :+:   */
+/*   fdf_render_img.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 21:50:42 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/01 14:49:48 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	fn_img_px_put(t_img *img, int x, int y, int color)
+static int	fn_draw_bg(t_img *img);
+
+void	fn_img_px_put(t_img *img, int x, int y, int color)
 {
 	char	*pxbyte;
 	int		i;
@@ -30,23 +32,15 @@ static void	fn_img_px_put(t_img *img, int x, int y, int color)
 	return ;
 }
 
-static int	fn_render_map(t_img *img, t_map *map)
+int	fn_render_img(t_data *data)
 {
-	int		i;
-	t_vect	pt;
-
-	i = 0;
-	while (i < map->vertex_count)
-	{
-		pt = map->render_pt[i++];
-		if (pt.x >= 0 && pt.x <= FRAME_WIDTH
-			&& pt.y >= 0 && pt.y <= FRAME_HEIGHT)
-			fn_img_px_put(img, pt.x, pt.y, pt.color);
-	}
+	fn_draw_bg(&data->img);
+	fn_draw_map(&data->img, &data->map);
+	mlx_put_image_to_window(data->mlx, data->window, data->img.img_ptr, 0, 0);
 	return (FN_SUCCESS);
 }
 
-static int	fn_render_bg(t_img *img)
+static int	fn_draw_bg(t_img *img)
 {
 	int	x;
 	int	y;
@@ -59,13 +53,5 @@ static int	fn_render_bg(t_img *img)
 			fn_img_px_put(img, x++, y, PIXEL_GREY);
 		y++;
 	}
-	return (FN_SUCCESS);
-}
-
-int	fn_render_img(t_data *data)
-{
-	fn_render_bg(&data->img);
-	fn_render_map(&data->img, &data->map);
-	mlx_put_image_to_window(data->mlx, data->window, data->img.img_ptr, 0, 0);
 	return (FN_SUCCESS);
 }
