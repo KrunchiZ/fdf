@@ -6,14 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:36:29 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/01 17:07:47 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/01 17:11:17 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-#define IS_ROW	true;
-#define IS_COL	false;
+#define IS_ROW	true
+#define IS_COL	false
 
 static void	fn_draw_width(t_img *img, t_map *map);
 static void	fn_draw_depth(t_img *img, t_map *map);

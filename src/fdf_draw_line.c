@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/01 17:03:12 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/01 17:12:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	fn_draw_along_x(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line);
 static void	fn_draw_along_y(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line);
 static void	fn_set_rgb_step(t_line *line, t_vect *pt0, t_vect *pt1, int steps);
-static void	fn_set_color_gradient(t_line, int i, int endpoint);
+static void	fn_set_color_gradient(t_line *line, int i, int endpoint);
 
 void	fn_draw_line(t_img *img, t_vect pt0, t_vect pt1)
 {
 	t_line	line;
 
-	line = (t_line){pt = pt0, x_step = 1, y_step = 1};
+	line = (t_line){.pt = pt0, .x_step = 1, .y_step = 1};
 	if (pt0.x > pt1.x)
 		line.x_step = -1;
 	if (pt0.y > pt1.y)
@@ -40,13 +40,14 @@ static void	fn_draw_along_x(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line)
 	int	i;
 	int	deviation_error;
 
+	fn_set_rgb_step(line, pt0, pt1, line->dx);
 	deviation_error = line->dx / 2;
 	i = 0;
 	while (i <= line->dx && line->pt.x >= 0 && line->pt.x <= FRAME_WIDTH)
 	{
 		fn_img_px_put(img, line->pt.x, line->pt.y, line->pt.color);
 		line->pt.x += line->x_step;
-		deviate_error += line->dy;
+		deviation_error += line->dy;
 		if (deviation_error >= line->dx)
 		{
 			line->pt.y += line->y_step;
@@ -63,13 +64,14 @@ static void	fn_draw_along_y(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line)
 	int	i;
 	int	deviation_error;
 
+	fn_set_rgb_step(line, pt0, pt1, line->dy);
 	deviation_error = line->dy / 2;
 	i = 0;
 	while (i <= line->dy && line->pt.y >= 0 && line->pt.y <= FRAME_HEIGHT)
 	{
 		fn_img_px_put(img, line->pt.x, line->pt.y, line->pt.color);
 		line->pt.y += line->y_step;
-		deviate_error += line->dx;
+		deviation_error += line->dx;
 		if (deviation_error >= line->dy)
 		{
 			line->pt.x += line->x_step;
@@ -83,16 +85,16 @@ static void	fn_draw_along_y(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line)
 
 static void	fn_set_rgb_step(t_line *line, t_vect *pt0, t_vect *pt1, int steps)
 {
-	line->r_step = (uint8_t)(pt1->red - pt0->red) / steps);
-	line->g_step = (uint8_t)(pt1->green - pt0->green) / steps);
-	line->b_step = (uint8_t)(pt1->blue - pt0->blue) / steps);
-	line->r_mod = (uint8_t)(pt1->red - pt0->red) % steps);
-	line->g_mod = (uint8_t)(pt1->green - pt0->green) % steps);
-	line->b_mod = (uint8_t)(pt1->blue - pt0->blue) % steps);
+	line->r_step = (uint8_t)(pt1->red - pt0->red) / steps;
+	line->g_step = (uint8_t)(pt1->green - pt0->green) / steps;
+	line->b_step = (uint8_t)(pt1->blue - pt0->blue) / steps;
+	line->r_mod = (uint8_t)(pt1->red - pt0->red) % steps;
+	line->g_mod = (uint8_t)(pt1->green - pt0->green) % steps;
+	line->b_mod = (uint8_t)(pt1->blue - pt0->blue) % steps;
 	return ;
 }
 
-static void	fn_set_color_gradient(t_line, int i, int endpoint)
+static void	fn_set_color_gradient(t_line *line, int i, int endpoint)
 {
 	line->pt.red += line->r_step;
 	line->pt.green += line->g_step;
