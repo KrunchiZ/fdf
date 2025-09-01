@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 01:46:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 01:53:22 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,20 +109,20 @@ static void	fn_apply_color_step(t_line *line, t_vect *pt0, t_vect *pt1)
 	line->deviate.r += ft_abs(line->modulo.r);
 	line->deviate.g += ft_abs(line->modulo.g);
 	line->deviate.b += ft_abs(line->modulo.b);
-	if (line->deviate.r >= pt1->red - pt0->red)
+	if (line->deviate.r >= ft_abs(pt1->red - pt0->red))
 	{
 		line->pt.red += line->step.r;
-		line->deviate.r -= pt1->red - pt0->red;
+		line->deviate.r -= ft_abs(pt1->red - pt0->red);
 	}
-	if (line->deviate.g >= pt1->green - pt0->green)
+	if (line->deviate.g >= ft_abs(pt1->green - pt0->green))
 	{
 		line->pt.green += line->step.g;
-		line->deviate.g -= pt1->green - pt0->green;
+		line->deviate.g -= ft_abs(pt1->green - pt0->green);
 	}
-	if (line->deviate.b >= pt1->blue - pt0->blue)
+	if (line->deviate.b >= ft_abs(pt1->blue - pt0->blue))
 	{
 		line->pt.blue += line->step.b;
-		line->deviate.b -= pt1->blue - pt0->blue;
+		line->deviate.b -= ft_abs(pt1->blue - pt0->blue);
 	}
 	line->pt.color = fn_encode_rgb(line->pt.red, line->pt.green, line->pt.blue);
 	return ;

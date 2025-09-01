@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:36:29 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/01 17:11:17 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 01:56:51 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	fn_draw_depth(t_img *img, t_map *map)
 	while (i < map->width)
 	{
 		fn_connect_points(img, map, i, IS_COL);
-		i++;;
+		i++;
 	}
 }
 
