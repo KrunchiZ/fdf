@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/01 23:55:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 00:17:40 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,12 @@ static void	fn_draw_along_y(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line)
 
 static void	fn_set_rgb_step(t_line *line, t_vect *pt0, t_vect *pt1, int steps)
 {
-	line->r_step = (uint8_t)(pt1->red - pt0->red) / steps;
-	line->g_step = (uint8_t)(pt1->green - pt0->green) / steps;
-	line->b_step = (uint8_t)(pt1->blue - pt0->blue) / steps;
-	line->r_mod = (uint8_t)(pt1->red - pt0->red) % steps;
-	line->g_mod = (uint8_t)(pt1->green - pt0->green) % steps;
-	line->b_mod = (uint8_t)(pt1->blue - pt0->blue) % steps;
+	line->r_step = (pt1->red - pt0->red) / steps;
+	line->g_step = (pt1->green - pt0->green) / steps;
+	line->b_step = (pt1->blue - pt0->blue) / steps;
+	line->r_mod = (pt1->red - pt0->red) % steps;
+	line->g_mod = (pt1->green - pt0->green) % steps;
+	line->b_mod = (pt1->blue - pt0->blue) % steps;
 	return ;
 }
 

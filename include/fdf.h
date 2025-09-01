@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/01 16:54:08 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 00:17:11 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ typedef struct s_line
 	int		dy;
 	int		x_step;
 	int		y_step;
-	uint8_t	r_step;
-	uint8_t	g_step;
-	uint8_t	b_step;
-	uint8_t	r_mod;
-	uint8_t	g_mod;
-	uint8_t	b_mod;
+	int		r_step;
+	int		g_step;
+	int		b_step;
+	int		r_mod;
+	int		g_mod;
+	int		b_mod;
 }			t_line;
 
 typedef struct s_map
