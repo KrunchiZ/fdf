@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 00:17:40 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 01:35:19 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	fn_draw_along_x(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line);
 static void	fn_draw_along_y(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line);
 static void	fn_set_rgb_step(t_line *line, t_vect *pt0, t_vect *pt1, int steps);
-static void	fn_set_color_gradient(t_line *line, int i, int endpoint);
+static void	fn_apply_color_step(t_line *line);
 
 void	fn_draw_line(t_img *img, t_vect pt0, t_vect pt1)
 {
@@ -55,7 +55,7 @@ static void	fn_draw_along_x(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line)
 			line->pt.y += line->y_step;
 			deviation_error -= line->dx;
 		}
-		fn_set_color_gradient(line, i, line->dx);
+		fn_apply_color_step(line);
 		i++;
 	}
 	return ;
@@ -81,7 +81,7 @@ static void	fn_draw_along_y(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line)
 			line->pt.x += line->x_step;
 			deviation_error -= line->dy;
 		}
-		fn_set_color_gradient(line, i, line->dy);
+		fn_apply_color_step(line);
 		i++;
 	}
 	return ;
@@ -89,25 +89,38 @@ static void	fn_draw_along_y(t_img *img, t_vect *pt0, t_vect *pt1, t_line *line)
 
 static void	fn_set_rgb_step(t_line *line, t_vect *pt0, t_vect *pt1, int steps)
 {
-	line->r_step = (pt1->red - pt0->red) / steps;
-	line->g_step = (pt1->green - pt0->green) / steps;
-	line->b_step = (pt1->blue - pt0->blue) / steps;
-	line->r_mod = (pt1->red - pt0->red) % steps;
-	line->g_mod = (pt1->green - pt0->green) % steps;
-	line->b_mod = (pt1->blue - pt0->blue) % steps;
+	line->step.r = (pt1->red - pt0->red) / steps;
+	line->step.g = (pt1->green - pt0->green) / steps;
+	line->step.b = (pt1->blue - pt0->blue) / steps;
+	line->modulo.r = (pt1->red - pt0->red) % steps;
+	line->modulo.g = (pt1->green - pt0->green) % steps;
+	line->modulo.b = (pt1->blue - pt0->blue) % steps;
+	line->deviate = (t_rgb){128};
 	return ;
 }
 
-static void	fn_set_color_gradient(t_line *line, int i, int endpoint)
+static void	fn_apply_color_step(t_line *line)
 {
-	line->pt.red += line->r_step;
-	line->pt.green += line->g_step;
-	line->pt.blue += line->b_step;
-	if (i == endpoint)
+	line->pt.red += line->step.r;
+	line->pt.green += line->step.g;
+	line->pt.blue += line->step.b;
+	line->deviate.r += ft_abs(line->modulo.r);
+	line->deviate.g += ft_abs(line->modulo.g);
+	line->deviate.b += ft_abs(line->modulo.b);
+	if (line->deviate.r >= 255)
 	{
-		line->pt.red += line->r_mod;
-		line->pt.green += line->g_mod;
-		line->pt.blue += line->b_mod;
+		line->pt.red += line->step.r;
+		line->deviate.r -= 255;
+	}
+	if (line->deviate.g >= 255)
+	{
+		line->pt.green += line->step.g;
+		line->deviate.g -= 255;
+	}
+	if (line->deviate.b >= 255)
+	{
+		line->pt.blue += line->step.b;
+		line->deviate.b -= 255;
 	}
 	line->pt.color = fn_encode_rgb(line->pt.red, line->pt.green, line->pt.blue);
 	return ;

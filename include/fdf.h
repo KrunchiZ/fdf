@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 00:17:11 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 01:14:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,23 @@ typedef struct s_vect
 	uint8_t	blue;
 }		t_vect;
 
+typedef struct s_rgb
+{
+	int	r;
+	int	g;
+	int	b;
+}		t_rgb;
+
 typedef struct s_line
 {
 	t_vect	pt;
+	t_rgb	step;
+	t_rgb	modulo;
+	t_rgb	deviate;
 	int		dx;
 	int		dy;
 	int		x_step;
 	int		y_step;
-	int		r_step;
-	int		g_step;
-	int		b_step;
-	int		r_mod;
-	int		g_mod;
-	int		b_mod;
 }			t_line;
 
 typedef struct s_map
