@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 11:06:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 12:51:54 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <mlx.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include <math.h>
 
 # define FN_SUCCESS		0
 # define FN_FAILURE		1
@@ -45,20 +46,9 @@ typedef struct s_vect
 	uint8_t	blue;
 }		t_vect;
 
-typedef struct s_rgb
-{
-	int	r;
-	int	g;
-	int	b;
-}		t_rgb;
-
 typedef struct s_line
 {
 	t_vect	pt;
-	t_rgb	step;
-	t_rgb	delta;
-	t_rgb	deviate;
-	t_rgb	rgb_i;
 	int		dx;
 	int		dy;
 	int		x_step;
@@ -116,7 +106,7 @@ void	fn_set_render_point(t_map *map, t_mod *mod);
 void	fn_img_px_put(t_img *img, int x, int y, int color);
 int		fn_render_img(t_data *data);
 int		fn_draw_map(t_img *img, t_map *map);
-void	fn_draw_line(t_img *img, t_vect pt0, t_vect pt1);
+void	fn_draw_line(t_img *img, t_vect p0, t_vect p1);
 int		fn_encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
 uint8_t	fn_get_red(int rgb);
 uint8_t	fn_get_green(int rgb);
