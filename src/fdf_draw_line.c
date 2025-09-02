@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 17:22:45 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 17:54:04 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	fn_get_rgbstep(t_line *line, t_vect *p0, t_vect *p1, int delta);
 static void	fn_draw(t_img *img, t_line *line, int delta, t_vect *p0);
-static void	fn_calc_color(t_line *line, t_vect *p0, float i);
+static void	fn_calc_color(t_line *line);
 
 void	fn_draw_line(t_img *img, t_vect p0, t_vect p1)
 {
@@ -57,26 +57,33 @@ static void	fn_get_rgbstep(t_line *line, t_vect *p0, t_vect *p1, int delta)
 static void	fn_draw(t_img *img, t_line *line, int delta, t_vect *p0)
 {
 	int		i;
+	float	x;
+	float	y;
 
 	i = 0;
+	x = p0->x;
+	y = p0->y;
 	while (i <= delta && line->pt.x >= 0 && line->pt.x <= FRAME_WIDTH)
 	{
 		if (line->pt.x < 0 || line->pt.x > FRAME_WIDTH
 			|| line->pt.y < 0 || line->pt.y > FRAME_HEIGHT)
 			break ;
-		fn_calc_color(line, p0, (float)i);
+		fn_calc_color(line);
 		fn_img_px_put(img, line->pt.x, line->pt.y, line->pt.color);
-		line->pt.x = roundf((float)line->pt.x + line->xstep);
-		line->pt.y = roundf((float)line->pt.y + line->ystep);
+		x += line->xstep;
+		y += line->ystep;
+		line->pt.x = round(x);
+		line->pt.y = round(y);
 		i++;
 	}
 }
 
-static void	fn_calc_color(t_line *line, t_vect *p0, float i)
+static void	fn_calc_color(t_line *line)
 {
-	line->pt.red = p0->red + roundf(i * line->rstep);
-	line->pt.green = p0->green + roundf(i * line->gstep);
-	line->pt.blue = p0->blue + roundf(i * line->bstep);
-	line->pt.color = fn_encode_rgb(line->pt.red, line->pt.green, line->pt.blue);
+	line->pt.red += line->rstep;
+	line->pt.green += line->gstep;
+	line->pt.blue += line->bstep;
+	line->pt.color = fn_encode_rgb(roundf(line->pt.red),
+			roundf(line->pt.green), roundf(line->pt.blue));
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 16:52:49 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 17:49:56 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ typedef struct s_vect
 	int		y;
 	int		z;
 	int		color;
-	uint8_t	red;
-	uint8_t	green;
-	uint8_t	blue;
+	float	red;
+	float	green;
+	float	blue;
 }		t_vect;
 
 typedef struct s_line
