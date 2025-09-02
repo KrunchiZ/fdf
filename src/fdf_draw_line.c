@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 17:54:04 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 18:12:18 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	fn_draw_line(t_img *img, t_vect p0, t_vect p1)
 	delta.y = p1.y - p0.y;
 	if (ft_abs(delta.x) >= ft_abs(delta.y))
 	{
-		line.ystep = (float)(delta.y / delta.x) * line.xstep;
+		line.ystep = (delta.y / delta.x) * line.xstep;
 		fn_get_rgbstep(&line, &p0, &p1, delta.x);
 		fn_draw(img, &line, ft_abs(delta.x), &p0);
 	}
 	else
 	{
-		line.xstep = (float)(delta.x / delta.y) * line.ystep;
+		line.xstep = (delta.x / delta.y) * line.ystep;
 		fn_get_rgbstep(&line, &p0, &p1, delta.y);
 		fn_draw(img, &line, ft_abs(delta.y), &p0);
 	}
@@ -76,6 +76,7 @@ static void	fn_draw(t_img *img, t_line *line, int delta, t_vect *p0)
 		line->pt.y = round(y);
 		i++;
 	}
+	return ;
 }
 
 static void	fn_calc_color(t_line *line)
