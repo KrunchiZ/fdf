@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 17:49:56 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 18:41:18 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	fn_parse_vertices(t_map *map, char *file);
 int		fn_handle_idle(t_data *data);
 int		fn_handle_keypress(int keysym, t_data *data);
 
-void	fn_set_render_point(t_map *map, t_mod *mod);
+void	fn_setup3d(t_map *map, t_mod *mod);
 void	fn_img_px_put(t_img *img, int x, int y, int color);
 int		fn_render_img(t_data *data);
 int		fn_draw_map(t_img *img, t_map *map);

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 18:19:07 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 18:41:44 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_vect	fn_apply_modifier(t_vect *vertices, t_mod *mod);
 
-void	fn_set_render_point(t_map *map, t_mod *mod)
+void	fn_setup3d(t_map *map, t_mod *mod)
 {
 	int	i;
 

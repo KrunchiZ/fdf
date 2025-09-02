@@ -7,11 +7,11 @@ IFLAGS		= -Ilibft/include -Iinclude
 MLX_FLAGS	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 SRC		= \
-		  fdf_main.c				fdf_error.c				\
-		  fdf_parse_map.c			fdf_parse_vertices.c	\
-		  fdf_event_handler.c		fdf_color_handler.c		\
-		  fdf_set_render_point.c	fdf_render_img.c		\
-		  fdf_draw_map.c			fdf_draw_line.c
+		  fdf_main.c			fdf_error.c				\
+		  fdf_parse_map.c		fdf_parse_vertices.c	\
+		  fdf_event_handler.c	fdf_color_handler.c		\
+		  fdf_setup3d.c			fdf_render_img.c		\
+		  fdf_draw_map.c		fdf_draw_line.c
 
 LIBFT_DIR	= libft/
 SRC_DIR		= src/
