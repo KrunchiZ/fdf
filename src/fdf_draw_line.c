@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 13:30:29 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 14:45:09 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	fn_draw_line(t_img *img, t_vect p0, t_vect p1)
 
 static void	fn_draw_along_x(t_img *img, t_vect *p0, t_vect *p1, t_line *line)
 {
-	double	current;
+	float	current;
 	int		i;
 	int		deviation_error;
 
@@ -94,19 +94,13 @@ static void	fn_draw_along_y(t_img *img, t_vect *p0, t_vect *p1, t_line *line)
 
 static void	fn_calc_color(t_line *line, t_vect *p0, t_vect *p1, float current)
 {
-	uint8_t	r_step;
-	uint8_t	g_step;
-	uint8_t	b_step;
-
 	if (current < 0)
 		current = 0.0f;
 	if (current > 1)
 		current = 1.0f;
-	r_step = (uint8_t)roundf(current * (p1->red - p0->red));
-	g_step = (uint8_t)roundf(current * (p1->green - p0->green));
-	b_step = (uint8_t)roundf(current * (p1->blue - p0->blue));
-	line->pt.red = p0->red + r_step;
-	line->pt.green = p0->green + g_step;
-	line->pt.blue = p0->blue + b_step;
+	line->pt.red = p0->red + roundf(current * (p1->red - p0->red));
+	line->pt.green = p0->green + roundf(current * (p1->green - p0->green));
+	line->pt.blue = p0->blue + roundf(current * (p1->blue - p0->blue));
+	line->pt.color = fn_encode_rgb(line->pt.red, line->pt.green, line->pt.blue);
 	return ;
 }
