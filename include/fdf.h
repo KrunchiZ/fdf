@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 01:14:16 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 11:06:53 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ typedef struct s_line
 {
 	t_vect	pt;
 	t_rgb	step;
-	t_rgb	modulo;
+	t_rgb	delta;
 	t_rgb	deviate;
+	t_rgb	rgb_i;
 	int		dx;
 	int		dy;
 	int		x_step;
