@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 12:51:54 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/02 16:52:49 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define FRAME_HEIGHT	1080
 
 # define PIXEL_WHITE	0xFFFFFF
-# define PIXEL_GREY		0x757575
+# define PIXEL_GREY		0x555555
 # define PIXEL_BLACK	0x0
 # define PIXEL_RED		0xFF0000
 # define PIXEL_GREEN	0xFF00
@@ -49,10 +49,11 @@ typedef struct s_vect
 typedef struct s_line
 {
 	t_vect	pt;
-	int		dx;
-	int		dy;
-	int		x_step;
-	int		y_step;
+	float	xstep;
+	float	ystep;
+	float	rstep;
+	float	gstep;
+	float	bstep;
 }			t_line;
 
 typedef struct s_map
