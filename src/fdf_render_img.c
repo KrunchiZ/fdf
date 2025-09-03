@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 17:14:01 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 17:19:34 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ static int	draw_bg(t_img *img, t_mod *mod)
 {
 	int	x;
 	int	y;
-	int	bg_color[3];
+	int	bg_color[4];
 
 	bg_color[0] = PIXEL_GREY;
 	bg_color[1] = PIXEL_LTGREY;
-	bg_color[2] = PIXEL_BLACK;
+	bg_color[2] = PIXEL_WHITE;
+	bg_color[3] = PIXEL_BLACK;
 	y = 0;
 	while (y < FRAME_HEIGHT)
 	{

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 17:08:03 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 17:19:21 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	handle_keypress(int keysym, t_data *data)
 	if (keysym == XK_b)
 	{
 		data->mod.bg++;
-		if (data->mod.bg > 2)
+		if (data->mod.bg > 3)
 			data->mod.bg = 0;
 	}
 //	if (keysym == XK_t)

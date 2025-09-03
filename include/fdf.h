@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 17:17:19 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 17:20:14 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define PIXEL_WHITE	0xFFFFFF
 # define PIXEL_GREY		0x555555
-# define PIXEL_LTGREY	0xB0B0B0
+# define PIXEL_LTGREY	0xA0A0A0
 # define PIXEL_BLACK	0x0
 # define PIXEL_RED		0xFF0000
 # define PIXEL_GREEN	0xFF00
