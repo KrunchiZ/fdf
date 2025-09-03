@@ -6,18 +6,15 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 03:49:47 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 04:03:34 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-#define IS_ROW	true
-#define IS_COL	false
-
 static int	draw_map(t_img *img, t_map *map);
-static void	connect_points(t_img *img, t_map *map, int i, int is_row);
-static void	connect_columns(t_img *img, t_map *map, int i);
+static void	draw_rows(t_img *img, t_map *map, int i);
+static void	draw_columns(t_img *img, t_map *map, int i);
 
 void	img_px_put(t_img *img, int x, int y, int color)
 {
@@ -64,54 +61,51 @@ static int	draw_map(t_img *img, t_map *map)
 {
 	int	i;
 	int	last_row;
+	int	last_col;
 
-	i = 0;
 	last_row = map->vertex_count - map->width;
+	last_col = map->width - 1;
+	i = 0;
 	while (i < map->vertex_count)
 	{
 		if (map->render_pt[0].z < map->render_pt[last_row].z)
-			connect_points(img, map, i, IS_ROW);
+			draw_rows(img, map, i);
 		else
-			connect_points(img, map, last_row - i, IS_ROW);
+			draw_rows(img, map, last_row - i);
 		i += map->width;
 	}
 	i = 0;
 	while (i < map->width)
 	{
-		if (map->render_pt[0].z < map->render_pt[map->width - 1].z)
-			connect_points(img, map, i++, IS_COL);
+		if (map->render_pt[0].z < map->render_pt[last_col].z)
+			draw_columns(img, map, i++);
 		else
-			connect_points(img, map, map->width - 1 - i++, IS_COL);
+			draw_columns(img, map, last_col - i++);
 	}
 	return (SUCCESS);
 }
 
-static void	connect_points(t_img *img, t_map *map, int i, int is_row)
+static void	draw_rows(t_img *img, t_map *map, int i)
 {
 	int	j;
 	int	count;
 
-	if (is_row)
+	j = 0;
+	count = map->width - 1;
+	while (j < count)
 	{
-		j = 0;
-		count = map->width - 1;
-		while (j < count)
-		{
-			if (map->render_pt[i].z < map->render_pt[i + count].z)
-				draw_line(img, map->render_pt[i + j],
-					map->render_pt[i + j + 1]);
-			else
-				draw_line(img, map->render_pt[i + count - j],
-					map->render_pt[i + count - j - 1]);
-			j++;
-		}
+		if (map->render_pt[i].z < map->render_pt[i + count].z)
+			draw_line(img, map->render_pt[i + j],
+				map->render_pt[i + j + 1]);
+		else
+			draw_line(img, map->render_pt[i + count - j],
+				map->render_pt[i + count - j - 1]);
+		j++;
 	}
-	else
-		connect_columns(img, map, i);
 	return ;
 }
 
-static void	connect_columns(t_img *img, t_map *map, int i)
+static void	draw_columns(t_img *img, t_map *map, int i)
 {
 	int	j;
 	int	count;
