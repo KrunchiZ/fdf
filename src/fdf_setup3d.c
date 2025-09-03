@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 15:36:41 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 16:34:56 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_vect	apply_modifier(t_vect *vertices, t_mod *mod)
 	t_vect	pt;
 
 	pt = *vertices;
-	pt.z = 0;
+	pt.z = 0.0f;
 	pt.x = (vertices->x * mod->multiplier) + mod->x_offset;
 	pt.y = (vertices->z * mod->multiplier) + mod->y_offset;
 	/* To be updated with y value */

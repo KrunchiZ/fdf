@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 16:15:22 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 16:49:57 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,27 @@ static void	calc_color(t_line *line);
 void	draw_line(t_img *img, t_vect p0, t_vect p1)
 {
 	t_line	line;
-	t_vect	delta;
+	int		delta_x;
+	int		delta_y;
 
 	line = (t_line){.pt = p0, .xstep = 1, .ystep = 1};
 	if (p0.x > p1.x)
 		line.xstep = -1;
 	if (p0.y > p1.y)
 		line.ystep = -1;
-	delta.x = p1.x - p0.x;
-	delta.y = p1.y - p0.y;
-	if (ft_abs(delta.x) >= ft_abs(delta.y))
+	delta_x = p1.x - p0.x;
+	delta_y = p1.y - p0.y;
+	if (ft_abs(delta_x) >= ft_abs(delta_y))
 	{
-		line.ystep = (delta.y / delta.x) * line.xstep;
-		get_rgbstep(&line, &p0, &p1, delta.x);
-		draw(img, &line, ft_abs(delta.x), &p0);
+		line.ystep = (delta_y / delta_x) * line.xstep;
+		get_rgbstep(&line, &p0, &p1, delta_x);
+		draw(img, &line, ft_abs(delta_x), &p0);
 	}
 	else
 	{
-		line.xstep = (delta.x / delta.y) * line.ystep;
-		get_rgbstep(&line, &p0, &p1, delta.y);
-		draw(img, &line, ft_abs(delta.y), &p0);
+		line.xstep = (delta_x / delta_y) * line.ystep;
+		get_rgbstep(&line, &p0, &p1, delta_y);
+		draw(img, &line, ft_abs(delta_y), &p0);
 	}
 	return ;
 }
@@ -63,7 +64,7 @@ static void	draw(t_img *img, t_line *line, int delta, t_vect *p0)
 	i = 0;
 	x = p0->x;
 	y = p0->y;
-	while (i <= delta && (line->pt.x < 0 || line->pt.x >= FRAME_WIDTH
+	while (i <= delta && !(line->pt.x < 0 || line->pt.x >= FRAME_WIDTH
 		|| line->pt.y < 0 || line->pt.y >= FRAME_HEIGHT))
 	{
 		calc_color(line);
