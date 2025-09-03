@@ -10,7 +10,7 @@ SRC		= \
 		  fdf_main.c			fdf_error.c				\
 		  fdf_parse_map.c		fdf_parse_vertices.c	\
 		  fdf_event_handler.c	fdf_color_handler.c		\
-		  fdf_setup3d.c			fdf_render_img.c		\
+		  fdf_transform_map.c	fdf_render_img.c		\
 		  fdf_draw_line.c
 
 LIBFT_DIR	= libft/

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 19:10:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 01:27:14 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	handle_idle(t_data *data)
 {
 	if (data->window)
 	{
-		setup3d(&data->map, &data->mod);
+		transform_map(&data->map, &data->mod);
 		render_img(data);
 	}
 	return (SUCCESS);

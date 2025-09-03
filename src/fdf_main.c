@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 18:58:42 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 01:34:51 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,25 @@ int	main(int argc, char **argv)
 
 static void	set_modifier(t_mod *mod, t_map *map)
 {
-	int	w_mult;
-	int	d_mult;
-	int	h_mult;
+	int	w_multiplier;
+	int	d_multiplier;
+	int	h_multiplier;
 
-	w_mult = FRAME_HEIGHT / 2 / map->width;
-	d_mult = FRAME_HEIGHT / 2 / map->depth;
-	h_mult = FRAME_HEIGHT / 3 / map->height;
-	if (w_mult < d_mult && w_mult < h_mult)
-		mod->scale_mult = w_mult;
-	else if (d_mult < h_mult)
-		mod->scale_mult = d_mult;
-	else
-		mod->scale_mult = h_mult;
+	w_multiplier = FRAME_HEIGHT / 2 / map->width;
+	d_multiplier = FRAME_HEIGHT / 2 / map->depth;
+	h_multiplier = FRAME_HEIGHT / 3 / map->height;
+	mod->scale_multiplier = h_multiplier;
+	if (w_multiplier < d_multiplier && w_multiplier < h_multiplier)
+		mod->scale_multiplier = w_multiplier;
+	else if (d_multiplier < h_multiplier)
+		mod->scale_multiplier = d_multiplier;
+	if (mod->scale_multiplier == 0)
+		mod->scale_multiplier = 1;
 	mod->x_offset = FRAME_WIDTH / 2 - 1;
 	mod->y_offset = FRAME_HEIGHT / 2 - 1;
-	mod->rotate.x = 35.264f;
-	mod->rotate.y = 45.0f;
+	mod->isometric.x = 35.264f;
+	mod->isometric.y = 45.0f;
 	mod->scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
-	mod->translate_mode = 1;
 	ft_putendl_fd("Transform mode: translate", STDOUT_FILENO);
 	return ;
 }

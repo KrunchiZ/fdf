@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 18:54:30 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 01:47:52 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_mtrx
 	float	xrotate[3][3];
 	float	yrotate[3][3];
 	float	zrotate[3][3];
-	float	xyz[3][1];
 }			t_mtrx;
 
 typedef struct s_vect
@@ -58,6 +57,8 @@ typedef struct s_vect
 typedef struct s_line
 {
 	t_vect	pt;
+	int		dx;
+	int		dy;
 	float	xstep;
 	float	ystep;
 	float	rstep;
@@ -91,13 +92,15 @@ typedef struct s_mod
 	t_vect	translate;
 	t_vect	rotate;
 	t_vect	scale;
-	int		scale_mult;
+	t_vect	isometric;
+	t_mtrx	rotate_matrix;
+	int		scale_multiplier;
 	int		bg;
 	int		rotate_mode;
 	int		scale_mode;
 	int		x_offset;
 	int		y_offset;
-}		t_mod;
+}			t_mod;
 
 typedef struct s_data
 {
@@ -117,7 +120,7 @@ void	parse_vertices(t_map *map, char *file);
 int		handle_idle(t_data *data);
 int		handle_keypress(int keysym, t_data *data);
 
-void	setup3d(t_map *map, t_mod *mod);
+void	transform_map(t_map *map, t_mod *mod);
 void	img_px_put(t_img *img, int x, int y, int color);
 int		render_img(t_data *data);
 void	draw_line(t_img *img, t_vect p0, t_vect p1);

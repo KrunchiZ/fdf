@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 15:38:18 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 00:24:39 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ static void	extract_coord(char *line, t_map *map, int i, int z)
 		map->vertices[i + x].y = ft_atoi(ar[x]);
 		get_color(&map->vertices[i + x], ar[x]);
 		set_height(map, &map->vertices[i + x]);
-		if (x == map->width / 2 && z == map->depth / 2)
-			map->center = map->vertices[i + x];
 		free(ar[x++]);
 	}
 	free(ar);
