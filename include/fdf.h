@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 15:36:00 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 17:08:21 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_mod
 	int	multiplier;
 	int	x_offset;
 	int	y_offset;
+	int	bg;
 }		t_mod;
 
 typedef struct s_data
@@ -106,7 +107,6 @@ int		handle_keypress(int keysym, t_data *data);
 void	setup3d(t_map *map, t_mod *mod);
 void	img_px_put(t_img *img, int x, int y, int color);
 int		render_img(t_data *data);
-int		draw_map(t_img *img, t_map *map);
 void	draw_line(t_img *img, t_vect p0, t_vect p1);
 int		encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
 uint8_t	get_red(int rgb);

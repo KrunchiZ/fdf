@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 16:53:49 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 17:05:47 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define IS_ROW	true
 #define IS_COL	false
 
-static int	draw_bg(t_img *img);
+static int	draw_bg(t_img *img, t_mod *mod);
 static int	draw_map(t_img *img, t_map *map);
 static void	connect_points(t_img *img, t_map *map, int i, int is_row);
 
@@ -39,23 +39,27 @@ void	img_px_put(t_img *img, int x, int y, int color)
 
 int	render_img(t_data *data)
 {
-	draw_bg(&data->img);
+	draw_bg(&data->img, &data->mod);
 	draw_map(&data->img, &data->map);
 	mlx_put_image_to_window(data->mlx, data->window, data->img.img_ptr, 0, 0);
 	return (SUCCESS);
 }
 
-static int	draw_bg(t_img *img)
+static int	draw_bg(t_img *img, t_mod *mod)
 {
 	int	x;
 	int	y;
+	int	bg_color[3];
 
+	bg_color[0] = PIXEL_GREY;
+	bg_color[1] = PIXEL_BLACK;
+	bg_color[2] = PIXEL_WHITE;
 	y = 0;
 	while (y < FRAME_HEIGHT)
 	{
 		x = 0;
 		while (x < FRAME_WIDTH)
-			img_px_put(img, x++, y, PIXEL_GREY);
+			img_px_put(img, x++, y, bg_color[mod->bg]);
 		y++;
 	}
 	return (SUCCESS);
