@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 19:11:48 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 19:25:29 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	setup3d(t_map *map, t_mod *mod)
 	while (i < map->vertex_count)
 	{
 		map->render_pt[i] = scale_geo(&map->vertices[i], mod);
-		map->render_pt[i] = rotate_geo(&map->render_pt[i], mod);
+		map->render_pt[i] = rotate_geo(&map->render_pt[i], mod); /* Rotation matrix */
 		map->render_pt[i] = translate_geo(&map->render_pt[i], mod);
+		/* fn_convert_3d_to_2d -> refer to isometric wiki */
 		map->render_pt[i] = center_frame(&map->render_pt[i], mod);
 		i++;
 	}
