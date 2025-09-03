@@ -6,13 +6,18 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 15:38:28 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 16:53:49 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+#define IS_ROW	true
+#define IS_COL	false
+
 static int	draw_bg(t_img *img);
+static int	draw_map(t_img *img, t_map *map);
+static void	connect_points(t_img *img, t_map *map, int i, int is_row);
 
 void	img_px_put(t_img *img, int x, int y, int color)
 {
@@ -54,4 +59,47 @@ static int	draw_bg(t_img *img)
 		y++;
 	}
 	return (SUCCESS);
+}
+
+static int	draw_map(t_img *img, t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->vertex_count)
+	{
+		connect_points(img, map, i, IS_ROW);
+		i += map->width;
+	}
+	i = 0;
+	while (i < map->width)
+		connect_points(img, map, i++, IS_COL);
+	return (SUCCESS);
+}
+
+static void	connect_points(t_img *img, t_map *map, int i, int is_row)
+{
+	int	j;
+	int	count;
+
+	if (is_row)
+		count = map->width - 1;
+	else
+		count = map->vertex_count - map->width;
+	j = 0;
+	while (j < count)
+	{
+		if (is_row)
+		{
+			draw_line(img, map->render_pt[i + j], map->render_pt[i + j + 1]);
+			j++;
+		}
+		else
+		{
+			draw_line(img, map->render_pt[i + j],
+				map->render_pt[i + j + map->width]);
+			j += map->width;
+		}
+	}
+	return ;
 }
