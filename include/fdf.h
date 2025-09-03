@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 01:47:52 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 02:05:33 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@
 
 typedef struct s_mtrx
 {
-	float	xrotate[3][3];
-	float	yrotate[3][3];
-	float	zrotate[3][3];
+	float	x[3][3];
+	float	y[3][3];
+	float	z[3][3];
 }			t_mtrx;
 
 typedef struct s_vect
@@ -107,7 +107,6 @@ typedef struct s_data
 	t_map	map;
 	t_img	img;
 	t_mod	mod;
-	t_mtrx	matrix;
 	void	*mlx;
 	void	*window;
 }			t_data;

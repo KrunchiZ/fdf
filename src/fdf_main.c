@@ -6,13 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 01:34:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 02:11:24 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static void	set_modifier(t_mod *mod, t_map *map);
+static void	init_rotate_matrix(t_mtrx *matrix)
 static int	init_mlx(t_data *data);
 static void	setup_mlx_loop(t_data *data);
 
@@ -54,7 +55,23 @@ static void	set_modifier(t_mod *mod, t_map *map)
 	mod->isometric.x = 35.264f;
 	mod->isometric.y = 45.0f;
 	mod->scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
+	init_rotate_matrix(&mod->rotate_matrix);
 	ft_putendl_fd("Transform mode: translate", STDOUT_FILENO);
+	return ;
+}
+
+static void	init_rotate_matrix(t_mtrx *matrix)
+{
+	int	i;
+
+	i = 0;
+	while (i < 3)
+	{
+		matrix->x[i][i] = 1.0f;
+		matrix->y[i][i] = 1.0f;
+		matrix->z[i][i] = 1.0f;
+		i++;
+	}
 	return ;
 }
 
