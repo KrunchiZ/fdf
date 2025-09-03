@@ -6,18 +6,18 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/08/30 22:15:18 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 15:38:18 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	fn_extract_coord(char *line, t_map *map, int i, int z);
-static void	fn_get_color(t_vect *vertices, char *s);
-static void	fn_str_tolower(char *str);
-static void	fn_set_height(t_map *map, t_vect *vertices);
+static void	extract_coord(char *line, t_map *map, int i, int z);
+static void	get_color(t_vect *vertices, char *s);
+static void	str_tolower(char *str);
+static void	set_height(t_map *map, t_vect *vertices);
 
-void	fn_parse_vertices(t_map *map, char *file)
+void	parse_vertices(t_map *map, char *file)
 {
 	int		fd;
 	int		z;
@@ -27,15 +27,15 @@ void	fn_parse_vertices(t_map *map, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		fn_delete_map(map);
-		fn_perror_exit("fdf: open");
+		delete_map(map);
+		perror_exit("fdf: open");
 	}
 	z = 0;
 	i = 0;
 	line = get_next_line(fd);
 	while (line && z < map->depth && i < map->vertex_count)
 	{
-		fn_extract_coord(line, map, i, z++);
+		extract_coord(line, map, i, z++);
 		i += map->width;
 		free(line);
 		line = get_next_line(fd);
@@ -43,7 +43,7 @@ void	fn_parse_vertices(t_map *map, char *file)
 	return ;
 }
 
-static void	fn_extract_coord(char *line, t_map *map, int i, int z)
+static void	extract_coord(char *line, t_map *map, int i, int z)
 {
 	char	**ar;
 	int		x;
@@ -52,8 +52,8 @@ static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 	if (!ar)
 	{
 		free(line);
-		fn_delete_map(map);
-		fn_error_exit("ft_split failure");
+		delete_map(map);
+		error_exit("ft_split failure");
 	}
 	x = 0;
 	while (ar[x] && x < map->width)
@@ -61,8 +61,8 @@ static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 		map->vertices[i + x].x = x;
 		map->vertices[i + x].z = z;
 		map->vertices[i + x].y = ft_atoi(ar[x]);
-		fn_get_color(&map->vertices[i + x], ar[x]);
-		fn_set_height(map, &map->vertices[i + x]);
+		get_color(&map->vertices[i + x], ar[x]);
+		set_height(map, &map->vertices[i + x]);
 		if (x == map->width / 2 && z == map->depth / 2)
 			map->center = map->vertices[i + x];
 		free(ar[x++]);
@@ -71,7 +71,7 @@ static void	fn_extract_coord(char *line, t_map *map, int i, int z)
 	return ;
 }
 
-static void	fn_get_color(t_vect *vertices, char *s)
+static void	get_color(t_vect *vertices, char *s)
 {
 	vertices->color = PIXEL_BLUE;
 	vertices->blue = PIXEL_BLUE;
@@ -82,19 +82,19 @@ static void	fn_get_color(t_vect *vertices, char *s)
 		s++;
 		while (*s == '+' || *s == '-')
 			s++;
-		fn_str_tolower(s);
+		str_tolower(s);
 		if (ft_strncmp(s, "0x", 2))
 			return ;
 		s += 2;
 		vertices->color = ft_atoi_base(s, BASE16_LOWER);
-		vertices->red = fn_get_red(vertices->color);
-		vertices->green = fn_get_green(vertices->color);
-		vertices->blue = fn_get_blue(vertices->color);
+		vertices->red = get_red(vertices->color);
+		vertices->green = get_green(vertices->color);
+		vertices->blue = get_blue(vertices->color);
 	}
 	return ;
 }
 
-static void	fn_str_tolower(char *str)
+static void	str_tolower(char *str)
 {
 	if (!str)
 		return ;
@@ -106,7 +106,7 @@ static void	fn_str_tolower(char *str)
 	return ;
 }
 
-static void	fn_set_height(t_map *map, t_vect *vertices)
+static void	set_height(t_map *map, t_vect *vertices)
 {
 	if (vertices->y > map->max_y)
 		map->max_y = vertices->y;

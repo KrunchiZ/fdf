@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/02 18:41:18 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 15:36:00 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <X11/keysym.h>
 # include <math.h>
 
-# define FN_SUCCESS		0
-# define FN_FAILURE		1
+# define SUCCESS		0
+# define FAILURE		1
 # define FRAME_WIDTH	1080
 # define FRAME_HEIGHT	1080
 
@@ -37,9 +37,9 @@
 
 typedef struct s_vect
 {
-	int		x;
-	int		y;
-	int		z;
+	float	x;
+	float	y;
+	float	z;
 	int		color;
 	float	red;
 	float	green;
@@ -95,22 +95,22 @@ typedef struct s_data
 	void	*window;
 }			t_data;
 
-void	fn_error_exit(char *str);
-void	fn_perror_exit(char *str);
-void	fn_delete_map(t_map *map);
-void	fn_parse_map(t_map *map, char *file);
-void	fn_parse_vertices(t_map *map, char *file);
-int		fn_handle_idle(t_data *data);
-int		fn_handle_keypress(int keysym, t_data *data);
+void	error_exit(char *str);
+void	perror_exit(char *str);
+void	delete_map(t_map *map);
+void	parse_map(t_map *map, char *file);
+void	parse_vertices(t_map *map, char *file);
+int		handle_idle(t_data *data);
+int		handle_keypress(int keysym, t_data *data);
 
-void	fn_setup3d(t_map *map, t_mod *mod);
-void	fn_img_px_put(t_img *img, int x, int y, int color);
-int		fn_render_img(t_data *data);
-int		fn_draw_map(t_img *img, t_map *map);
-void	fn_draw_line(t_img *img, t_vect p0, t_vect p1);
-int		fn_encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
-uint8_t	fn_get_red(int rgb);
-uint8_t	fn_get_green(int rgb);
-uint8_t	fn_get_blue(int rgb);
+void	setup3d(t_map *map, t_mod *mod);
+void	img_px_put(t_img *img, int x, int y, int color);
+int		render_img(t_data *data);
+int		draw_map(t_img *img, t_map *map);
+void	draw_line(t_img *img, t_vect p0, t_vect p1);
+int		encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
+uint8_t	get_red(int rgb);
+uint8_t	get_green(int rgb);
+uint8_t	get_blue(int rgb);
 
 #endif

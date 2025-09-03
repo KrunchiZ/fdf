@@ -6,15 +6,15 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/01 14:49:48 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 15:38:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	fn_draw_bg(t_img *img);
+static int	draw_bg(t_img *img);
 
-void	fn_img_px_put(t_img *img, int x, int y, int color)
+void	img_px_put(t_img *img, int x, int y, int color)
 {
 	char	*pxbyte;
 	int		i;
@@ -32,15 +32,15 @@ void	fn_img_px_put(t_img *img, int x, int y, int color)
 	return ;
 }
 
-int	fn_render_img(t_data *data)
+int	render_img(t_data *data)
 {
-	fn_draw_bg(&data->img);
-	fn_draw_map(&data->img, &data->map);
+	draw_bg(&data->img);
+	draw_map(&data->img, &data->map);
 	mlx_put_image_to_window(data->mlx, data->window, data->img.img_ptr, 0, 0);
-	return (FN_SUCCESS);
+	return (SUCCESS);
 }
 
-static int	fn_draw_bg(t_img *img)
+static int	draw_bg(t_img *img)
 {
 	int	x;
 	int	y;
@@ -50,8 +50,8 @@ static int	fn_draw_bg(t_img *img)
 	{
 		x = 0;
 		while (x < FRAME_WIDTH)
-			fn_img_px_put(img, x++, y, PIXEL_GREY);
+			img_px_put(img, x++, y, PIXEL_GREY);
 		y++;
 	}
-	return (FN_SUCCESS);
+	return (SUCCESS);
 }
