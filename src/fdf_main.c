@@ -6,14 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 02:11:24 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 03:49:04 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static void	set_modifier(t_mod *mod, t_map *map);
-static void	init_rotate_matrix(t_mtrx *matrix)
+static void	init_rotate_matrix(t_mtrx *matrix);
 static int	init_mlx(t_data *data);
 static void	setup_mlx_loop(t_data *data);
 

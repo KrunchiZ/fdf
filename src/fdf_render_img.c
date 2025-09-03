@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 17:19:34 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 03:49:47 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #define IS_ROW	true
 #define IS_COL	false
 
-static int	draw_bg(t_img *img, t_mod *mod);
 static int	draw_map(t_img *img, t_map *map);
 static void	connect_points(t_img *img, t_map *map, int i, int is_row);
+static void	connect_columns(t_img *img, t_map *map, int i);
 
 void	img_px_put(t_img *img, int x, int y, int color)
 {
@@ -39,14 +39,6 @@ void	img_px_put(t_img *img, int x, int y, int color)
 
 int	render_img(t_data *data)
 {
-	draw_bg(&data->img, &data->mod);
-	draw_map(&data->img, &data->map);
-	mlx_put_image_to_window(data->mlx, data->window, data->img.img_ptr, 0, 0);
-	return (SUCCESS);
-}
-
-static int	draw_bg(t_img *img, t_mod *mod)
-{
 	int	x;
 	int	y;
 	int	bg_color[4];
@@ -60,25 +52,37 @@ static int	draw_bg(t_img *img, t_mod *mod)
 	{
 		x = 0;
 		while (x < FRAME_WIDTH)
-			img_px_put(img, x++, y, bg_color[mod->bg]);
+			img_px_put(&data->img, x++, y, bg_color[data->mod.bg]);
 		y++;
 	}
+	draw_map(&data->img, &data->map);
+	mlx_put_image_to_window(data->mlx, data->window, data->img.img_ptr, 0, 0);
 	return (SUCCESS);
 }
 
 static int	draw_map(t_img *img, t_map *map)
 {
 	int	i;
+	int	last_row;
 
 	i = 0;
+	last_row = map->vertex_count - map->width;
 	while (i < map->vertex_count)
 	{
-		connect_points(img, map, i, IS_ROW);
+		if (map->render_pt[0].z < map->render_pt[last_row].z)
+			connect_points(img, map, i, IS_ROW);
+		else
+			connect_points(img, map, last_row - i, IS_ROW);
 		i += map->width;
 	}
 	i = 0;
 	while (i < map->width)
-		connect_points(img, map, i++, IS_COL);
+	{
+		if (map->render_pt[0].z < map->render_pt[map->width - 1].z)
+			connect_points(img, map, i++, IS_COL);
+		else
+			connect_points(img, map, map->width - 1 - i++, IS_COL);
+	}
 	return (SUCCESS);
 }
 
@@ -88,23 +92,41 @@ static void	connect_points(t_img *img, t_map *map, int i, int is_row)
 	int	count;
 
 	if (is_row)
-		count = map->width - 1;
-	else
-		count = map->vertex_count - map->width;
-	j = 0;
-	while (j < count)
 	{
-		if (is_row)
+		j = 0;
+		count = map->width - 1;
+		while (j < count)
 		{
-			draw_line(img, map->render_pt[i + j], map->render_pt[i + j + 1]);
+			if (map->render_pt[i].z < map->render_pt[i + count].z)
+				draw_line(img, map->render_pt[i + j],
+					map->render_pt[i + j + 1]);
+			else
+				draw_line(img, map->render_pt[i + count - j],
+					map->render_pt[i + count - j - 1]);
 			j++;
 		}
-		else
-		{
+	}
+	else
+		connect_columns(img, map, i);
+	return ;
+}
+
+static void	connect_columns(t_img *img, t_map *map, int i)
+{
+	int	j;
+	int	count;
+
+	j = 0;
+	count = map->vertex_count - map->width;
+	while (j < count)
+	{
+		if (map->render_pt[i].z < map->render_pt[count + i].z)
 			draw_line(img, map->render_pt[i + j],
 				map->render_pt[i + j + map->width]);
-			j += map->width;
-		}
+		else
+			draw_line(img, map->render_pt[count + i - j],
+				map->render_pt[count + i - j - map->width]);
+		j += map->width;
 	}
 	return ;
 }
