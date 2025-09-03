@@ -6,13 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 17:19:21 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 19:10:37 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-//static void	set_topview_mod(t_mod *mod, t_map *map);
+#define BG_GREY	0
+#define LAST_BG	3
 
 int	handle_idle(t_data *data)
 {
@@ -34,18 +35,14 @@ int	handle_keypress(int keysym, t_data *data)
 	if (keysym == XK_b)
 	{
 		data->mod.bg++;
-		if (data->mod.bg > 3)
-			data->mod.bg = 0;
+		if (data->mod.bg > LAST_BG)
+			data->mod.bg = BG_GREY;
 	}
-//	if (keysym == XK_t)
-//		set_topview_mod(&data->mod, &data->map);
+	if (keysym == XK_q)
+	{
+		data->mod.scale = (t_vect){0};
+		data->mod.rotate = (t_vect){.x = 35.264f, .y = 45.0f};
+		data->mod.translate = (t_vect){0};
+	}
 	return (SUCCESS);
 }
-/*
-static void	set_topview_mod(t_mod *mod, t_map *map)
-{
-	mod->x_offset = FRAME_WIDTH / 2 - (map->width - 1) * mod->multiplier / 2;
-	mod->y_offset = FRAME_HEIGHT / 2 - (map->width - 1) * mod->multiplier / 2;
-	return ;
-}
-*/

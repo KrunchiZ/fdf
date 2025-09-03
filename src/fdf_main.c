@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 16:10:12 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 18:58:42 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,26 @@ int	main(int argc, char **argv)
 
 static void	set_modifier(t_mod *mod, t_map *map)
 {
-	int	w_quotient;
-	int	d_quotient;
-	int	h_quotient;
+	int	w_mult;
+	int	d_mult;
+	int	h_mult;
 
-	mod->scale = 1;
-	w_quotient = FRAME_HEIGHT / 2 / map->width;
-	d_quotient = FRAME_HEIGHT / 2 / map->depth;
-	h_quotient = FRAME_HEIGHT / 3 / map->height;
-	if (w_quotient < d_quotient && w_quotient < h_quotient)
-		mod->multiplier = w_quotient;
-	else if (d_quotient < h_quotient)
-		mod->multiplier = d_quotient;
+	w_mult = FRAME_HEIGHT / 2 / map->width;
+	d_mult = FRAME_HEIGHT / 2 / map->depth;
+	h_mult = FRAME_HEIGHT / 3 / map->height;
+	if (w_mult < d_mult && w_mult < h_mult)
+		mod->scale_mult = w_mult;
+	else if (d_mult < h_mult)
+		mod->scale_mult = d_mult;
 	else
-		mod->multiplier = h_quotient;
+		mod->scale_mult = h_mult;
 	mod->x_offset = FRAME_WIDTH / 2 - 1;
 	mod->y_offset = FRAME_HEIGHT / 2 - 1;
+	mod->rotate.x = 35.264f;
+	mod->rotate.y = 45.0f;
+	mod->scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
+	mod->translate_mode = 1;
+	ft_putendl_fd("Transform mode: translate", STDOUT_FILENO);
 	return ;
 }
 

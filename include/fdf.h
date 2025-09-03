@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 17:20:14 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 18:54:30 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,23 @@
 
 # define BASE16_LOWER	"0123456789abcdef"
 
+typedef struct s_mtrx
+{
+	float	xrotate[3][3];
+	float	yrotate[3][3];
+	float	zrotate[3][3];
+	float	xyz[3][1];
+}			t_mtrx;
+
 typedef struct s_vect
 {
 	float	x;
 	float	y;
 	float	z;
-	int		color;
 	float	red;
 	float	green;
 	float	blue;
+	int		color;
 }		t_vect;
 
 typedef struct s_line
@@ -61,7 +69,6 @@ typedef struct s_map
 {
 	t_vect	*vertices;
 	t_vect	*render_pt;
-	t_vect	center;
 	int		vertex_count;
 	int		width;
 	int		depth;
@@ -81,11 +88,15 @@ typedef struct s_img
 
 typedef struct s_mod
 {
-	int	scale;
-	int	multiplier;
-	int	x_offset;
-	int	y_offset;
-	int	bg;
+	t_vect	translate;
+	t_vect	rotate;
+	t_vect	scale;
+	int		scale_mult;
+	int		bg;
+	int		rotate_mode;
+	int		scale_mode;
+	int		x_offset;
+	int		y_offset;
 }		t_mod;
 
 typedef struct s_data
@@ -93,6 +104,7 @@ typedef struct s_data
 	t_map	map;
 	t_img	img;
 	t_mod	mod;
+	t_mtrx	matrix;
 	void	*mlx;
 	void	*window;
 }			t_data;
