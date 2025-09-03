@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 15:37:32 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/03 16:15:22 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,9 @@ static void	draw(t_img *img, t_line *line, int delta, t_vect *p0)
 	i = 0;
 	x = p0->x;
 	y = p0->y;
-	while (i <= delta && line->pt.x >= 0 && line->pt.x <= FRAME_WIDTH)
+	while (i <= delta && (line->pt.x < 0 || line->pt.x >= FRAME_WIDTH
+		|| line->pt.y < 0 || line->pt.y >= FRAME_HEIGHT))
 	{
-		if (line->pt.x < 0 || line->pt.x > FRAME_WIDTH
-			|| line->pt.y < 0 || line->pt.y > FRAME_HEIGHT)
-			break ;
 		calc_color(line);
 		img_px_put(img, line->pt.x, line->pt.y, line->pt.color);
 		x += line->xstep;
