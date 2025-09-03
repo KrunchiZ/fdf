@@ -6,13 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 04:03:34 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 04:19:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	draw_map(t_img *img, t_map *map);
+static void	draw_map(t_img *img, t_map *map);
 static void	draw_rows(t_img *img, t_map *map, int i);
 static void	draw_columns(t_img *img, t_map *map, int i);
 
@@ -57,7 +57,7 @@ int	render_img(t_data *data)
 	return (SUCCESS);
 }
 
-static int	draw_map(t_img *img, t_map *map)
+static void	draw_map(t_img *img, t_map *map)
 {
 	int	i;
 	int	last_row;
@@ -68,7 +68,7 @@ static int	draw_map(t_img *img, t_map *map)
 	i = 0;
 	while (i < map->vertex_count)
 	{
-		if (map->render_pt[0].z < map->render_pt[last_row].z)
+		if (map->render_pt[0].z <= map->render_pt[last_row].z)
 			draw_rows(img, map, i);
 		else
 			draw_rows(img, map, last_row - i);
@@ -77,12 +77,12 @@ static int	draw_map(t_img *img, t_map *map)
 	i = 0;
 	while (i < map->width)
 	{
-		if (map->render_pt[0].z < map->render_pt[last_col].z)
+		if (map->render_pt[0].z <= map->render_pt[last_col].z)
 			draw_columns(img, map, i++);
 		else
 			draw_columns(img, map, last_col - i++);
 	}
-	return (SUCCESS);
+	return ;
 }
 
 static void	draw_rows(t_img *img, t_map *map, int i)
@@ -94,7 +94,7 @@ static void	draw_rows(t_img *img, t_map *map, int i)
 	count = map->width - 1;
 	while (j < count)
 	{
-		if (map->render_pt[i].z < map->render_pt[i + count].z)
+		if (map->render_pt[i].z <= map->render_pt[i + count].z)
 			draw_line(img, map->render_pt[i + j],
 				map->render_pt[i + j + 1]);
 		else
@@ -114,7 +114,7 @@ static void	draw_columns(t_img *img, t_map *map, int i)
 	count = map->vertex_count - map->width;
 	while (j < count)
 	{
-		if (map->render_pt[i].z < map->render_pt[count + i].z)
+		if (map->render_pt[i].z <= map->render_pt[count + i].z)
 			draw_line(img, map->render_pt[i + j],
 				map->render_pt[i + j + map->width]);
 		else
