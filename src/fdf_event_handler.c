@@ -6,14 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 01:27:14 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 04:23:52 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-#define BG_GREY	0
-#define LAST_BG	3
+#define FIRST_BG	0
+#define LAST_BG		3
 
 int	handle_idle(t_data *data)
 {
@@ -36,12 +36,12 @@ int	handle_keypress(int keysym, t_data *data)
 	{
 		data->mod.bg++;
 		if (data->mod.bg > LAST_BG)
-			data->mod.bg = BG_GREY;
+			data->mod.bg = FIRST_BG;
 	}
 	if (keysym == XK_q)
 	{
 		data->mod.scale = (t_vect){0};
-		data->mod.rotate = (t_vect){.x = 35.264f, .y = 45.0f};
+		data->mod.rotate = (t_vect){0};
 		data->mod.translate = (t_vect){0};
 	}
 	return (SUCCESS);
