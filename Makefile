@@ -9,7 +9,8 @@ MLX_FLAGS	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 SRC		= \
 		  fdf_main.c			fdf_error.c				\
 		  fdf_parse_map.c		fdf_parse_vertices.c	\
-		  fdf_event_handler.c	fdf_color_handler.c		\
+		  fdf_handle_idle.c		fdf_handle_color.c		\
+		  fdf_handle_mouse.c	fdf_handle_key.c		\
 		  fdf_transform_map.c	fdf_render_img.c		\
 		  fdf_draw_line.c
 

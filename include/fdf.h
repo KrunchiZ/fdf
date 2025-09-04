@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 13:35:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 14:34:45 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,16 @@ typedef struct s_line
 	float	bstep;
 }			t_line;
 
+typedef struct s_key
+{
+	int		up;
+	int		down;
+	int		left;
+	int		right;
+	int		comma;
+	int		period;
+}			t_key;
+
 typedef struct s_mouse
 {
 	int		drag;
@@ -84,9 +94,9 @@ typedef struct s_mod
 	t_vect	scale;
 	t_vect	rotate;
 	t_vect	translate_cam2d;
+	t_key	keyhold;
 	t_mouse	mouse;
 	int		scale_multiplier;
-	int		rotate_mode;
 	int		scale_mode;
 	int		x_offset;
 	int		y_offset;

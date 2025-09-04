@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 13:11:45 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 14:34:36 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	set_modifier(t_mod *mod, t_map *map)
 	mod->isometric.y = 45.0f;
 	mod->scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
 	init_rotate_matrix(&mod->rotate_matrix);
-	ft_putendl_fd("Transform mode: translate", STDOUT_FILENO);
+	ft_putendl_fd("Transform mode: Rotate", STDOUT_FILENO);
 	return ;
 }
 
@@ -118,6 +118,8 @@ static void	setup_mlx_loop(t_data *data)
 		&handle_mousepress, data);
 	mlx_hook(data->window, ButtonRelease, ButtonReleaseMask,
 		&handle_mouserelease, data);
+	mlx_hook(data->window, MotionNotify, Button1MotionMask,
+		&handle_mouse1drag, data);
 	mlx_loop(data->mlx);
 	return ;
 }
