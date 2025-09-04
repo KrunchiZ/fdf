@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 14:48:21 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 14:53:20 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	handle_idle(t_data *data)
 {
+	handle_keypress_transfrom();
 	if (data->window)
 	{
 		transform_map(&data->map, &data->mod);
