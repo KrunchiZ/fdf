@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 14:47:32 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 16:43:17 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define FIRST_BG	0
 #define LAST_BG		3
 
-static void	handle_transfrom_keys(int keysym, t_data *data);
+static void	handle_transform_keys(int keysym, t_data *data);
 
 int	handle_keyrelease(int keysym, t_data *data)
 {
@@ -27,9 +27,9 @@ int	handle_keyrelease(int keysym, t_data *data)
 		data->mod.keyhold.left = false;
 	if (keysym == XK_Right)
 		data->mod.keyhold.right = false;
-	if (keysym == XK_Comma)
+	if (keysym == XK_comma)
 		data->mod.keyhold.comma = false;
-	if (keysym == XK_Period)
+	if (keysym == XK_period)
 		data->mod.keyhold.period = false;
 	return (SUCCESS);
 }
@@ -49,15 +49,15 @@ int	handle_keypress(int keysym, t_data *data)
 	}
 	if (keysym == XK_Return)
 	{
-		data->mod.scale = (t_vect){0};
+		data->mod.scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
 		data->mod.rotate = (t_vect){0};
-		data->mod.cam2d = (t_vect){0};
+		data->mod.translate_cam2d = (t_vect){0};
 	}
 	handle_transform_keys(keysym, data);
 	return (SUCCESS);
 }
 
-static void	handle_transfrom_keys(int keysym, t_data *data)
+static void	handle_transform_keys(int keysym, t_data *data)
 {
 	if (keysym == XK_e)
 	{
@@ -77,9 +77,9 @@ static void	handle_transfrom_keys(int keysym, t_data *data)
 		data->mod.keyhold.left = true;
 	if (keysym == XK_Right)
 		data->mod.keyhold.right = true;
-	if (keysym == XK_Comma)
+	if (keysym == XK_comma)
 		data->mod.keyhold.comma = true;
-	if (keysym == XK_Period)
+	if (keysym == XK_period)
 		data->mod.keyhold.period = true;
 	return ;
 }
