@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 16:43:17 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:55:05 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ static void	handle_transform_keys(int keysym, t_data *data);
 int	handle_keyrelease(int keysym, t_data *data)
 {
 	if (keysym == XK_Up)
-		data->mod.keyhold.up = false;
+		data->mod.keyhold &= ~KEY_UP;
 	if (keysym == XK_Down)
-		data->mod.keyhold.down = false;
+		data->mod.keyhold &= ~KEY_DOWN;
 	if (keysym == XK_Left)
-		data->mod.keyhold.left = false;
+		data->mod.keyhold &= ~KEY_LEFT;
 	if (keysym == XK_Right)
-		data->mod.keyhold.right = false;
+		data->mod.keyhold &= ~KEY_RIGHT;
 	if (keysym == XK_comma)
-		data->mod.keyhold.comma = false;
+		data->mod.keyhold &= ~KEY_COMMA;
 	if (keysym == XK_period)
-		data->mod.keyhold.period = false;
+		data->mod.keyhold &= ~KEY_PERIOD;
 	return (SUCCESS);
 }
 
@@ -70,16 +70,16 @@ static void	handle_transform_keys(int keysym, t_data *data)
 		ft_putendl_fd("Transform mode: Scale", STDOUT_FILENO);
 	}
 	if (keysym == XK_Up)
-		data->mod.keyhold.up = true;
+		data->mod.keyhold |= KEY_UP;
 	if (keysym == XK_Down)
-		data->mod.keyhold.down = true;
+		data->mod.keyhold |= KEY_DOWN;
 	if (keysym == XK_Left)
-		data->mod.keyhold.left = true;
+		data->mod.keyhold |= KEY_LEFT;
 	if (keysym == XK_Right)
-		data->mod.keyhold.right = true;
+		data->mod.keyhold |= KEY_RIGHT;
 	if (keysym == XK_comma)
-		data->mod.keyhold.comma = true;
+		data->mod.keyhold |= KEY_COMMA;
 	if (keysym == XK_period)
-		data->mod.keyhold.period = true;
+		data->mod.keyhold |= KEY_PERIOD;
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:49:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 18:44:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 19:02:30 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ int	handle_mousepress(int button, int x, int y, t_data *data)
 	}
 	if (button == Button4 && data->mod.scale_mode == true)
 	{
-		data->mod.scale.x += 0.1f;
-		data->mod.scale.y += 0.1f;
-		data->mod.scale.z += 0.1f;
+		data->mod.scale.x *= 1.1f;
+		data->mod.scale.y *= 1.1f;
+		data->mod.scale.z *= 1.1f;
 	}
 	if (button == Button5 && data->mod.scale_mode == true)
 	{
-		data->mod.scale.x -= 0.1f;
-		data->mod.scale.y -= 0.1f;
-		data->mod.scale.z -= 0.1f;
+		data->mod.scale.x *= 0.9f;
+		data->mod.scale.y *= 0.9f;
+		data->mod.scale.z *= 0.9f;
 	}
 	return (SUCCESS);
 }
