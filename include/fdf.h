@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 18:57:00 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 01:44:53 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct s_mouse
 typedef struct s_mod
 {
 	t_mtrx	rotate_matrix;
-	t_vect	isometric;
+	t_vect	viewangle;
 	t_vect	scale;
 	t_vect	rotate;
 	t_vect	translate_cam2d;
