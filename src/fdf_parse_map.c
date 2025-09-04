@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:34:37 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 16:05:54 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 23:40:02 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static void	center_geo_pivot(t_map *map)
 	i = 0;
 	while (i < map->vertex_count)
 	{
-		map->vertices[i].x -= map->width / 2;
-		map->vertices[i].z -= map->depth / 2;
-		map->vertices[i].y -= map->min_y + map->height / 2;
+		map->vertices[i].x -= (map->width - 1.0f) / 2.0f;
+		map->vertices[i].z -= (map->depth - 1.0f) / 2.0f;
+		map->vertices[i].y -= map->min_y + (map->height - 1.0f) / 2.0f;
 		i++;
 	}
 	return ;
