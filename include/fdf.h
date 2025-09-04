@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 02:05:33 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 13:35:53 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_mtrx
 	float	x[3][3];
 	float	y[3][3];
 	float	z[3][3];
+	float	zy[3][3];
+	float	zyx[3][3];
 }			t_mtrx;
 
 typedef struct s_vect
@@ -52,7 +54,7 @@ typedef struct s_vect
 	float	green;
 	float	blue;
 	int		color;
-}		t_vect;
+}			t_vect;
 
 typedef struct s_line
 {
@@ -65,6 +67,31 @@ typedef struct s_line
 	float	gstep;
 	float	bstep;
 }			t_line;
+
+typedef struct s_mouse
+{
+	int		drag;
+	int		x0;
+	int		y0;
+	int		dx;
+	int		dy;
+}			t_mouse;
+
+typedef struct s_mod
+{
+	t_mtrx	rotate_matrix;
+	t_vect	isometric;
+	t_vect	scale;
+	t_vect	rotate;
+	t_vect	translate_cam2d;
+	t_mouse	mouse;
+	int		scale_multiplier;
+	int		rotate_mode;
+	int		scale_mode;
+	int		x_offset;
+	int		y_offset;
+	int		bg;
+}			t_mod;
 
 typedef struct s_map
 {
@@ -87,21 +114,6 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
-typedef struct s_mod
-{
-	t_vect	translate;
-	t_vect	rotate;
-	t_vect	scale;
-	t_vect	isometric;
-	t_mtrx	rotate_matrix;
-	int		scale_multiplier;
-	int		bg;
-	int		rotate_mode;
-	int		scale_mode;
-	int		x_offset;
-	int		y_offset;
-}			t_mod;
-
 typedef struct s_data
 {
 	t_map	map;
@@ -116,13 +128,18 @@ void	perror_exit(char *str);
 void	delete_map(t_map *map);
 void	parse_map(t_map *map, char *file);
 void	parse_vertices(t_map *map, char *file);
+
 int		handle_idle(t_data *data);
 int		handle_keypress(int keysym, t_data *data);
+int		handle_keyrelease(int keysym, t_data *data);
+int		handle_mousepress(int button, int x, int y, t_data *data);
+int		handle_mouserelease(int button, int x, int y, t_data *data);
 
 void	transform_map(t_map *map, t_mod *mod);
-void	img_px_put(t_img *img, int x, int y, int color);
+
 int		render_img(t_data *data);
 void	draw_line(t_img *img, t_vect p0, t_vect p1);
+void	img_px_put(t_img *img, int x, int y, int color);
 int		encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
 uint8_t	get_red(int rgb);
 uint8_t	get_green(int rgb);

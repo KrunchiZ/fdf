@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 03:49:04 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 13:11:45 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ static void	init_rotate_matrix(t_mtrx *matrix)
 		matrix->x[i][i] = 1.0f;
 		matrix->y[i][i] = 1.0f;
 		matrix->z[i][i] = 1.0f;
+		matrix->zy[i][i] = 1.0f;
+		matrix->zyx[i][i] = 1.0f;
 		i++;
 	}
 	return ;
@@ -110,6 +112,12 @@ static void	setup_mlx_loop(t_data *data)
 	mlx_expose_hook(data->window, &handle_idle, data);
 	mlx_hook(data->window, KeyPress, KeyPressMask,
 		&handle_keypress, data);
+	mlx_hook(data->window, KeyRelease, KeyReleaseMask,
+		&handle_keyrelease, data);
+	mlx_hook(data->window, ButtonPress, ButtonPressMask,
+		&handle_mousepress, data);
+	mlx_hook(data->window, ButtonRelease, ButtonReleaseMask,
+		&handle_mouserelease, data);
 	mlx_loop(data->mlx);
 	return ;
 }

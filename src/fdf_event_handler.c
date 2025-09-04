@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 04:23:52 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 13:32:17 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #define FIRST_BG	0
 #define LAST_BG		3
+#define LCLICK		1
 
 int	handle_idle(t_data *data)
 {
@@ -42,7 +43,31 @@ int	handle_keypress(int keysym, t_data *data)
 	{
 		data->mod.scale = (t_vect){0};
 		data->mod.rotate = (t_vect){0};
-		data->mod.translate = (t_vect){0};
+		data->mod.cam2d = (t_vect){0};
 	}
 	return (SUCCESS);
+}
+
+int	handle_keyrelease(int keysym, t_data *data)
+{
+	return (SUCCESS);
+}
+
+int	handle_mousepress(int button, int x, int y, t_data *data)
+{
+	int	x0;
+	int	y0;
+
+	if (button == LCLICK)
+	{
+		data->mod.mouse.drag = true;
+		data->mod.mouse.x0 = x;
+		data->mod.mouse.y0 = y;
+	}
+}
+
+int	handle_mouserelease(int button, int x, int y, t_data *data)
+{
+	if (button == LCLICK)
+		data->mod.mouse.drag = false;
 }

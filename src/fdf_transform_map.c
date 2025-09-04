@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 01:35:19 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 13:13:58 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_vect	translate_cam(t_vect *vertex, t_mod *mod)
 	t_vect	pt;
 
 	pt = *vertex;
-	pt.x = vertex->x + mod->x_offset + mod->translate.x;
-	pt.y = vertex->y + mod->y_offset + mod->translate.y;
+	pt.x = vertex->x + mod->x_offset + mod->translate_cam2d.x;
+	pt.y = vertex->y + mod->y_offset + mod->translate_cam2d.y;
 	return (pt);
 }
