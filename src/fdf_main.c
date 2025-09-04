@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 17:38:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/04 19:10:51 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	set_modifier(t_mod *mod, t_map *map)
 
 	w_multiplier = FRAME_HEIGHT / 2 / map->width;
 	d_multiplier = FRAME_HEIGHT / 2 / map->depth;
-	h_multiplier = FRAME_HEIGHT / 3 / map->height;
+	h_multiplier = FRAME_HEIGHT / 2 / map->height;
 	mod->scale_multiplier = h_multiplier;
 	if (w_multiplier < d_multiplier && w_multiplier < h_multiplier)
 		mod->scale_multiplier = w_multiplier;
