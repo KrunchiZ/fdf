@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:49:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 19:02:30 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 13:12:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	handle_mouserelease(int button, int x, int y, t_data *data)
 	return (SUCCESS);
 }
 
-int handle_mouse1drag(int x, int y, t_data *data)
+int	handle_mouse1drag(int x, int y, t_data *data)
 {
 	if (data->mod.mouse.drag == true)
 	{
