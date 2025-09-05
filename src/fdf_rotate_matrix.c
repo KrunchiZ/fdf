@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 00:32:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 03:37:10 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 04:43:56 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	calc_rotate_matrix(t_mod *mod)
 	update_matrix
 		(&mod->rotate_matrix, &mod->viewangle, &mod->rotate);
 	multiply_matrix
-		(mod->rotate_matrix.xy, mod->rotate_matrix.x, mod->rotate_matrix.y);
+		(mod->rotate_matrix.ab, mod->rotate_matrix.z, mod->rotate_matrix.x);
 	multiply_matrix
-		(mod->rotate_matrix.xyz, mod->rotate_matrix.xy, mod->rotate_matrix.z);
+		(mod->rotate_matrix.abc, mod->rotate_matrix.ab, mod->rotate_matrix.y);
 	return ;
 }
 
