@@ -6,12 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:32:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 16:57:10 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 17:56:08 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+static void	set_viewangle(t_mod *mod);
 static void	init_rotate_matrix(t_mtrx *matrix);
 
 void	set_modifier(t_mod *mod, t_map *map)
@@ -32,9 +33,9 @@ void	set_modifier(t_mod *mod, t_map *map)
 		mod->scale_multiplier = 1;
 	mod->x_offset = FRAME_WIDTH / 2 - 1;
 	mod->y_offset = FRAME_HEIGHT / 2 - 1;
-	set_viewangle(mod);
-	mod->viewmode = ISOMETRIC;
 	mod->scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
+	mod->viewmode = ISOMETRIC;
+	set_viewangle(mod);
 	init_rotate_matrix(&mod->rotate_matrix);
 	return ;
 }
