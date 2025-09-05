@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 01:43:15 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 13:19:24 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ static int	init_mlx(t_data *data)
 		mlx_destroy_display(data->mlx);
 		return (free(data->mlx), delete_map(&data->map), FAILURE);
 	}
-	data->img.px = mlx_get_data_addr(data->img.img_ptr, &data->img.bpp,
-			&data->img.line_len, &data->img.endian);
+	data->img.px = mlx_get_data_addr(data->img.img_ptr,
+			&data->img.bpp, &data->img.line_len, &data->img.endian);
 	if (!data->img.px)
 	{
 		mlx_destroy_image(data->mlx, data->img.img_ptr);

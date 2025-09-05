@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 10:46:06 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 13:22:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ static void	draw(t_img *img, t_line *line, int delta)
 	{
 		if (!(line->pt.x < 0.0f || line->pt.x >= FRAME_WIDTH
 				|| line->pt.y < 0.0f || line->pt.y >= FRAME_HEIGHT))
-			img_px_put(img, roundf(line->pt.x),
-				roundf(line->pt.y), line->pt.color);
+			img_px_put(img,
+				roundf(line->pt.x), roundf(line->pt.y), line->pt.color);
 		calc_color(line);
 		line->pt.x += line->xstep;
 		line->pt.y += line->ystep;
