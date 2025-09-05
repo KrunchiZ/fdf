@@ -12,7 +12,7 @@ SRC		= \
 		  fdf_handle_idle.c		fdf_handle_color.c		\
 		  fdf_handle_mouse.c	fdf_handle_key.c		\
 		  fdf_transform_map.c	fdf_render_img.c		\
-		  fdf_draw_line.c
+		  fdf_draw_line.c		fdf_set_modifier.c
 
 LIBFT_DIR	= libft/
 SRC_DIR		= src/

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 01:44:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 16:34:56 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 # define FAILURE		1
 # define FRAME_WIDTH	1080
 # define FRAME_HEIGHT	1080
+
+# define ISOMETRIC		0
+# define FRONT			1
+# define SIDE			2
+# define TOP			3
 
 # define PIXEL_WHITE	0xFFFFFF
 # define PIXEL_GREY		0x555555
@@ -85,7 +90,7 @@ typedef struct s_mouse
 typedef struct s_mod
 {
 	t_mtrx	rotate_matrix;
-	t_vect	viewangle;
+	t_vect	viewangle[4];
 	t_vect	scale;
 	t_vect	rotate;
 	t_vect	translate_cam2d;
@@ -133,6 +138,7 @@ void	perror_exit(char *str);
 void	delete_map(t_map *map);
 void	parse_map(t_map *map, char *file);
 void	parse_vertices(t_map *map, char *file);
+void	set_modifier(t_mod *mod, t_map *map);
 
 int		handle_idle(t_data *data);
 int		handle_keypress(int keysym, t_data *data);

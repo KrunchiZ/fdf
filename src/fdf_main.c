@@ -6,14 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 13:19:24 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 16:57:42 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	set_modifier(t_mod *mod, t_map *map);
-static void	init_rotate_matrix(t_mtrx *matrix);
 static int	init_mlx(t_data *data);
 static void	setup_mlx_loop(t_data *data);
 
@@ -28,53 +26,11 @@ int	main(int argc, char **argv)
 	set_modifier(&data.mod, &data.map);
 	if (init_mlx(&data) == FAILURE)
 		error_exit("mlx/window/image creation failure");
+	ft_putendl_fd("Transform mode: Rotate", STDOUT_FILENO);
 	setup_mlx_loop(&data);
 	mlx_destroy_image(data.mlx, data.img.img_ptr);
 	mlx_destroy_display(data.mlx);
 	return (free(data.mlx), delete_map(&data.map), EXIT_SUCCESS);
-}
-
-static void	set_modifier(t_mod *mod, t_map *map)
-{
-	int	w_multiplier;
-	int	d_multiplier;
-	int	h_multiplier;
-
-	w_multiplier = FRAME_HEIGHT / 2 / map->width;
-	d_multiplier = FRAME_HEIGHT / 2 / map->depth;
-	h_multiplier = FRAME_HEIGHT / 2 / map->height;
-	mod->scale_multiplier = h_multiplier;
-	if (w_multiplier < d_multiplier && w_multiplier < h_multiplier)
-		mod->scale_multiplier = w_multiplier;
-	else if (d_multiplier < h_multiplier)
-		mod->scale_multiplier = d_multiplier;
-	if (mod->scale_multiplier == 0)
-		mod->scale_multiplier = 1;
-	mod->x_offset = FRAME_WIDTH / 2 - 1;
-	mod->y_offset = FRAME_HEIGHT / 2 - 1;
-	mod->viewangle.x = 35.264f;
-	mod->viewangle.y = 45.0f;
-	mod->scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
-	init_rotate_matrix(&mod->rotate_matrix);
-	ft_putendl_fd("Transform mode: Rotate", STDOUT_FILENO);
-	return ;
-}
-
-static void	init_rotate_matrix(t_mtrx *matrix)
-{
-	int	i;
-
-	i = 0;
-	while (i < 3)
-	{
-		matrix->x[i][i] = 1.0f;
-		matrix->y[i][i] = 1.0f;
-		matrix->z[i][i] = 1.0f;
-		matrix->zy[i][i] = 1.0f;
-		matrix->zyx[i][i] = 1.0f;
-		i++;
-	}
-	return ;
 }
 
 static int	init_mlx(t_data *data)
