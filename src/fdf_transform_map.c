@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 04:31:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 05:09:30 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,11 @@ static void	update_coordinates(t_mod *mod, float abc[3][3],
 		new_pt->y = abc[1][0] * pt->x + abc[1][1] * pt->y + abc[1][2] * pt->z;
 		new_pt->z = abc[2][0] * pt->x + abc[2][1] * pt->y + abc[2][2] * pt->z;
 	}
-/*	else if (mod->viewmode == FRONT)
+	else if (mod->viewmode == FRONT)
 	{
-		new_pt
-	}*/
+		new_pt->x = pt->x;
+		new_pt->y = pt->y;
+		new_pt->z = pt->z;
+	}
 	return ;
 }
