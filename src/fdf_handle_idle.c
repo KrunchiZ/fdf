@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 19:00:18 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 02:04:36 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,57 +31,57 @@ int	handle_idle(t_data *data)
 
 static void	handle_keypress_xtransform(t_mod *mod, int keyhold)
 {
-	if (keyhold & KEY_LEFT)
+	if (keyhold & KEY_DOWN)
 	{
 		if (mod->scale_mode == true)
 			mod->scale.x -= 0.1f;
 		else
-			mod->rotate.x -= 1.0f;
+			mod->rotate.x -= 0.01f;
 	}
-	if (keyhold & KEY_RIGHT)
+	if (keyhold & KEY_UP)
 	{
 		if (mod->scale_mode == true)
 			mod->scale.x += 0.1f;
 		else
-			mod->rotate.x += 1.0f;
+			mod->rotate.x += 0.01f;
 	}
 	return ;
 }
 
 static void	handle_keypress_ytransform(t_mod *mod, int keyhold)
 {
-	if (keyhold & KEY_UP)
+	if (keyhold & KEY_LEFT)
 	{
 		if (mod->scale_mode == true)
 			mod->scale.y += 0.1f;
 		else
-			mod->rotate.y += 1.0f;
+			mod->rotate.y += 0.01f;
 	}
-	if (keyhold & KEY_DOWN)
+	if (keyhold & KEY_RIGHT)
 	{
 		if (mod->scale_mode == true)
 			mod->scale.y -= 0.1f;
 		else
-			mod->rotate.y -= 1.0f;
+			mod->rotate.y -= 0.01f;
 	}
 	return ;
 }
 
 static void	handle_keypress_ztransform(t_mod *mod, int keyhold)
 {
-	if (keyhold & KEY_COMMA)
+	if (keyhold & KEY_PERIOD)
 	{
 		if (mod->scale_mode == true)
 			mod->scale.z -= 0.1f;
 		else
-			mod->rotate.z -= 1.0f;
+			mod->rotate.z -= 0.01f;
 	}
-	if (keyhold & KEY_PERIOD)
+	if (keyhold & KEY_COMMA)
 	{
 		if (mod->scale_mode == true)
 			mod->scale.z += 0.1f;
 		else
-			mod->rotate.z += 1.0f;
+			mod->rotate.z += 0.01f;
 	}
 	return ;
 }

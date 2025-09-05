@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 23:58:58 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 01:29:44 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,11 @@
 
 typedef struct s_mtrx
 {
-	float	zyx[3][3];
-	float	xcos;
-	float	ycos;
-	float	zcos;
-	float	xsin;
-	float	ysin;
-	float	zsin;
+	float	x[3][3];
+	float	y[3][3];
+	float	z[3][3];
+	float	xy[3][3];
+	float	xyz[3][3];
 }			t_mtrx;
 
 typedef struct s_vect
@@ -150,8 +148,8 @@ int		handle_mousepress(int button, int x, int y, t_data *data);
 int		handle_mouserelease(int button, int x, int y, t_data *data);
 int		handle_mouse1drag(int x, int y, t_data *data);
 
-void	calc_rotate_matrix(t_mod *mod);
 void	transform_map(t_map *map, t_mod *mod);
+void	calc_rotate_matrix(t_mod *mod);
 
 int		render_img(t_data *data);
 void	draw_line(t_img *img, t_vect p0, t_vect p1);

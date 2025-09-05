@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:32:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 23:48:48 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 01:49:58 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	set_modifier(t_mod *mod, t_map *map)
 static void	set_viewangle(t_mod *mod)
 {
 	mod->viewangle[ISOMETRIC].x = 35.264f;
-	mod->viewangle[ISOMETRIC].y = 45.0f;
+	mod->viewangle[ISOMETRIC].y = -45.0f;
 	mod->viewangle[FRONT].x = 0.0f;
-	mod->viewangle[FRONT].y = 45.0f;
+	mod->viewangle[FRONT].y = -45.0f;
 	mod->viewangle[SIDE].x = 0.0f;
 	mod->viewangle[SIDE].y = 135.0f;
 	mod->viewangle[TOP].x = 90.0f;
-	mod->viewangle[TOP].y = 45.0f;
+	mod->viewangle[TOP].y = -45.0f;
 	return ;
 }
 
@@ -60,7 +60,11 @@ static void	init_rotate_matrix(t_mtrx *matrix)
 	i = 0;
 	while (i < 3)
 	{
-		matrix->zyx[i][i] = 1.0f;
+		matrix->x[i][i] = 1.0f;
+		matrix->y[i][i] = 1.0f;
+		matrix->z[i][i] = 1.0f;
+		matrix->xy[i][i] = 1.0f;
+		matrix->xyz[i][i] = 1.0f;
 		i++;
 	}
 	return ;

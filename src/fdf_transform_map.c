@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 23:57:44 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 01:47:51 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_vect	scale_geo(t_vect *vertex, t_mod *mod);
 static t_vect	translate_cam(t_vect *vertex, t_mod *mod);
 static t_vect	rotate_geo(t_vect *vertex, t_mod *mod);
-static void		update_coordinates(float zyx[][3], t_vect *new_pt, t_vect *pt);
+static void		update_coordinates(float xyz[3][3], t_vect *new_pt, t_vect *pt);
 
 void	transform_map(t_map *map, t_mod *mod)
 {
@@ -58,14 +58,14 @@ static t_vect	rotate_geo(t_vect *vertex, t_mod *mod)
 
 	new_pt = *vertex;
 	calc_rotate_matrix(mod);
-	update_coordinates(mod->rotate_matrix.zyx, &new_pt, vertex);
+	update_coordinates(mod->rotate_matrix.xyz, &new_pt, vertex);
 	return (new_pt);
 }
 
-static void	update_coordinates(float zyx[][3], t_vect *new_pt, t_vect *pt)
+static void	update_coordinates(float xyz[3][3], t_vect *new_pt, t_vect *pt)
 {
-	new_pt->x = zyx[0][0] * pt->x + zyx[0][1] * pt->y + zyx[0][2] * pt->z;
-	new_pt->y = zyx[1][0] * pt->x + zyx[1][1] * pt->y + zyx[1][2] * pt->z;
-	new_pt->z = zyx[2][0] * pt->x + zyx[2][1] * pt->y + zyx[2][2] * pt->z;
+	new_pt->x = xyz[0][0] * pt->x + xyz[0][1] * pt->y + xyz[0][2] * pt->z;
+	new_pt->y = xyz[1][0] * pt->x + xyz[1][1] * pt->y + xyz[1][2] * pt->z;
+	new_pt->z = xyz[2][0] * pt->x + xyz[2][1] * pt->y + xyz[2][2] * pt->z;
 	return ;
 }

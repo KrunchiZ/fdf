@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 17:58:32 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 01:47:22 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	handle_keypress(int keysym, t_data *data)
 		if (data->mod.bg > LAST_BG)
 			data->mod.bg = FIRST_BG;
 	}
-	if (keysym == XK_Return)
+	if (keysym == XK_u)
 	{
 		data->mod.scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
 		data->mod.rotate = (t_vect){0};
