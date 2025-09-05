@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 16:57:42 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 17:42:18 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	init_mlx(t_data *data);
 static void	setup_mlx_loop(t_data *data);
+static void	print_first_message(void);
 
 int	main(int argc, char **argv)
 {
@@ -26,7 +27,6 @@ int	main(int argc, char **argv)
 	set_modifier(&data.mod, &data.map);
 	if (init_mlx(&data) == FAILURE)
 		error_exit("mlx/window/image creation failure");
-	ft_putendl_fd("Transform mode: Rotate", STDOUT_FILENO);
 	setup_mlx_loop(&data);
 	mlx_destroy_image(data.mlx, data.img.img_ptr);
 	mlx_destroy_display(data.mlx);
@@ -64,6 +64,7 @@ static int	init_mlx(t_data *data)
 
 static void	setup_mlx_loop(t_data *data)
 {
+	print_first_message();
 	mlx_loop_hook(data->mlx, &handle_idle, data);
 	mlx_expose_hook(data->window, &handle_idle, data);
 	mlx_hook(data->window, KeyPress, KeyPressMask,
@@ -77,5 +78,19 @@ static void	setup_mlx_loop(t_data *data)
 	mlx_hook(data->window, MotionNotify, Button1MotionMask,
 		&handle_mouse1drag, data);
 	mlx_loop(data->mlx);
+	return ;
+}
+
+static void	print_first_message(void)
+{
+	ft_putendl_fd("\n+:+#+ FDF Controls +#+:+\n\n[esc]\t= Exit\n"
+		"[b]\t= Change background color\n[e]\t= Rotate mode (default)\n"
+		"[r]\t= Scale mode\n[left]\t= --Transform-X\n[right]\t= ++Transform-X\n"
+		"[up]\t= ++Transform-Y\n[down]\t= --Transfrom-Y\n[,]\t= --Transform-Z\n"
+		"[.]\t= ++Transform-Z\n[mouse1]\t= (Hold & Drag) 2DCamera-Pan\n"
+		"[scroll]\t= (Scale Mode)Uniform scaling\n"
+		"[enter]\t= Reset transform\n", STDOUT_FILENO);
+	ft_putendl_fd("Viewmode: Isometric", STDOUT_FILENO);
+	ft_putendl_fd("Transform mode: Rotate", STDOUT_FILENO);
 	return ;
 }
