@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 23:31:33 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 23:58:58 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct s_mod
 	int		keyhold;
 	int		scale_multiplier;
 	int		scale_mode;
+	int		viewmode;
 	int		x_offset;
 	int		y_offset;
 	int		bg;
@@ -149,6 +150,7 @@ int		handle_mousepress(int button, int x, int y, t_data *data);
 int		handle_mouserelease(int button, int x, int y, t_data *data);
 int		handle_mouse1drag(int x, int y, t_data *data);
 
+void	calc_rotate_matrix(t_mod *mod);
 void	transform_map(t_map *map, t_mod *mod);
 
 int		render_img(t_data *data);
