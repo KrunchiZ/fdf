@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:32:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 17:56:08 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 23:15:58 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,6 @@ static void	init_rotate_matrix(t_mtrx *matrix)
 	i = 0;
 	while (i < 3)
 	{
-		matrix->x[i][i] = 1.0f;
-		matrix->y[i][i] = 1.0f;
-		matrix->z[i][i] = 1.0f;
-		matrix->zy[i][i] = 1.0f;
 		matrix->zyx[i][i] = 1.0f;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 22:17:44 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 23:31:33 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,13 @@
 
 typedef struct s_mtrx
 {
-	float	x[3][3];
-	float	y[3][3];
-	float	z[3][3];
-	float	zy[3][3];
 	float	zyx[3][3];
+	float	xcos;
+	float	ycos;
+	float	zcos;
+	float	xsin;
+	float	ysin;
+	float	zsin;
 }			t_mtrx;
 
 typedef struct s_vect
