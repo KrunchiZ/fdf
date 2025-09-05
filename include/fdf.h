@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/05 16:34:56 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/05 22:17:44 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ int		handle_keypress(int keysym, t_data *data);
 int		handle_keyrelease(int keysym, t_data *data);
 int		handle_mousepress(int button, int x, int y, t_data *data);
 int		handle_mouserelease(int button, int x, int y, t_data *data);
-int 	handle_mouse1drag(int x, int y, t_data *data);
+int		handle_mouse1drag(int x, int y, t_data *data);
 
 void	transform_map(t_map *map, t_mod *mod);
 
