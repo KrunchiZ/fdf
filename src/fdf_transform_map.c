@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 01:47:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 03:43:06 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,19 @@ static t_vect	rotate_geo(t_vect *vertex, t_mod *mod)
 	t_vect	new_pt;
 
 	new_pt = *vertex;
-	calc_rotate_matrix(mod);
+	if (mod->viewmode == ISOMETRIC)
+		calc_rotate_matrix(mod);
 	update_coordinates(mod->rotate_matrix.xyz, &new_pt, vertex);
 	return (new_pt);
 }
 
 static void	update_coordinates(float xyz[3][3], t_vect *new_pt, t_vect *pt)
 {
-	new_pt->x = xyz[0][0] * pt->x + xyz[0][1] * pt->y + xyz[0][2] * pt->z;
-	new_pt->y = xyz[1][0] * pt->x + xyz[1][1] * pt->y + xyz[1][2] * pt->z;
-	new_pt->z = xyz[2][0] * pt->x + xyz[2][1] * pt->y + xyz[2][2] * pt->z;
+	if (mod->viewmode == ISOMETRIC)
+	{
+		new_pt->x = xyz[0][0] * pt->x + xyz[0][1] * pt->y + xyz[0][2] * pt->z;
+		new_pt->y = xyz[1][0] * pt->x + xyz[1][1] * pt->y + xyz[1][2] * pt->z;
+		new_pt->z = xyz[2][0] * pt->x + xyz[2][1] * pt->y + xyz[2][2] * pt->z;
+	}
 	return ;
 }

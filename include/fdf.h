@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 01:29:44 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 03:37:29 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ typedef struct s_vect
 typedef struct s_line
 {
 	t_vect	pt;
-	int		dx;
-	int		dy;
+	float	dx;
+	float	dy;
 	float	xstep;
 	float	ystep;
 	float	rstep;
@@ -90,14 +90,13 @@ typedef struct s_mouse
 typedef struct s_mod
 {
 	t_mtrx	rotate_matrix;
-	t_vect	viewangle[4];
+	t_vect	viewangle;
 	t_vect	scale;
 	t_vect	rotate;
 	t_vect	translate_cam2d;
 	t_mouse	mouse;
 	int		keyhold;
 	int		scale_multiplier;
-	int		scale_mode;
 	int		viewmode;
 	int		x_offset;
 	int		y_offset;

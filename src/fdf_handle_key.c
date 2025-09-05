@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 01:47:22 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 02:22:06 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,6 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 
 static void	handle_transform_keys(int keysym, t_data *data)
 {
-	if (keysym == XK_e)
-	{
-		data->mod.scale_mode = false;
-		ft_putendl_fd("Transform mode: Rotate", STDOUT_FILENO);
-	}
-	if (keysym == XK_r)
-	{
-		data->mod.scale_mode = true;
-		ft_putendl_fd("Transform mode: Scale", STDOUT_FILENO);
-	}
 	if (keysym == XK_Up)
 		data->mod.keyhold |= KEY_UP;
 	if (keysym == XK_Down)

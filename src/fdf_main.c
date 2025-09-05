@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 02:04:27 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 02:25:08 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,11 @@ static void	setup_mlx_loop(t_data *data)
 static void	print_first_message(void)
 {
 	ft_putendl_fd("\n+:+#+ FDF Controls +#+:+\n\n[esc]\t= Exit\n"
-		"[b]\t= Change background color\n[e]\t= Rotate mode (default)\n"
-		"[r]\t= Scale mode\n[left]\t= ++Transform-Y\n[right]\t= --Transform-Y\n"
-		"[up]\t= ++Transform-X\n[down]\t= --Transfrom-X\n[,]\t= ++Transform-Z\n"
-		"[.]\t= --Transform-Z\n[mouse1]= (Hold & Drag) 2DCamera-Pan\n"
-		"[scroll]= (Scale Mode)Uniform scaling\n"
+		"[b]\t= Change background color\n[scroll]= Uniform scaling\n"
+		"[left]\t= ++Rotate-Y\n[right]\t= --Rotate-Y\n"
+		"[up]\t= ++Rotate-X\n[down]\t= --Rotate-X\n[,]\t= ++Rotate-Z\n"
+		"[.]\t= --Rotate-Z\n[mouse1]= (Hold & Drag) 2DCamera-Pan\n"
 		"[u]\t= Reset transform\n", STDOUT_FILENO);
 	ft_putendl_fd("Viewmode: Isometric", STDOUT_FILENO);
-	ft_putendl_fd("Transform mode: Rotate", STDOUT_FILENO);
 	return ;
 }
