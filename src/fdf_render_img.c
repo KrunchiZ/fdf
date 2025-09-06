@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 23:04:08 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 23:05:59 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,7 @@ int	render_img(t_data *data)
 static void	draw_map(t_img *img, t_map *map)
 {
 	int	i;
-	int	last_row;
-	int	last_col;
 
-	last_row = map->vertex_count - map->width;
-	last_col = map->width - 1;
 	i = 0;
 	while (i < map->vertex_count)
 	{
