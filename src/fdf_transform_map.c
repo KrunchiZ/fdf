@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 18:33:35 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 18:44:03 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,29 +69,7 @@ static void	update_coordinates(t_mod *mod, float abc[3][3],
 	new_pt->x = abc[0][0] * pt->x + abc[0][1] * pt->y + abc[0][2] * pt->z;
 	new_pt->y = abc[1][0] * pt->x + abc[1][1] * pt->y + abc[1][2] * pt->z;
 	new_pt->z = abc[2][0] * pt->x + abc[2][1] * pt->y + abc[2][2] * pt->z;
-/*	if (mod->viewmode == ISOMETRIC)
-	{
-		new_pt->x = abc[0][0] * pt->x + abc[0][1] * pt->y + abc[0][2] * pt->z;
-		new_pt->y = abc[1][0] * pt->x + abc[1][1] * pt->y + abc[1][2] * pt->z;
-		new_pt->z = abc[2][0] * pt->x + abc[2][1] * pt->y + abc[2][2] * pt->z;
-	}
-	else if (mod->viewmode == FRONT)
-	{
-		new_pt->x = pt->x;
-		new_pt->y = -pt->y;
-		new_pt->z = 0.0f;
-	}
-	else if (mod->viewmode == SIDE)
-	{
-		new_pt->x = pt->z;
-		new_pt->y = -pt->y;
-		new_pt->z = 0.0f;
-	}
-	else if (mod->viewmode == TOP)
-	{
-		new_pt->x = pt->x;
-		new_pt->y = pt->z;
-		new_pt->z = 0.0f;
-	}*/
+	if (mod->viewmode != ISOMETRIC)
+		new_pt->y = -(new_pt->y);
 	return ;
 }
