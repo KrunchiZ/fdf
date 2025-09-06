@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 05:24:50 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 23:04:08 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,12 @@ static void	draw_map(t_img *img, t_map *map)
 	i = 0;
 	while (i < map->vertex_count)
 	{
-		if (map->render_pt[0].z <= map->render_pt[last_row].z)
-			draw_rows(img, map, i);
-		else
-			draw_rows(img, map, last_row - i);
+		draw_rows(img, map, i);
 		i += map->width;
 	}
 	i = 0;
 	while (i < map->width)
-	{
-		if (map->render_pt[0].z <= map->render_pt[last_col].z)
-			draw_columns(img, map, i++);
-		else
-			draw_columns(img, map, last_col - i++);
-	}
+		draw_columns(img, map, i++);
 	return ;
 }
 
@@ -94,12 +86,7 @@ static void	draw_rows(t_img *img, t_map *map, int i)
 	count = map->width - 1;
 	while (j < count)
 	{
-		if (map->render_pt[i].z <= map->render_pt[i + count].z)
-			draw_line(img, map->render_pt[i + j],
-				map->render_pt[i + j + 1]);
-		else
-			draw_line(img, map->render_pt[i + count - j],
-				map->render_pt[i + count - j - 1]);
+		draw_line(img, map->render_pt[i + j], map->render_pt[i + j + 1]);
 		j++;
 	}
 	return ;
@@ -114,12 +101,8 @@ static void	draw_columns(t_img *img, t_map *map, int i)
 	count = map->vertex_count - map->width;
 	while (j < count)
 	{
-		if (map->render_pt[i].z <= map->render_pt[count + i].z)
-			draw_line(img, map->render_pt[i + j],
+		draw_line(img, map->render_pt[i + j],
 				map->render_pt[i + j + map->width]);
-		else
-			draw_line(img, map->render_pt[count + i - j],
-				map->render_pt[count + i - j - map->width]);
 		j += map->width;
 	}
 	return ;
