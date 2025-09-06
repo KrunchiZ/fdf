@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 05:34:03 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 12:15:15 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	draw_line(t_img *img, t_vect p0, t_vect p1)
 	t_line	line;
 
 	init_line(&line, &p0, &p1);
-	if (ft_abs(line.dx) >= ft_abs(line.dy))
+	if (ft_fabs(line.dx) >= ft_fabs(line.dy))
 	{
 		line.ystep = 0.0f;
 		if (line.dy)
@@ -57,9 +57,9 @@ static void	get_rgbstep(t_line *line, t_vect *p0, t_vect *p1, float delta)
 {
 	if (delta)
 	{
-		line->rstep = (p1->red - p0->red) / delta;
-		line->gstep = (p1->green - p0->green) / delta;
-		line->bstep = (p1->blue - p0->blue) / delta;
+		line->rstep = (p1->red - p0->red) / ft_fabs(delta);
+		line->gstep = (p1->green - p0->green) / ft_fabs(delta);
+		line->bstep = (p1->blue - p0->blue) / ft_fabs(delta);
 	}
 	return ;
 }
