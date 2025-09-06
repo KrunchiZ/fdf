@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 05:15:06 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 18:33:35 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ static t_vect	rotate_geo(t_vect *vertex, t_mod *mod)
 	t_vect	new_pt;
 
 	new_pt = *vertex;
-	if (mod->viewmode == ISOMETRIC)
-		calc_rotate_matrix(mod);
+	calc_rotate_matrix(mod);
 	update_coordinates(mod, mod->rotate_matrix.abc, &new_pt, vertex);
 	return (new_pt);
 }
@@ -67,7 +66,10 @@ static t_vect	rotate_geo(t_vect *vertex, t_mod *mod)
 static void	update_coordinates(t_mod *mod, float abc[3][3],
 					t_vect *new_pt, t_vect *pt)
 {
-	if (mod->viewmode == ISOMETRIC)
+	new_pt->x = abc[0][0] * pt->x + abc[0][1] * pt->y + abc[0][2] * pt->z;
+	new_pt->y = abc[1][0] * pt->x + abc[1][1] * pt->y + abc[1][2] * pt->z;
+	new_pt->z = abc[2][0] * pt->x + abc[2][1] * pt->y + abc[2][2] * pt->z;
+/*	if (mod->viewmode == ISOMETRIC)
 	{
 		new_pt->x = abc[0][0] * pt->x + abc[0][1] * pt->y + abc[0][2] * pt->z;
 		new_pt->y = abc[1][0] * pt->x + abc[1][1] * pt->y + abc[1][2] * pt->z;
@@ -77,7 +79,19 @@ static void	update_coordinates(t_mod *mod, float abc[3][3],
 	{
 		new_pt->x = pt->x;
 		new_pt->y = -pt->y;
-		new_pt->z = pt->z;
+		new_pt->z = 0.0f;
 	}
+	else if (mod->viewmode == SIDE)
+	{
+		new_pt->x = pt->z;
+		new_pt->y = -pt->y;
+		new_pt->z = 0.0f;
+	}
+	else if (mod->viewmode == TOP)
+	{
+		new_pt->x = pt->x;
+		new_pt->y = pt->z;
+		new_pt->z = 0.0f;
+	}*/
 	return ;
 }
