@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 23:00:24 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 23:30:22 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 00:27:05 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,18 @@ void	parse_edges(t_mod *mod)
 
 static void	sort_edges(t_edge *edges, int edge_count)
 {
+}
+
+static int	zcompare(t_edge *e0, t_edge *e1)
+{
+	float	e0_z;
+	float	e1_z;
+
+	e0_z = (e0->start.z + e0->end.z) / 2.0f;
+	e1_z = (e1->start.z + e1->end.z) / 2.0f;
+	if (e0_z < e1_z)
+		return (-1);
+	if (e1_z < e0_z)
+		return (1);
+	return (0);
 }
