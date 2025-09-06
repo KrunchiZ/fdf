@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 18:34:06 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 22:51:33 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ typedef struct s_vect
 	int		color;
 }			t_vect;
 
+typedef struct s_edge
+{
+	t_vect	start;
+	t_vect	end;
+}			t_edge;
+
 typedef struct s_line
 {
 	t_vect	pt;
@@ -107,7 +113,9 @@ typedef struct s_map
 {
 	t_vect	*vertices;
 	t_vect	*render_pt;
+	t_edge	*edges;
 	int		vertex_count;
+	int		edge_count;
 	int		width;
 	int		depth;
 	int		height;

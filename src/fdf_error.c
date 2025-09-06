@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:06:19 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/03 15:37:58 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 22:52:04 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void	delete_map(t_map *map)
 {
 	free(map->vertices);
 	free(map->render_pt);
+	free(map->edges);
 	*map = (t_map){0};
 }

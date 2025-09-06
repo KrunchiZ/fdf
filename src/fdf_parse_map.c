@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:34:37 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 23:40:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/06 22:52:10 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	parse_map(t_map *map, char *file)
 	count_vertex(map, file);
 	map->vertices = ft_calloc(map->vertex_count, sizeof(t_vect));
 	map->render_pt = ft_calloc(map->vertex_count, sizeof(t_vect));
-	if (!map->vertices || !map->render_pt)
+	map->edges = ft_calloc(map->edge_count, sizeof(t_edge));
+	if (!map->vertices || !map->render_pt || !map->edges)
 	{
 		delete_map(map);
 		error_exit("ft_calloc failure");
@@ -69,6 +70,8 @@ static void	count_vertex(t_map *map, char *file)
 	if (map->width < 2 || map->depth < 2)
 		error_exit("input: Map is not rectangular");
 	map->vertex_count = map->width * map->depth;
+	map->edge_count
+		= (map->width - 1) * map->depth + (map->depth - 1) * map->width;
 	return ;
 }
 
