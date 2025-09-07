@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 17:20:40 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 17:45:42 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (delete_map(&data->map), FAILURE);
-	data->window = mlx_new_window(data->mlx, FRAME_WIDTH, FRAME_HEIGHT, "fdf");
+	data->window = mlx_new_window(data->mlx, FRAME_WIDTH, FRAME_HEIGHT, TITLE);
 	if (!data->window)
 		return (delete_map(&data->map),
 			mlx_destroy_display(data->mlx), free(data->mlx), FAILURE);
@@ -85,7 +85,7 @@ static void	print_first_message(void)
 {
 	ft_putendl_fd("\n +:+#+ FDF Controls +#+:+\n\n [esc]\t\t= Exit\n"
 		" [b]\t\t= Change background color\n [scroll]\t= Uniform scaling\n"
-		" [left]\t\t= ++Rotate-Y\n [right]\t\t= --Rotate-Y\n"
+		" [left]\t\t= ++Rotate-Y\n [right]\t= --Rotate-Y\n"
 		" [up]\t\t= ++Rotate-X\n [down]\t\t= --Rotate-X\n [,]\t\t= ++Rotate-Z\n"
 		" [.]\t\t= --Rotate-Z\n [mouse1]\t= (Hold & Drag) 2DCamera-Pan\n"
 		" [u]\t\t= Reset transform\n", STDOUT_FILENO);

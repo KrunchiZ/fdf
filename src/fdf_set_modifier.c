@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:32:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 16:41:18 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 17:50:53 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static void	init_rotate_matrix(t_mtrx *matrix);
 
 void	set_modifier(t_mod *mod, t_map *map)
 {
-	float	w_multiplier;
-	float	d_multiplier;
-	float	h_multiplier;
+	int	w_multiplier;
+	int	d_multiplier;
+	int	h_multiplier;
 
-	w_multiplier = FRAME_WIDTH / 1.5f / map->width;
-	d_multiplier = FRAME_WIDTH / 1.5f / map->depth;
-	h_multiplier = FRAME_HEIGHT / 1.5f / map->height;
+	w_multiplier = FRAME_WIDTH / 2 / map->width;
+	d_multiplier = FRAME_WIDTH / 2 / map->depth;
+	h_multiplier = FRAME_HEIGHT / 2 / map->height;
 	mod->scale_multiplier = h_multiplier;
 	if (w_multiplier < d_multiplier && w_multiplier < h_multiplier)
 		mod->scale_multiplier = w_multiplier;

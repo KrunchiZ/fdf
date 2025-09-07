@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 16:37:25 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 17:51:10 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@
 # include <X11/keysym.h>
 # include <math.h>
 
-# define SUCCESS		0
-# define FAILURE		1
+# define TITLE			"FDF by kchiang"
 # define FRAME_WIDTH	1080
 # define FRAME_HEIGHT	1080
+
+# define SUCCESS		0
+# define FAILURE		1
 
 # define ISOMETRIC		0
 # define FRONT			1
@@ -101,7 +103,7 @@ typedef struct s_mod
 	t_vect	rotate;
 	t_vect	translate_cam2d;
 	t_mouse	mouse;
-	float	scale_multiplier;
+	int		scale_multiplier;
 	int		keyhold;
 	int		viewmode;
 	int		x_offset;
