@@ -6,14 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 23:00:24 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 14:43:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 15:14:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static void	qsort_edges(t_edge *edges, int start, int end);
-static int	partition_qsort(t_edge *edges, int start, int end);
 static int	is_less_equal(t_edge *e0, t_edge *e1);
 static void	swap_edges(t_edge *edge_i, t_edge *edge_j);
 
@@ -26,16 +25,16 @@ void	parse_edges(t_map *map)
 	j = 0;
 	while (i < map->vertex_count - 1)
 	{
-		map->edge[j].start = map->render_pt[i];
-		map->edge[j++].end = map->render_pt[i++ + 1];
-		if (i + 1 == map->width)
+		map->edges[j].start = map->render_pt[i];
+		map->edges[j++].end = map->render_pt[i++ + 1];
+		if ((i + 1) % map->width == 0)
 			i++;
 	}
 	i = 0;
 	while (i < map->vertex_count - map->width)
 	{
-		map->edge[j].start = map->render_pt[i];
-		map->edge[j++].end = map->render_pt[i++ + map->width];
+		map->edges[j].start = map->render_pt[i];
+		map->edges[j++].end = map->render_pt[i++ + map->width];
 	}
 	qsort_edges(map->edges, 0, map->edge_count - 1);
 	return ;
@@ -44,33 +43,23 @@ void	parse_edges(t_map *map)
 static void	qsort_edges(t_edge *edges, int start, int end)
 {
 	int	pivot_index;
+	int	j;
 
 	if (start < end)
 	{
-		pivot_index = partition_qsort(edges, start, end);
-		qsort_edges(edges, low, pivot_index - 1);
-		qsort_edges(edges, pivot_index + 1, high);
+		pivot_index = start;
+		j = start;
+		while (j < end)
+		{
+			if (is_less_equal(&edges[j], &edges[end]))
+				swap_edges(&edges[pivot_index++], &edges[j]);
+			j++;
+		}
+		swap_edges(&edges[pivot_index], &edges[end]);
+		qsort_edges(edges, start, pivot_index - 1);
+		qsort_edges(edges, pivot_index + 1, end);
 	}
 	return ;
-}
-
-static int	partition_qsort(t_edge *edges, int start, int end)
-{
-	t_edge	pivot;
-	int		i;
-	int		j;
-
-	pivot = edges[end];
-	i = start;
-	j = start;
-	while (j < end)
-	{
-		if (is_less_equal(edges[j], pivot))
-			swap_edges(&edges[i++], &edges[j]);
-		j++;
-	}
-	swap_edges(&edges[i], &edges[end]);
-	return (i);
 }
 
 static int	is_less_equal(t_edge *e0, t_edge *e1)
