@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 18:06:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 18:24:43 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ typedef struct s_mod
 	int		x_offset;
 	int		y_offset;
 	int		bg;
-	int		idle;
 }			t_mod;
 
 typedef struct s_map
@@ -140,6 +139,7 @@ typedef struct s_data
 	t_map	map;
 	t_img	img;
 	t_mod	mod;
+	t_mod	saved_state;
 	void	*mlx;
 	void	*window;
 }			t_data;
