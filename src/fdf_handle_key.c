@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 17:19:39 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 18:13:38 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	handle_keypress(int keysym, t_data *data)
 		data->mod.scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
 		data->mod.rotate = (t_vect){0};
 		data->mod.translate_cam2d = (t_vect){0};
+		data->mod.idle = false;
 	}
 	handle_viewmode_keys(keysym, data);
 	handle_transform_keys(keysym, data);
@@ -83,17 +84,19 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 
 static void	handle_transform_keys(int keysym, t_data *data)
 {
-	if (keysym == XK_Up)
+	if (keysym == XK_Up && data->mod.viewmode == ISOMETRIC)
 		data->mod.keyhold |= KEY_UP;
-	if (keysym == XK_Down)
+	if (keysym == XK_Down && data->mod.viewmode == ISOMETRIC)
 		data->mod.keyhold |= KEY_DOWN;
-	if (keysym == XK_Left)
+	if (keysym == XK_Left && data->mod.viewmode != TOP)
 		data->mod.keyhold |= KEY_LEFT;
-	if (keysym == XK_Right)
+	if (keysym == XK_Right && data->mod.viewmode != TOP)
 		data->mod.keyhold |= KEY_RIGHT;
 	if (keysym == XK_comma)
 		data->mod.keyhold |= KEY_COMMA;
 	if (keysym == XK_period)
 		data->mod.keyhold |= KEY_PERIOD;
+	if (data->mod.keyhold)
+		data->mod.idle = false;
 	return ;
 }

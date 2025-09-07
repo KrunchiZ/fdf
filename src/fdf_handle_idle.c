@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 16:22:49 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 18:06:02 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ int	handle_idle(t_data *data)
 	if (data->window)
 	{
 		transform_map(&data->map, &data->mod);
-		parse_edges(&data->map);
+		if (data->mod.idle == false)
+		{
+			parse_edges(&data->map);
+			data->mod.idle = true;
+		}
 		render_img(data);
 	}
 	return (SUCCESS);
