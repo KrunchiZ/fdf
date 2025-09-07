@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 15:37:31 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/08 00:35:40 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static t_vect	scale_geo(t_vect *vertex, t_mod *mod);
 static t_vect	translate_cam(t_vect *vertex, t_mod *mod);
 static t_vect	rotate_geo(t_vect *vertex, t_mod *mod);
-static void		update_coordinates(float abc[3][3], t_vect *new_pt, t_vect *pt);
+static void		update_coordinates(t_mod *mod, float abc[3][3],
+					t_vect *new_pt, t_vect *pt);
 
 void	transform_map(t_map *map, t_mod *mod)
 {
@@ -58,15 +59,22 @@ static t_vect	rotate_geo(t_vect *vertex, t_mod *mod)
 
 	new_pt = *vertex;
 	calc_rotate_matrix(mod);
-	update_coordinates(mod->rotate_matrix.abc, &new_pt, vertex);
+	update_coordinates(mod, mod->rotate_matrix.abc, &new_pt, vertex);
 	return (new_pt);
 }
 
-static void	update_coordinates(float abc[3][3], t_vect *new_pt, t_vect *pt)
+static void	update_coordinates(t_mod *mod, float abc[3][3],
+					t_vect *new_pt, t_vect *pt)
 {
 	new_pt->x = abc[0][0] * pt->x + abc[0][1] * pt->y + abc[0][2] * pt->z;
 	new_pt->y = abc[1][0] * pt->x + abc[1][1] * pt->y + abc[1][2] * pt->z;
 	new_pt->z = abc[2][0] * pt->x + abc[2][1] * pt->y + abc[2][2] * pt->z;
 	new_pt->y = -(new_pt->y);
+	if (mod->viewmode == PERSPECTIVE)
+	{
+		new_pt->x *= mod->z_plane / (mod->z_plane - new_pt->z);
+		new_pt->y *= mod->z_plane / (mod->z_plane - new_pt->z);
+		new_pt->z *= mod->z_plane / (mod->z_plane - new_pt->z);
+	}
 	return ;
 }

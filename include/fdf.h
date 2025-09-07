@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 20:04:29 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/08 00:21:47 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@
 # define FAILURE		1
 
 # define ISOMETRIC		0
-# define FRONT			1
-# define TOP			2
+# define PERSPECTIVE	1
+# define FRONT			2
+# define TOP			3
 
 # define PIXEL_WHITE	0xFFFFFF
 # define PIXEL_GREY		0x555555
@@ -97,11 +98,12 @@ typedef struct s_mouse
 typedef struct s_mod
 {
 	t_mtrx	rotate_matrix;
-	t_vect	viewangle[3];
+	t_vect	viewangle[4];
 	t_vect	scale;
 	t_vect	rotate;
 	t_vect	translate_cam2d;
 	t_mouse	mouse;
+	float	z_plane;
 	int		scale_multiplier;
 	int		keyhold;
 	int		viewmode;

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 20:10:35 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 22:49:18 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define FIRST_BG	0
 #define LAST_BG		3
 #define FIRST_MODE	0
-#define LAST_MODE	2
+#define LAST_MODE	3
 
 static void	handle_viewmode_keys(int keysym, t_data *data);
 static void	handle_transform_keys(int keysym, t_data *data);
@@ -73,6 +73,8 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 			data->mod.viewmode = FIRST_MODE;
 		if (data->mod.viewmode == ISOMETRIC)
 			ft_putendl_fd(" Viewmode: ISOMETRIC", STDOUT_FILENO);
+		if (data->mod.viewmode == PERSPECTIVE)
+			ft_putendl_fd(" Viewmode: PERSPECTIVE", STDOUT_FILENO);
 		if (data->mod.viewmode == FRONT)
 			ft_putendl_fd(" Viewmode: FRONT", STDOUT_FILENO);
 		if (data->mod.viewmode == TOP)
@@ -83,9 +85,11 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 
 static void	handle_transform_keys(int keysym, t_data *data)
 {
-	if (keysym == XK_Up && data->mod.viewmode == ISOMETRIC)
+	if (keysym == XK_Up && (data->mod.viewmode == ISOMETRIC
+			|| data->mod.viewmode == PERSPECTIVE))
 		data->mod.keyhold |= KEY_UP;
-	if (keysym == XK_Down && data->mod.viewmode == ISOMETRIC)
+	if (keysym == XK_Down && (data->mod.viewmode == ISOMETRIC
+			|| data->mod.viewmode == PERSPECTIVE))
 		data->mod.keyhold |= KEY_DOWN;
 	if (keysym == XK_Left && data->mod.viewmode != TOP)
 		data->mod.keyhold |= KEY_LEFT;
