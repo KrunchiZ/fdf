@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 19:19:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 20:02:12 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define FIRST_BG	0
 #define LAST_BG		3
 #define FIRST_MODE	0
-#define LAST_MODE	3
+#define LAST_MODE	2
 
 static void	handle_viewmode_keys(int keysym, t_data *data);
 static void	handle_transform_keys(int keysym, t_data *data);
@@ -67,30 +67,29 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 	if (keysym == XK_v)
 	{
 		data->mod.idle = false;
+		data->mod.rotate = (t_vect){0};
 		data->mod.viewmode++;
 		if (data->mod.viewmode > LAST_MODE)
 			data->mod.viewmode = FIRST_MODE;
 		if (data->mod.viewmode == ISOMETRIC)
-			ft_putendl_fd(" Viewmode: Isometric", STDOUT_FILENO);
+			ft_putendl_fd(" Viewmode: ISOMETRIC", STDOUT_FILENO);
 		if (data->mod.viewmode == FRONT)
-			ft_putendl_fd(" Viewmode: Front", STDOUT_FILENO);
-		if (data->mod.viewmode == SIDE)
-			ft_putendl_fd(" Viewmode: Side", STDOUT_FILENO);
+			ft_putendl_fd(" Viewmode: FRONT", STDOUT_FILENO);
 		if (data->mod.viewmode == TOP)
-			ft_putendl_fd(" Viewmode: Top", STDOUT_FILENO);
+			ft_putendl_fd(" Viewmode: TOP", STDOUT_FILENO);
 	}
 	return ;
 }
 
 static void	handle_transform_keys(int keysym, t_data *data)
 {
-	if (keysym == XK_Up)
+	if (keysym == XK_Up && data->mod.viewmode == ISOMETRIC)
 		data->mod.keyhold |= KEY_UP;
-	if (keysym == XK_Down)
+	if (keysym == XK_Down && data->mod.viewmode == ISOMETRIC)
 		data->mod.keyhold |= KEY_DOWN;
-	if (keysym == XK_Left)
+	if (keysym == XK_Left && data->mod.viewmode == ISOMETRIC)
 		data->mod.keyhold |= KEY_LEFT;
-	if (keysym == XK_Right)
+	if (keysym == XK_Right && data->mod.viewmode == ISOMETRIC)
 		data->mod.keyhold |= KEY_RIGHT;
 	if (keysym == XK_comma)
 		data->mod.keyhold |= KEY_COMMA;

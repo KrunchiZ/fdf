@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:32:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 19:15:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 20:03:02 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ static void	set_viewangle(t_mod *mod)
 	mod->viewangle[ISOMETRIC].y = 45.0f;
 	mod->viewangle[FRONT].x = 0.0f;
 	mod->viewangle[FRONT].y = 45.0f;
-	mod->viewangle[SIDE].x = 0.0f;
-	mod->viewangle[SIDE].y = 135.0f;
 	mod->viewangle[TOP].x = 90.0f;
 	mod->viewangle[TOP].y = 45.0f;
 	return ;

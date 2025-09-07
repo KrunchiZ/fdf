@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 23:00:24 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 15:14:16 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 20:04:54 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	qsort_edges(t_edge *edges, int start, int end);
 static int	is_less_equal(t_edge *e0, t_edge *e1);
 static void	swap_edges(t_edge *edge_i, t_edge *edge_j);
 
-void	parse_edges(t_map *map)
+void	parse_edges(t_map *map, int viewmode)
 {
 	int	i;
 	int	j;
@@ -36,7 +36,8 @@ void	parse_edges(t_map *map)
 		map->edges[j].start = map->render_pt[i];
 		map->edges[j++].end = map->render_pt[i++ + map->width];
 	}
-	qsort_edges(map->edges, 0, map->edge_count - 1);
+	if (viewmode != TOP)
+		qsort_edges(map->edges, 0, map->edge_count - 1);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 18:06:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 20:04:29 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@
 
 # define ISOMETRIC		0
 # define FRONT			1
-# define SIDE			2
-# define TOP			3
+# define TOP			2
 
 # define PIXEL_WHITE	0xFFFFFF
 # define PIXEL_GREY		0x555555
@@ -98,7 +97,7 @@ typedef struct s_mouse
 typedef struct s_mod
 {
 	t_mtrx	rotate_matrix;
-	t_vect	viewangle[4];
+	t_vect	viewangle[3];
 	t_vect	scale;
 	t_vect	rotate;
 	t_vect	translate_cam2d;
@@ -160,7 +159,7 @@ int		handle_mouse1drag(int x, int y, t_data *data);
 
 void	transform_map(t_map *map, t_mod *mod);
 void	calc_rotate_matrix(t_mod *mod);
-void	parse_edges(t_map *map);
+void	parse_edges(t_map *map, int viewmode);
 
 int		render_img(t_data *data);
 void	draw_line(t_img *img, t_vect p0, t_vect p1);
