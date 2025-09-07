@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 17:19:14 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 17:20:40 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void	setup_mlx_loop(t_data *data)
 
 static void	print_first_message(void)
 {
-	ft_putendl_fd("\n+:+#+ FDF Controls +#+:+\n\n [esc]\t\t= Exit\n"
+	ft_putendl_fd("\n +:+#+ FDF Controls +#+:+\n\n [esc]\t\t= Exit\n"
 		" [b]\t\t= Change background color\n [scroll]\t= Uniform scaling\n"
 		" [left]\t\t= ++Rotate-Y\n [right]\t\t= --Rotate-Y\n"
 		" [up]\t\t= ++Rotate-X\n [down]\t\t= --Rotate-X\n [,]\t\t= ++Rotate-Z\n"
