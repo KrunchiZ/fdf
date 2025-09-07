@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 18:35:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 19:12:38 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 	if (keysym == XK_v)
 	{
 		data->mod.idle = false;
-		data->mod.rotate = (t_vect){0};
 		data->mod.viewmode++;
 		if (data->mod.viewmode > LAST_MODE)
 			data->mod.viewmode = FIRST_MODE;
