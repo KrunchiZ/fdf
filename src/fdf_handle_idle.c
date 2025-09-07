@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 15:30:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 16:22:49 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,26 @@ int	handle_idle(t_data *data)
 static void	handle_keypress_xtransform(t_mod *mod, int keyhold)
 {
 	if (keyhold & KEY_DOWN && mod->viewmode == ISOMETRIC)
-		mod->rotate.x -= 0.02f;
+		mod->rotate.x -= 1.0f;
 	if (keyhold & KEY_UP && mod->viewmode == ISOMETRIC)
-		mod->rotate.x += 0.02f;
+		mod->rotate.x += 1.0f;
 	return ;
 }
 
 static void	handle_keypress_ytransform(t_mod *mod, int keyhold)
 {
 	if (keyhold & KEY_LEFT && mod->viewmode != TOP)
-		mod->rotate.y += 0.02f;
+		mod->rotate.y += 1.0f;
 	if (keyhold & KEY_RIGHT && mod->viewmode != TOP)
-		mod->rotate.y -= 0.02f;
+		mod->rotate.y -= 1.0f;
 	return ;
 }
 
 static void	handle_keypress_ztransform(t_mod *mod, int keyhold)
 {
 	if (keyhold & KEY_PERIOD)
-		mod->rotate.z -= 0.02f;
+		mod->rotate.z -= 1.0f;
 	if (keyhold & KEY_COMMA)
-		mod->rotate.z += 0.02f;
+		mod->rotate.z += 1.0f;
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 00:32:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 15:47:46 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 16:23:13 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ void	calc_rotate_matrix(t_mod *mod)
 
 static void	update_matrix(t_mtrx *matrix, t_vect *viewangle, t_vect *rotate)
 {
-	matrix->x[1][1] = cos(viewangle->x + rotate->x);
-	matrix->x[2][1] = sin(viewangle->x + rotate->x);
+	matrix->x[1][1] = cos((viewangle->x + rotate->x) * (M_PI / 180.0f));
+	matrix->x[2][1] = sin((viewangle->x + rotate->x) * (M_PI / 180.0f));
 	matrix->x[1][2] = -(matrix->x[2][1]);
 	matrix->x[2][2] = matrix->x[1][1];
-	matrix->y[0][0] = cos(viewangle->y + rotate->y);
-	matrix->y[0][2] = sin(viewangle->y + rotate->y);
+	matrix->y[0][0] = cos((viewangle->y + rotate->y) * (M_PI / 180.0f));
+	matrix->y[0][2] = sin((viewangle->y + rotate->y) * (M_PI / 180.0f));
 	matrix->y[2][0] = -(matrix->y[0][2]);
 	matrix->y[2][2] = matrix->y[0][0];
-	matrix->z[0][0] = cos(viewangle->z + rotate->z);
-	matrix->z[1][0] = sin(viewangle->z + rotate->z);
+	matrix->z[0][0] = cos((viewangle->z + rotate->z) * (M_PI / 180.0f));
+	matrix->z[1][0] = sin((viewangle->z + rotate->z) * (M_PI / 180.0f));
 	matrix->z[0][1] = -(matrix->z[1][0]);
 	matrix->z[1][1] = matrix->z[0][0];
 	return ;

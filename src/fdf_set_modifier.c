@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:32:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 15:43:50 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 16:19:45 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ void	set_modifier(t_mod *mod, t_map *map)
 
 static void	set_viewangle(t_mod *mod)
 {
-	mod->viewangle[ISOMETRIC].x = 0.5f;
-	mod->viewangle[ISOMETRIC].y = 44.775f;
+	mod->viewangle[ISOMETRIC].x = 35.264f;
+	mod->viewangle[ISOMETRIC].y = 45.0f;
 	mod->viewangle[FRONT].x = 0.0f;
 	mod->viewangle[FRONT].y = 0.0f;
 	mod->viewangle[SIDE].x = 0.0f;
-	mod->viewangle[SIDE].y = 89.53535f;
-	mod->viewangle[TOP].x = 89.53535f;
+	mod->viewangle[SIDE].y = 90.0f;
+	mod->viewangle[TOP].x = 90.0f;
 	mod->viewangle[TOP].y = 0.0f;
 	return ;
 }
