@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 19:24:14 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 16:46:57 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,16 @@ static void	calc_color(t_line *line)
 	line->pt.blue += line->bstep;
 	if (line->pt.red > 255.0f)
 		line->pt.red = 255.0f;
-	else if (line->pt.red < -255.0f)
-		line->pt.red = -255.0f;
+	else if (line->pt.red < 0.0f)
+		line->pt.red = 0.0f;
 	if (line->pt.green > 255.0f)
 		line->pt.green = 255.0f;
-	else if (line->pt.green < -255.0f)
-		line->pt.green = -255.0f;
+	else if (line->pt.green < 0.0f)
+		line->pt.green = 0.0f;
 	if (line->pt.blue > 255.0f)
 		line->pt.blue = 255.0f;
-	else if (line->pt.blue < -255.0f)
-		line->pt.blue = -255.0f;
+	else if (line->pt.blue < 0.0f)
+		line->pt.blue = 0.0f;
 	line->pt.color = encode_rgb(roundf(line->pt.red),
 			roundf(line->pt.green), roundf(line->pt.blue));
 	return ;
