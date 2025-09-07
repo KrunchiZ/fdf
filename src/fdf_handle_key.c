@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 19:12:38 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 19:19:51 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 
 static void	handle_transform_keys(int keysym, t_data *data)
 {
-	if (keysym == XK_Up && data->mod.viewmode == ISOMETRIC)
+	if (keysym == XK_Up)
 		data->mod.keyhold |= KEY_UP;
-	if (keysym == XK_Down && data->mod.viewmode == ISOMETRIC)
+	if (keysym == XK_Down)
 		data->mod.keyhold |= KEY_DOWN;
-	if (keysym == XK_Left && data->mod.viewmode != TOP)
+	if (keysym == XK_Left)
 		data->mod.keyhold |= KEY_LEFT;
-	if (keysym == XK_Right && data->mod.viewmode != TOP)
+	if (keysym == XK_Right)
 		data->mod.keyhold |= KEY_RIGHT;
 	if (keysym == XK_comma)
 		data->mod.keyhold |= KEY_COMMA;
