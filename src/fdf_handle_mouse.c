@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:49:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 02:24:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 18:33:54 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ int	handle_mousepress(int button, int x, int y, t_data *data)
 	}
 	if (button == Button4)
 	{
+		data->mod.idle = false;
 		data->mod.scale.x *= 1.1f;
 		data->mod.scale.y *= 1.1f;
 		data->mod.scale.z *= 1.1f;
 	}
 	if (button == Button5)
 	{
+		data->mod.idle = false;
 		data->mod.scale.x *= 0.9f;
 		data->mod.scale.y *= 0.9f;
 		data->mod.scale.z *= 0.9f;
@@ -48,6 +50,7 @@ int	handle_mouse1drag(int x, int y, t_data *data)
 {
 	if (data->mod.mouse.drag == true)
 	{
+		data->mod.idle = false;
 		data->mod.translate_cam2d.x += x - data->mod.mouse.x0;
 		data->mod.translate_cam2d.y += y - data->mod.mouse.y0;
 		data->mod.mouse.x0 = x;

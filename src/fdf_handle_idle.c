@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 18:06:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 18:32:38 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	handle_idle(t_data *data)
 	handle_keypress_ztransform(&data->mod, data->mod.keyhold);
 	if (data->window)
 	{
-		transform_map(&data->map, &data->mod);
 		if (data->mod.idle == false)
 		{
+			transform_map(&data->map, &data->mod);
 			parse_edges(&data->map);
 			data->mod.idle = true;
 		}
@@ -37,26 +37,44 @@ int	handle_idle(t_data *data)
 static void	handle_keypress_xtransform(t_mod *mod, int keyhold)
 {
 	if (keyhold & KEY_DOWN && mod->viewmode == ISOMETRIC)
+	{
+		mod->idle = false;
 		mod->rotate.x -= 1.0f;
+	}
 	if (keyhold & KEY_UP && mod->viewmode == ISOMETRIC)
+	{
+		mod->idle = false;
 		mod->rotate.x += 1.0f;
+	}
 	return ;
 }
 
 static void	handle_keypress_ytransform(t_mod *mod, int keyhold)
 {
 	if (keyhold & KEY_LEFT && mod->viewmode != TOP)
+	{
+		mod->idle = false;
 		mod->rotate.y += 1.0f;
+	}
 	if (keyhold & KEY_RIGHT && mod->viewmode != TOP)
+	{
+		mod->idle = false;
 		mod->rotate.y -= 1.0f;
+	}
 	return ;
 }
 
 static void	handle_keypress_ztransform(t_mod *mod, int keyhold)
 {
 	if (keyhold & KEY_PERIOD)
+	{
+		mod->idle = false;
 		mod->rotate.z -= 1.0f;
+	}
 	if (keyhold & KEY_COMMA)
+	{
+		mod->idle = false;
 		mod->rotate.z += 1.0f;
+	}
 	return ;
 }
