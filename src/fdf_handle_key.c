@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 19:39:39 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 17:19:39 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 		if (data->mod.viewmode > LAST_MODE)
 			data->mod.viewmode = FIRST_MODE;
 		if (data->mod.viewmode == ISOMETRIC)
-			ft_putendl_fd("Viewmode: Isometric", STDOUT_FILENO);
+			ft_putendl_fd(" Viewmode: Isometric", STDOUT_FILENO);
 		if (data->mod.viewmode == FRONT)
-			ft_putendl_fd("Viewmode: Front", STDOUT_FILENO);
+			ft_putendl_fd(" Viewmode: Front", STDOUT_FILENO);
 		if (data->mod.viewmode == SIDE)
-			ft_putendl_fd("Viewmode: Side", STDOUT_FILENO);
+			ft_putendl_fd(" Viewmode: Side", STDOUT_FILENO);
 		if (data->mod.viewmode == TOP)
-			ft_putendl_fd("Viewmode: Top", STDOUT_FILENO);
+			ft_putendl_fd(" Viewmode: Top", STDOUT_FILENO);
 	}
 	return ;
 }
