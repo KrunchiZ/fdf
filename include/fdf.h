@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 14:44:03 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 16:37:25 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ typedef struct s_mod
 	t_vect	rotate;
 	t_vect	translate_cam2d;
 	t_mouse	mouse;
+	float	scale_multiplier;
 	int		keyhold;
-	int		scale_multiplier;
 	int		viewmode;
 	int		x_offset;
 	int		y_offset;

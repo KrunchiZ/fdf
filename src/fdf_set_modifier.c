@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:32:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 16:19:45 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/07 16:41:18 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,18 @@ static void	init_rotate_matrix(t_mtrx *matrix);
 
 void	set_modifier(t_mod *mod, t_map *map)
 {
-	int	w_multiplier;
-	int	d_multiplier;
-	int	h_multiplier;
+	float	w_multiplier;
+	float	d_multiplier;
+	float	h_multiplier;
 
-	w_multiplier = FRAME_HEIGHT / 2 / map->width;
-	d_multiplier = FRAME_HEIGHT / 2 / map->depth;
-	h_multiplier = FRAME_HEIGHT / 2 / map->height;
+	w_multiplier = FRAME_WIDTH / 1.5f / map->width;
+	d_multiplier = FRAME_WIDTH / 1.5f / map->depth;
+	h_multiplier = FRAME_HEIGHT / 1.5f / map->height;
 	mod->scale_multiplier = h_multiplier;
 	if (w_multiplier < d_multiplier && w_multiplier < h_multiplier)
 		mod->scale_multiplier = w_multiplier;
 	else if (d_multiplier < h_multiplier)
 		mod->scale_multiplier = d_multiplier;
-	if (mod->scale_multiplier == 0)
-		mod->scale_multiplier = 1;
 	mod->x_offset = FRAME_WIDTH / 2 - 1;
 	mod->y_offset = FRAME_HEIGHT / 2 - 1;
 	mod->scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
