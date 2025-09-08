@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/08 15:52:31 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/08 16:16:48 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <math.h>
 
 # define TITLE			"FDF by kchiang"
-# define FRAME_WIDTH	1920
+# define FRAME_WIDTH	1080
 # define FRAME_HEIGHT	1080
 
 # define SUCCESS		0

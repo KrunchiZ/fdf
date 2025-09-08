@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/08 15:52:05 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/08 16:15:40 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ int	handle_destroykey(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->window);
 	data->window = NULL;
+	mlx_destroy_image(data->mlx, data->img.img_ptr);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	delete_map(&data->map);
+	exit(EXIT_SUCCESS);
 	return (SUCCESS);
 }
 
@@ -47,7 +52,10 @@ int	handle_keyrelease(int keysym, t_data *data)
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
-		handle_destroykey(data);
+	{
+		mlx_destroy_window(data->mlx, data->window);
+		data->window = NULL;
+	}
 	if (keysym == XK_b)
 	{
 		data->mod.bg++;
