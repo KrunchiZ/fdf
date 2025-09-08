@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/08 13:49:32 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/08 15:52:31 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ void	parse_vertices(t_map *map, char *file);
 void	set_modifier(t_mod *mod, t_map *map);
 
 int		handle_idle(t_data *data);
+int		handle_destroykey(t_data *data);
 int		handle_keypress(int keysym, t_data *data);
 int		handle_keyrelease(int keysym, t_data *data);
 int		handle_mousepress(int button, int x, int y, t_data *data);

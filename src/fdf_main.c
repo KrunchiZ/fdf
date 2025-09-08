@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 20:10:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/08 15:52:36 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ static void	setup_mlx_loop(t_data *data)
 		&handle_mouserelease, data);
 	mlx_hook(data->window, MotionNotify, Button1MotionMask,
 		&handle_mouse1drag, data);
+	mlx_hook(data->window, DestroyNotify, NoEventMask,
+		&handle_destroykey, data);
 	mlx_loop(data->mlx);
 	return ;
 }

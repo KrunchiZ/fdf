@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/08 13:38:31 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/08 15:52:05 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 
 static void	handle_viewmode_keys(int keysym, t_data *data);
 static void	handle_transform_keys(int keysym, t_data *data);
+
+int	handle_destroykey(t_data *data)
+{
+	mlx_destroy_window(data->mlx, data->window);
+	data->window = NULL;
+	return (SUCCESS);
+}
 
 int	handle_keyrelease(int keysym, t_data *data)
 {
@@ -40,10 +47,7 @@ int	handle_keyrelease(int keysym, t_data *data)
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
-	{
-		mlx_destroy_window(data->mlx, data->window);
-		data->window = NULL;
-	}
+		handle_destroykey(data);
 	if (keysym == XK_b)
 	{
 		data->mod.bg++;
