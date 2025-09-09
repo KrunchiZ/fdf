@@ -6,14 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 22:26:36 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 01:45:48 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static t_vect	scale_geo(t_vect *pt, t_mod *mod);
-static t_vect	translate_cam(t_vect *pt, t_mod *mod);
+static t_vect	transform_cam(t_vect *pt, t_mod *mod);
 static t_vect	rotate_geo(t_vect *pt, t_mod *mod);
 static void		update_coordinates(t_vect *new_pt, t_vect *pt,
 					float mtrx[3][3]);
@@ -27,7 +27,7 @@ void	transform_map(t_map *map, t_mod *mod)
 	{
 		map->render_pt[i] = scale_geo(&map->vertices[i], mod);
 		map->render_pt[i] = rotate_geo(&map->render_pt[i], mod);
-		map->render_pt[i] = translate_cam(&map->render_pt[i], mod);
+		map->render_pt[i] = transform_cam(&map->render_pt[i], mod);
 		i++;
 	}
 }
@@ -43,7 +43,7 @@ static t_vect	scale_geo(t_vect *pt, t_mod *mod)
 	return (new_pt);
 }
 
-static t_vect	translate_cam(t_vect *pt, t_mod *mod)
+static t_vect	transform_cam(t_vect *pt, t_mod *mod)
 {
 	t_vect	new_pt;
 

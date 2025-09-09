@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 22:32:04 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 01:38:46 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,11 @@ static void	print_first_message(void)
 {
 	ft_putendl_fd("\n +:+#+ FDF Controls +#+:+\n\n [esc]\t\t= Exit\n"
 		" [b]\t\t= Change background color\n [scroll]\t= Uniform scaling\n"
+		" [x]/[y]/[z] + [scroll]\t= Single axis scaling\n"
 		" [left]\t\t= --Rotate-Y\n [right]\t= ++Rotate-Y\n"
 		" [up]\t\t= --Rotate-X\n [down]\t\t= ++Rotate-X\n [,]\t\t= ++Rotate-Z\n"
-		" [.]\t\t= --Rotate-Z\n [mouse1]\t= (Hold & Drag) 2DCamera-Pan\n"
+		" [.]\t\t= --Rotate-Z\n [mouse1]\t= 2D Camera-Pan\n"
+		" [e] + [mouse]\t= Rotate-XY\n"
 		" [u]\t\t= Reset transform\n", STDOUT_FILENO);
 	ft_putendl_fd(" Viewmode: ISOMETRIC", STDOUT_FILENO);
 	return ;

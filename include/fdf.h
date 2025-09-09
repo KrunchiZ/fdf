@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 22:26:16 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 01:46:07 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@
 # define KEY_RIGHT		0b1000
 # define KEY_COMMA		0b10000
 # define KEY_PERIOD		0b100000
+# define KEY_X			0b1000000
+# define KEY_Y			0b10000000
+# define KEY_Z			0b100000000
 
 typedef struct s_mtrx
 {
@@ -90,6 +93,7 @@ typedef struct s_line
 typedef struct s_mouse
 {
 	int		drag;
+	int		rotate;
 	int		x0;
 	int		y0;
 }			t_mouse;

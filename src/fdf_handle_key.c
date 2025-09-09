@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 22:40:46 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 01:46:40 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@ int	handle_keyrelease(int keysym, t_data *data)
 		data->mod.keyhold &= ~KEY_COMMA;
 	if (keysym == XK_period)
 		data->mod.keyhold &= ~KEY_PERIOD;
+	if (keysym == XK_x)
+		data->mod.keyhold &= ~KEY_X;
+	if (keysym == XK_y)
+		data->mod.keyhold &= ~KEY_Y;
+	if (keysym == XK_z)
+		data->mod.keyhold &= ~KEY_Z;
+	if (keysym == XK_e)
+		data->mod.mouse.rotate = false;
 	return (SUCCESS);
 }
 
@@ -114,5 +122,13 @@ static void	handle_transform_keys(int keysym, t_data *data)
 		data->mod.keyhold |= KEY_COMMA;
 	if (keysym == XK_period)
 		data->mod.keyhold |= KEY_PERIOD;
+	if (keysym == XK_x)
+		data->mod.keyhold |= KEY_X;
+	if (keysym == XK_y)
+		data->mod.keyhold |= KEY_Y;
+	if (keysym == XK_z)
+		data->mod.keyhold |= KEY_Z;
+	if (keysym == XK_e)
+		data->mod.mouse.rotate = true;
 	return ;
 }

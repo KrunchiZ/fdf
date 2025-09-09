@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 22:39:01 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 01:39:04 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,14 @@ static void	print_message(t_data *data)
 	mlx_string_put(data->mlx, data->window, 10, 120, PIXEL_BLUE,
 		" [,]      = ++Rotate-Z     [.] = --Rotate-Z");
 	mlx_string_put(data->mlx, data->window, 10, 140, PIXEL_BLUE,
-		" [mouse1] = (Hold & Drag) 2D Camera-Pan");
+		" [mouse1]       = 2D Camera Pan");
 	mlx_string_put(data->mlx, data->window, 10, 160, PIXEL_BLUE,
-		" [scroll] = Uniform scaling");
+		" [e] + [mouse1] = Rotate-XY");
 	mlx_string_put(data->mlx, data->window, 10, 180, PIXEL_BLUE,
+		" [scroll]       = Uniform scaling");
+	mlx_string_put(data->mlx, data->window, 10, 200, PIXEL_BLUE,
+		" [x]/[y]/[z] + [scroll] = single axis scaling");
+	mlx_string_put(data->mlx, data->window, 10, 220, PIXEL_BLUE,
 		" [b]      = Change background color");
 	return ;
 }
