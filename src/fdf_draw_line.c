@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 16:46:57 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 15:08:49 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ void	draw_line(t_img *img, t_vect p0, t_vect p1)
 {
 	t_line	line;
 
+	if ((p0.x < 0.0f && p1.x < 0.0f) || (p0.y < 0.0f && p1.y < 0.0f)
+		|| (p0.x >= FRAME_WIDTH && p1.x >= FRAME_WIDTH)
+		|| (p0.y >= FRAME_HEIGHT && p1.y >= FRAME_HEIGHT))
+		return ;
 	init_line(&line, &p0, &p1);
 	if (ft_fabs(line.dx) >= ft_fabs(line.dy))
 	{
