@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:32:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 19:25:11 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 21:17:00 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	init_rotate_matrix(t_mod *mod)
 	while (i < 3)
 	{
 		mod->rotate_matrix[i][i] = 1.0f;
+		mod->rotate_state[i][i] = 1.0f;
 		i++;
 	}
 	return ;

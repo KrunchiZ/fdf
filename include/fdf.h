@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 19:19:24 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 21:17:21 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_mod
 	t_vect	translate_cam2d;
 	t_mouse	mouse;
 	float	rotate_matrix[3][3];
+	float	rotate_state[3][3];
 	float	z_plane;
 	int		scale_multiplier;
 	int		keyhold;
@@ -163,6 +164,7 @@ void	reset_transform(t_map *map, t_mod *mod);
 void	transform_map(t_map *map, t_mod *mod);
 void	calc_rotate_matrix(t_mod *mod);
 void	parse_edges(t_map *map, int viewmode);
+void	multiply_matrix(float mc[3][3], float ma[3][3], float mb[3][3]);
 void	update_coordinates(t_vect *new_pt, t_vect *pt, float mtrx[3][3]);
 
 int		render_img(t_data *data);

@@ -6,14 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 00:32:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 19:12:16 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 21:03:59 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static void	set_matrix(t_mtrx *matrix, t_vect *viewangle);
-static void	multiply_matrix(float mc[3][3], float ma[3][3], float mb[3][3]);
 
 void	calc_rotate_matrix(t_mod *mod)
 {
@@ -53,7 +52,7 @@ static void	set_matrix(t_mtrx *matrix, t_vect *viewangle)
 	return ;
 }
 
-static void	multiply_matrix(float mc[3][3], float ma[3][3], float mb[3][3])
+void	multiply_matrix(float mc[3][3], float ma[3][3], float mb[3][3])
 {
 	int		i;
 
@@ -76,6 +75,5 @@ void	update_coordinates(t_vect *new_pt, t_vect *pt, float mtrx[3][3])
 	new_pt->x = mtrx[0][0] * pt->x + mtrx[0][1] * pt->y + mtrx[0][2] * pt->z;
 	new_pt->y = mtrx[1][0] * pt->x + mtrx[1][1] * pt->y + mtrx[1][2] * pt->z;
 	new_pt->z = mtrx[2][0] * pt->x + mtrx[2][1] * pt->y + mtrx[2][2] * pt->z;
-	new_pt->y = -(new_pt->y);
 	return ;
 }
