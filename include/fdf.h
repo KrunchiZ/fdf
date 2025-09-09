@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 18:31:58 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 18:47:09 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct s_mod
 	t_vect	translate_cam2d;
 	t_mouse	mouse;
 	float	rotate_matrix[3][3];
-	float	rotate;
+	float	rotate_step;
 	float	z_plane;
 	int		scale_multiplier;
 	int		keyhold;
