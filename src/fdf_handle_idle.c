@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 19:19:06 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 22:32:32 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static void	print_message(t_data *data)
 	mlx_string_put(data->mlx, data->window, 10, 60, PIXEL_BLUE,
 		" [esc]    = Exit           [u] = Reset transform");
 	mlx_string_put(data->mlx, data->window, 10, 80, PIXEL_BLUE,
-		" [up]     = ++Rotate-X     [down] = --Rotate-X");
+		" [up]     = --Rotate-X     [down] = ++Rotate-X");
 	mlx_string_put(data->mlx, data->window, 10, 100, PIXEL_BLUE,
-		" [left]   = ++Rotate-Y     [right] = --Rotate-Y");
+		" [left]   = --Rotate-Y     [right] = ++Rotate-Y");
 	mlx_string_put(data->mlx, data->window, 10, 120, PIXEL_BLUE,
 		" [,]      = ++Rotate-Z     [.] = --Rotate-Z");
 	mlx_string_put(data->mlx, data->window, 10, 140, PIXEL_BLUE,
@@ -62,12 +62,12 @@ static void	handle_keypress_xtransform(t_mod *mod, int keyhold)
 	if (keyhold & KEY_UP)
 	{
 		mod->idle = false;
-		mod->rotate.x += 1.0f;
+		mod->rotate.x -= 1.0f;
 	}
 	if (keyhold & KEY_DOWN)
 	{
 		mod->idle = false;
-		mod->rotate.x -= 1.0f;
+		mod->rotate.x += 1.0f;
 	}
 	return ;
 }
@@ -77,12 +77,12 @@ static void	handle_keypress_ytransform(t_mod *mod, int keyhold)
 	if (keyhold & KEY_LEFT)
 	{
 		mod->idle = false;
-		mod->rotate.y += 1.0f;
+		mod->rotate.y -= 1.0f;
 	}
 	if (keyhold & KEY_RIGHT)
 	{
 		mod->idle = false;
-		mod->rotate.y -= 1.0f;
+		mod->rotate.y += 1.0f;
 	}
 	return ;
 }
