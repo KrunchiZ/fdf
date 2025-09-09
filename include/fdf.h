@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 21:17:21 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 22:26:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,12 +160,11 @@ int		handle_mousepress(int button, int x, int y, t_data *data);
 int		handle_mouserelease(int button, int x, int y, t_data *data);
 int		handle_mouse1drag(int x, int y, t_data *data);
 
-void	reset_transform(t_map *map, t_mod *mod);
 void	transform_map(t_map *map, t_mod *mod);
 void	calc_rotate_matrix(t_mod *mod);
+void	update_rotatestate(t_mod *mod, t_vect *rotate, float tmp[3][3]);
 void	parse_edges(t_map *map, int viewmode);
-void	multiply_matrix(float mc[3][3], float ma[3][3], float mb[3][3]);
-void	update_coordinates(t_vect *new_pt, t_vect *pt, float mtrx[3][3]);
+void	reset_transform(t_mod *mod);
 
 int		render_img(t_data *data);
 void	draw_line(t_img *img, t_vect p0, t_vect p1);

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 21:17:07 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 22:20:31 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	handle_keypress(int keysym, t_data *data)
 		data->mod.scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
 		data->mod.rotate = (t_vect){0};
 		data->mod.translate_cam2d = (t_vect){0};
+		reset_transform(&data->mod);
 	}
 	handle_viewmode_keys(keysym, data);
 	handle_transform_keys(keysym, data);
@@ -93,6 +94,7 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 			ft_putendl_fd(" Viewmode: FRONT", STDOUT_FILENO);
 		if (data->mod.viewmode == TOP)
 			ft_putendl_fd(" Viewmode: TOP", STDOUT_FILENO);
+		reset_transform(&data->mod);
 		calc_rotate_matrix(&data->mod);
 	}
 	return ;
