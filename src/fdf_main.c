@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 17:39:12 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 18:16:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 	data = (t_data){0};
 	parse_map(&data.map, argv[1]);
 	set_modifier(&data.mod, &data.map);
-	calc_rotate_matrix(&data->mod);
 	apply_first_transform(&data.map, &data.mod);
 	if (init_mlx(&data) == FAILURE)
 		error_exit("mlx/window/image creation failure");
@@ -39,8 +38,9 @@ int	main(int argc, char **argv)
 static void	apply_first_transform(t_map *map, t_mod *mod)
 {
 	t_vect	pt;
-	int	i;
+	int		i;
 
+	calc_rotate_matrix(mod);
 	i = 0;
 	while (i < map->vertex_count)
 	{
