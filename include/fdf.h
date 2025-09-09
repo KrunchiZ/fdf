@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 01:46:07 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 04:15:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@
 # define KEY_X			0b1000000
 # define KEY_Y			0b10000000
 # define KEY_Z			0b100000000
+
+# define VIEW_ANGLE		0
+# define ROTATE_MOD		1
 
 typedef struct s_mtrx
 {
@@ -165,8 +168,7 @@ int		handle_mouserelease(int button, int x, int y, t_data *data);
 int		handle_mouse1drag(int x, int y, t_data *data);
 
 void	transform_map(t_map *map, t_mod *mod);
-void	calc_rotate_matrix(t_mod *mod);
-void	update_rotatestate(t_mod *mod, t_vect *rotate, float tmp[3][3]);
+void	calc_rotate_matrix(t_mod *mod, int rotate_src);
 void	parse_edges(t_map *map, int viewmode);
 void	reset_transform(t_mod *mod);
 

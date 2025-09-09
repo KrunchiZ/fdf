@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:49:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 03:42:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 05:01:59 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	handle_mouserelease(int button, int x, int y, t_data *data)
 
 int	handle_mouse1drag(int x, int y, t_data *data)
 {
-	if (data->mod.mouse.drag == true && data->mod.mouse.rotate == false)
+	if (data->mod.mouse.drag && !data->mod.mouse.rotate)
 	{
 		data->mod.idle = false;
 		data->mod.translate_cam2d.x += x - data->mod.mouse.x0;
@@ -85,11 +85,10 @@ int	handle_mouse1drag(int x, int y, t_data *data)
 		data->mod.mouse.x0 = x;
 		data->mod.mouse.y0 = y;
 	}
-	else if (data->mod.mouse.drag == true && data->mod.mouse.rotate == true)
+	else if (data->mod.mouse.drag && data->mod.mouse.rotate)
 	{
 		data->mod.idle = false;
-		data->mod.rotate.x += x - data->mod.mouse.x0;
-		data->mod.rotate.y += y - data->mod.mouse.y0;
+		data->mod.rotate.y += (x - data->mod.mouse.x0) * 0.5f;
 		data->mod.mouse.x0 = x;
 		data->mod.mouse.y0 = y;
 	}
