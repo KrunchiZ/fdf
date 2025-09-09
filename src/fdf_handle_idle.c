@@ -6,18 +6,22 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 18:47:18 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 19:19:06 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	handle_keypress_transform(t_mod *mod, int keyhold);
+static void	handle_keypress_xtransform(t_mod *mod, int keyhold);
+static void	handle_keypress_ytransform(t_mod *mod, int keyhold);
+static void	handle_keypress_ztransform(t_mod *mod, int keyhold);
 static void	print_message(t_data *data);
 
 int	handle_idle(t_data *data)
 {
-	handle_keypress_transform(&data->mod, data->mod.keyhold);
+	handle_keypress_xtransform(&data->mod, data->mod.keyhold);
+	handle_keypress_ytransform(&data->mod, data->mod.keyhold);
+	handle_keypress_ztransform(&data->mod, data->mod.keyhold);
 	if (data->window)
 	{
 		if (data->mod.idle == false)
@@ -53,17 +57,47 @@ static void	print_message(t_data *data)
 	return ;
 }
 
-static void	handle_keypress_transform(t_mod *mod, int keyhold)
+static void	handle_keypress_xtransform(t_mod *mod, int keyhold)
 {
-	if (keyhold & (KEY_UP | KEY_LEFT | KEY_COMMA))
+	if (keyhold & KEY_UP)
 	{
-		mod->rotate_step = 1.0f;
 		mod->idle = false;
+		mod->rotate.x += 1.0f;
 	}
-	if (keyhold & (KEY_DOWN | KEY_RIGHT | KEY_PERIOD))
+	if (keyhold & KEY_DOWN)
 	{
-		mod->rotate_step = -1.0f;
 		mod->idle = false;
+		mod->rotate.x -= 1.0f;
+	}
+	return ;
+}
+
+static void	handle_keypress_ytransform(t_mod *mod, int keyhold)
+{
+	if (keyhold & KEY_LEFT)
+	{
+		mod->idle = false;
+		mod->rotate.y += 1.0f;
+	}
+	if (keyhold & KEY_RIGHT)
+	{
+		mod->idle = false;
+		mod->rotate.y -= 1.0f;
+	}
+	return ;
+}
+
+static void	handle_keypress_ztransform(t_mod *mod, int keyhold)
+{
+	if (keyhold & KEY_COMMA)
+	{
+		mod->idle = false;
+		mod->rotate.z += 1.0f;
+	}
+	if (keyhold & KEY_PERIOD)
+	{
+		mod->idle = false;
+		mod->rotate.z -= 1.0f;
 	}
 	return ;
 }

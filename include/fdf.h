@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 18:47:09 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 19:19:24 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ typedef struct s_mod
 {
 	t_vect	viewangle[4];
 	t_vect	scale;
+	t_vect	rotate;
 	t_vect	translate_cam2d;
 	t_mouse	mouse;
 	float	rotate_matrix[3][3];
-	float	rotate_step;
 	float	z_plane;
 	int		scale_multiplier;
 	int		keyhold;
@@ -150,8 +150,6 @@ void	delete_map(t_map *map);
 void	parse_map(t_map *map, char *file);
 void	parse_vertices(t_map *map, char *file);
 void	set_modifier(t_mod *mod, t_map *map);
-void	update_coordinates(t_mod *mod, t_vect *new_pt, t_vect *pt,
-				float mtrx[3][3]);
 
 int		handle_idle(t_data *data);
 int		handle_destroykey(t_data *data);
@@ -161,9 +159,11 @@ int		handle_mousepress(int button, int x, int y, t_data *data);
 int		handle_mouserelease(int button, int x, int y, t_data *data);
 int		handle_mouse1drag(int x, int y, t_data *data);
 
+void	reset_transform(t_map *map, t_mod *mod);
 void	transform_map(t_map *map, t_mod *mod);
 void	calc_rotate_matrix(t_mod *mod);
 void	parse_edges(t_map *map, int viewmode);
+void	update_coordinates(t_vect *new_pt, t_vect *pt, float mtrx[3][3]);
 
 int		render_img(t_data *data);
 void	draw_line(t_img *img, t_vect p0, t_vect p1);

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 18:16:55 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 19:44:59 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	init_mlx(t_data *data);
 static void	setup_mlx_loop(t_data *data);
 static void	print_first_message(void);
-static void	apply_first_transform(t_map *map, t_mod *mod);
 
 int	main(int argc, char **argv)
 {
@@ -26,32 +25,13 @@ int	main(int argc, char **argv)
 	data = (t_data){0};
 	parse_map(&data.map, argv[1]);
 	set_modifier(&data.mod, &data.map);
-	apply_first_transform(&data.map, &data.mod);
+	calc_rotate_matrix(&data.mod);
 	if (init_mlx(&data) == FAILURE)
 		error_exit("mlx/window/image creation failure");
 	setup_mlx_loop(&data);
 	mlx_destroy_image(data.mlx, data.img.img_ptr);
 	mlx_destroy_display(data.mlx);
 	return (free(data.mlx), delete_map(&data.map), EXIT_SUCCESS);
-}
-
-static void	apply_first_transform(t_map *map, t_mod *mod)
-{
-	t_vect	pt;
-	int		i;
-
-	calc_rotate_matrix(mod);
-	i = 0;
-	while (i < map->vertex_count)
-	{
-		map->vertices[i].x *= mod->scale_multiplier;
-		map->vertices[i].y *= mod->scale_multiplier;
-		map->vertices[i].z *= mod->scale_multiplier;
-		pt = map->vertices[i];
-		update_coordinates(mod, mod->rotate_matrix, &map->vertices[i], &pt);
-		i++;
-	}
-	return ;
 }
 
 static int	init_mlx(t_data *data)
