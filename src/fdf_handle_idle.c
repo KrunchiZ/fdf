@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 22:32:32 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 22:39:01 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ static void	print_message(t_data *data)
 
 static void	handle_keypress_xtransform(t_mod *mod, int keyhold)
 {
-	if (keyhold & KEY_UP)
+	if (keyhold & KEY_UP && (mod->viewmode != TOP && mod->viewmode != FRONT))
 	{
 		mod->idle = false;
 		mod->rotate.x -= 1.0f;
 	}
-	if (keyhold & KEY_DOWN)
+	if (keyhold & KEY_DOWN && (mod->viewmode != TOP && mod->viewmode != FRONT))
 	{
 		mod->idle = false;
 		mod->rotate.x += 1.0f;
@@ -74,12 +74,12 @@ static void	handle_keypress_xtransform(t_mod *mod, int keyhold)
 
 static void	handle_keypress_ytransform(t_mod *mod, int keyhold)
 {
-	if (keyhold & KEY_LEFT)
+	if (keyhold & KEY_LEFT && mod->viewmode != TOP)
 	{
 		mod->idle = false;
 		mod->rotate.y -= 1.0f;
 	}
-	if (keyhold & KEY_RIGHT)
+	if (keyhold & KEY_RIGHT && mod->viewmode != TOP)
 	{
 		mod->idle = false;
 		mod->rotate.y += 1.0f;
