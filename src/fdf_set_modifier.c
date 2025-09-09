@@ -6,14 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:32:57 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 15:22:20 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 17:15:23 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static void	set_viewangle(t_mod *mod);
-static void	init_rotate_matrix(t_mtrx *matrix);
+static void	init_rotate_matrix(t_mod *mod);
 
 void	set_modifier(t_mod *mod, t_map *map)
 {
@@ -35,7 +35,7 @@ void	set_modifier(t_mod *mod, t_map *map)
 	mod->z_plane = map->depth * mod->scale_multiplier + 250.0f;
 	mod->viewmode = ISOMETRIC;
 	set_viewangle(mod);
-	init_rotate_matrix(&mod->rotate_matrix);
+	init_rotate_matrix(mod);
 	return ;
 }
 
@@ -51,18 +51,14 @@ static void	set_viewangle(t_mod *mod)
 	return ;
 }
 
-static void	init_rotate_matrix(t_mtrx *matrix)
+static void	init_rotate_matrix(t_mod *mod)
 {
 	int	i;
 
 	i = 0;
 	while (i < 3)
 	{
-		matrix->x[i][i] = 1.0f;
-		matrix->y[i][i] = 1.0f;
-		matrix->z[i][i] = 1.0f;
-		matrix->ab[i][i] = 1.0f;
-		matrix->abc[i][i] = 1.0f;
+		mod->rotate_matrix[i][i] = 1.0f;
 		i++;
 	}
 	return ;

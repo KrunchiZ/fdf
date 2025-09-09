@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/08 16:16:48 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 17:37:04 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@
 # define KEY_COMMA		0b10000
 # define KEY_PERIOD		0b100000
 
+# define ROTATE			1.0f
+
 typedef struct s_mtrx
 {
 	float	x[3][3];
 	float	y[3][3];
 	float	z[3][3];
 	float	ab[3][3];
-	float	abc[3][3];
 }			t_mtrx;
 
 typedef struct s_vect
@@ -97,12 +98,12 @@ typedef struct s_mouse
 
 typedef struct s_mod
 {
-	t_mtrx	rotate_matrix;
 	t_vect	viewangle[4];
 	t_vect	scale;
 	t_vect	rotate;
 	t_vect	translate_cam2d;
 	t_mouse	mouse;
+	float	rotate_matrix[3][3];
 	float	z_plane;
 	int		scale_multiplier;
 	int		keyhold;
@@ -151,6 +152,8 @@ void	delete_map(t_map *map);
 void	parse_map(t_map *map, char *file);
 void	parse_vertices(t_map *map, char *file);
 void	set_modifier(t_mod *mod, t_map *map);
+void	update_coordinates(t_mod *mod, float mtrx[3][3],
+				t_vect *new_pt, t_vect *pt);
 
 int		handle_idle(t_data *data);
 int		handle_destroykey(t_data *data);

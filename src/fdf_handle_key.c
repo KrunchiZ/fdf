@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/08 16:15:40 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 17:29:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 			ft_putendl_fd(" Viewmode: FRONT", STDOUT_FILENO);
 		if (data->mod.viewmode == TOP)
 			ft_putendl_fd(" Viewmode: TOP", STDOUT_FILENO);
+		calc_rotate_matrix(&data->mod);
 	}
 	return ;
 }

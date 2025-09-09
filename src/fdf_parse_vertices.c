@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 00:24:39 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/09 15:27:08 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ static void	get_color(t_vect *vertices, char *s)
 	if (*s == ',' && *(s + 1))
 	{
 		s++;
-		while (*s == '+' || *s == '-')
-			s++;
 		str_tolower(s);
 		if (ft_strncmp(s, "0x", 2))
 			return ;
