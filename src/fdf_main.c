@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 01:38:46 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 05:03:59 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	data = (t_data){0};
 	parse_map(&data.map, argv[1]);
 	set_modifier(&data.mod, &data.map);
-	calc_rotate_matrix(&data.mod);
+	calc_rotate_matrix(&data.mod, VIEW_ANGLE);
 	if (init_mlx(&data) == FAILURE)
 		error_exit("mlx/window/image creation failure");
 	setup_mlx_loop(&data);
@@ -92,7 +92,7 @@ static void	print_first_message(void)
 		" [left]\t\t= --Rotate-Y\n [right]\t= ++Rotate-Y\n"
 		" [up]\t\t= --Rotate-X\n [down]\t\t= ++Rotate-X\n [,]\t\t= ++Rotate-Z\n"
 		" [.]\t\t= --Rotate-Z\n [mouse1]\t= 2D Camera-Pan\n"
-		" [e] + [mouse]\t= Rotate-XY\n"
+		" [r] + [mouse]\t= Rotate-Y\n"
 		" [u]\t\t= Reset transform\n", STDOUT_FILENO);
 	ft_putendl_fd(" Viewmode: ISOMETRIC", STDOUT_FILENO);
 	return ;

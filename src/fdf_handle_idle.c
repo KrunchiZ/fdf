@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 01:39:04 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 05:04:11 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	print_message(t_data *data)
 	mlx_string_put(data->mlx, data->window, 10, 140, PIXEL_BLUE,
 		" [mouse1]       = 2D Camera Pan");
 	mlx_string_put(data->mlx, data->window, 10, 160, PIXEL_BLUE,
-		" [e] + [mouse1] = Rotate-XY");
+		" [r] + [mouse1] = Rotate-Y");
 	mlx_string_put(data->mlx, data->window, 10, 180, PIXEL_BLUE,
 		" [scroll]       = Uniform scaling");
 	mlx_string_put(data->mlx, data->window, 10, 200, PIXEL_BLUE,
