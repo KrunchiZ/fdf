@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 04:22:50 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 01:45:48 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ static t_vect	rotate_geo(t_vect *pt, t_mod *mod)
 
 	tmp = *pt;
 	update_coordinates(&tmp, pt, mod->rotate_matrix);
+	update_rotatestate(mod, &mod->rotate, mod->rotate_state);
 	new_pt = tmp;
-	calc_rotate_matrix(mod, ROTATE_MOD);
 	update_coordinates(&new_pt, &tmp, mod->rotate_state);
 	if (mod->viewmode == PERSPECTIVE)
 	{

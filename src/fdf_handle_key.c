@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 04:29:24 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 01:46:40 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	handle_keyrelease(int keysym, t_data *data)
 		data->mod.keyhold &= ~KEY_Y;
 	if (keysym == XK_z)
 		data->mod.keyhold &= ~KEY_Z;
-	if (keysym == XK_r)
+	if (keysym == XK_e)
 		data->mod.mouse.rotate = false;
 	return (SUCCESS);
 }
@@ -76,6 +76,7 @@ int	handle_keypress(int keysym, t_data *data)
 		data->mod.scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
 		data->mod.rotate = (t_vect){0};
 		data->mod.translate_cam2d = (t_vect){0};
+		reset_transform(&data->mod);
 	}
 	handle_viewmode_keys(keysym, data);
 	handle_transform_keys(keysym, data);
@@ -101,7 +102,8 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 			ft_putendl_fd(" Viewmode: FRONT", STDOUT_FILENO);
 		if (data->mod.viewmode == TOP)
 			ft_putendl_fd(" Viewmode: TOP", STDOUT_FILENO);
-		calc_rotate_matrix(&data->mod, VIEW_ANGLE);
+		reset_transform(&data->mod);
+		calc_rotate_matrix(&data->mod);
 	}
 	return ;
 }
@@ -126,7 +128,7 @@ static void	handle_transform_keys(int keysym, t_data *data)
 		data->mod.keyhold |= KEY_Y;
 	if (keysym == XK_z)
 		data->mod.keyhold |= KEY_Z;
-	if (keysym == XK_r)
+	if (keysym == XK_e)
 		data->mod.mouse.rotate = true;
 	return ;
 }
