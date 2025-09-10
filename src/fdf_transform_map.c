@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:59:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 04:22:50 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 18:18:10 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static t_vect	rotate_geo(t_vect *pt, t_mod *mod)
 {
 	t_vect	new_pt;
 	t_vect	tmp;
+	float	divisor;
 
 	tmp = *pt;
 	update_coordinates(&tmp, pt, mod->rotate_matrix);
@@ -65,9 +66,11 @@ static t_vect	rotate_geo(t_vect *pt, t_mod *mod)
 	update_coordinates(&new_pt, &tmp, mod->rotate_state);
 	if (mod->viewmode == PERSPECTIVE)
 	{
-		new_pt.x *= mod->z_plane / (mod->z_plane - new_pt.z);
-		new_pt.y *= mod->z_plane / (mod->z_plane - new_pt.z);
-		new_pt.z *= mod->z_plane / (mod->z_plane - new_pt.z);
+		divisor = mod->z_plane - new_pt.z;
+		if (divisor <= 0.0f)
+			divisor = 1.0f;
+		new_pt.x *= mod->z_plane / divisor;
+		new_pt.y *= mod->z_plane / divisor;
 	}
 	new_pt.y = -(new_pt.y);
 	return (new_pt);

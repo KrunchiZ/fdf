@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 00:32:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 15:58:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 17:24:39 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	calc_rotate_matrix(t_mod *mod, int rotate_src)
 		matrix.x[i][i] = 1.0f;
 		matrix.y[i][i] = 1.0f;
 		matrix.z[i][i] = 1.0f;
-		matrix.ab[i][i] = 1.0f;
 		i++;
 	}
 	if (rotate_src == VIEW_ANGLE)

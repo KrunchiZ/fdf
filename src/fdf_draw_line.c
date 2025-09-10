@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 15:08:49 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 18:28:52 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 static void	init_line(t_line *line, t_vect *p0, t_vect *p1);
 static void	get_rgbstep(t_line *line, t_vect *p0, t_vect *p1, float delta);
-static void	draw(t_img *img, t_line *line, int delta);
+static void	draw(t_mod *mod, t_img *img, t_line *line, int delta);
 static void	calc_color(t_line *line);
 
-void	draw_line(t_img *img, t_vect p0, t_vect p1)
+void	draw_line(t_mod *mod, t_img *img, t_vect p0, t_vect p1)
 {
 	t_line	line;
 
 	if ((p0.x < 0.0f && p1.x < 0.0f) || (p0.y < 0.0f && p1.y < 0.0f)
 		|| (p0.x >= FRAME_WIDTH && p1.x >= FRAME_WIDTH)
-		|| (p0.y >= FRAME_HEIGHT && p1.y >= FRAME_HEIGHT))
+		|| (p0.y >= FRAME_HEIGHT && p1.y >= FRAME_HEIGHT)
+		|| (p0.z >= mod->z_plane || p1.z >= mod->z_plane))
 		return ;
 	init_line(&line, &p0, &p1);
 	if (ft_fabs(line.dx) >= ft_fabs(line.dy))
@@ -32,7 +33,7 @@ void	draw_line(t_img *img, t_vect p0, t_vect p1)
 		if (line.dy)
 			line.ystep = (line.dy / line.dx) * line.xstep;
 		get_rgbstep(&line, &p0, &p1, line.dx);
-		draw(img, &line, ft_abs(roundf(line.dx)));
+		draw(mod, img, &line, ft_abs(roundf(line.dx)));
 	}
 	else
 	{
@@ -40,7 +41,7 @@ void	draw_line(t_img *img, t_vect p0, t_vect p1)
 		if (line.dx)
 			line.xstep = (line.dx / line.dy) * line.ystep;
 		get_rgbstep(&line, &p0, &p1, line.dy);
-		draw(img, &line, ft_abs(roundf(line.dy)));
+		draw(mod, img, &line, ft_abs(roundf(line.dy)));
 	}
 	return ;
 }
@@ -68,14 +69,15 @@ static void	get_rgbstep(t_line *line, t_vect *p0, t_vect *p1, float delta)
 	return ;
 }
 
-static void	draw(t_img *img, t_line *line, int delta)
+static void	draw(t_mod *mod, t_img *img, t_line *line, int delta)
 {
 	int		i;
 
 	i = 0;
 	while (i <= delta)
 	{
-		if (!(line->pt.x < 0.0f || line->pt.x >= FRAME_WIDTH
+		if (!(line->pt.z >= mod->z_plane
+				|| line->pt.x < 0.0f || line->pt.x >= FRAME_WIDTH
 				|| line->pt.y < 0.0f || line->pt.y >= FRAME_HEIGHT))
 			img_px_put(img,
 				roundf(line->pt.x), roundf(line->pt.y), line->pt.color);

@@ -6,14 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 12:35:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 15:20:42 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 18:20:13 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static void	draw_bg(t_data *data);
-static void	draw_map(t_img *img, t_map *map);
+static void	draw_map(t_img *img, t_map *map, t_mod *mod);
 
 void	img_px_put(t_img *img, int x, int y, int color)
 {
@@ -36,7 +36,7 @@ void	img_px_put(t_img *img, int x, int y, int color)
 int	render_img(t_data *data)
 {
 	draw_bg(data);
-	draw_map(&data->img, &data->map);
+	draw_map(&data->img, &data->map, &data->mod);
 	mlx_put_image_to_window(data->mlx, data->window, data->img.img_ptr, 0, 0);
 	return (SUCCESS);
 }
@@ -62,14 +62,17 @@ static void	draw_bg(t_data *data)
 	return ;
 }
 
-static void	draw_map(t_img *img, t_map *map)
+static void	draw_map(t_img *img, t_map *map, t_mod *mod)
 {
 	int	i;
 
 	i = 0;
 	while (i < map->edge_count)
 	{
-		draw_line(img, map->edges[i].start, map->edges[i].end);
+		if (map->edges[i].start.z <= map->edges[i].end.z)
+			draw_line(mod, img, map->edges[i].start, map->edges[i].end);
+		else
+			draw_line(mod, img, map->edges[i].end, map->edges[i].start);
 		i++;
 	}
 	return ;

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 04:15:55 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 18:20:27 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ void	parse_edges(t_map *map, int viewmode);
 void	reset_transform(t_mod *mod);
 
 int		render_img(t_data *data);
-void	draw_line(t_img *img, t_vect p0, t_vect p1);
+void	draw_line(t_mod *mod, t_img *img, t_vect p0, t_vect p1);
 void	img_px_put(t_img *img, int x, int y, int color);
 
 int		encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
