@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:49:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 03:42:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 01:54:21 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	handle_button4(t_mod *mod)
 		mod->scale.y *= 1.1f;
 	if (mod->keyhold & KEY_Z)
 		mod->scale.z *= 1.1f;
-	if (!(mod->keyhold & (KEY_X | KEY_Y | KEY_Z)))
+	if (!(mod->keyhold & (KEY_X | KEY_Y | KEY_Z))
 	{
 		mod->scale.x *= 1.1f;
 		mod->scale.y *= 1.1f;
@@ -57,7 +57,7 @@ static void	handle_button5(t_mod *mod)
 		mod->scale.y *= 0.9f;
 	if (mod->keyhold & KEY_Z)
 		mod->scale.z *= 0.9f;
-	if (!(mod->keyhold & (KEY_X | KEY_Y | KEY_Z)))
+	if (!(mod->keyhold & (KEY_X | KEY_Y | KEY_Z))
 	{
 		mod->scale.x *= 0.9f;
 		mod->scale.y *= 0.9f;
