@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:49:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 05:01:59 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 18:41:59 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ int	handle_mouse1drag(int x, int y, t_data *data)
 		data->mod.mouse.x0 = x;
 		data->mod.mouse.y0 = y;
 	}
-	else if (data->mod.mouse.drag && data->mod.mouse.rotate)
+	else if (data->mod.mouse.drag && data->mod.mouse.rotate
+		&& data->mod.viewmode != TOP)
 	{
 		data->mod.idle = false;
 		data->mod.rotate.y += (x - data->mod.mouse.x0) * 0.5f;
