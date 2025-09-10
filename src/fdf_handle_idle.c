@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 05:04:11 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/09/10 16:09:39 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,12 @@ static void	handle_keypress_ytransform(t_mod *mod, int keyhold)
 
 static void	handle_keypress_ztransform(t_mod *mod, int keyhold)
 {
-	if (keyhold & KEY_COMMA)
+	if (keyhold & KEY_COMMA && mod->viewmode != FRONT)
 	{
 		mod->idle = false;
 		mod->rotate.z += 1.0f;
 	}
-	if (keyhold & KEY_PERIOD)
+	if (keyhold & KEY_PERIOD && mod->viewmode != FRONT)
 	{
 		mod->idle = false;
 		mod->rotate.z -= 1.0f;
