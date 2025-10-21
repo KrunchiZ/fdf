@@ -2,7 +2,7 @@ NAME		= fdf
 LIBFT		= libft.a
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g3 -o3
+CFLAGS		= -Wall -Wextra -Werror -g3 -O3
 IFLAGS		= -Ilibft/include -Iinclude
 MLX_FLAGS	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
