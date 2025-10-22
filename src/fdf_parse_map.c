@@ -6,10 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:34:37 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 22:52:10 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:26:13 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include "libft.h"
 #include "fdf.h"
 
 static void	count_vertex(t_map *map, char *file);

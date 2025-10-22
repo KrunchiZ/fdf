@@ -6,10 +6,11 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 00:32:17 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 17:24:39 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:29:26 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "fdf.h"
 
 static void	set_matrix(t_mtrx *matrix, t_vect *angle);

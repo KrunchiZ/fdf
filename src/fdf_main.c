@@ -6,11 +6,18 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 05:03:59 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:30:43 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <mlx.h>
+#include <X11/X.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "libft.h"
 #include "fdf.h"
+#include <math.h>
 
 static int	init_mlx(t_data *data);
 static void	setup_mlx_loop(t_data *data);

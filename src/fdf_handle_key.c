@@ -6,10 +6,16 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 04:29:24 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:31:12 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <mlx.h>
+#include <X11/keysym.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "libft.h"
 #include "fdf.h"
 
 #define FIRST_BG	0

@@ -6,10 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:06:19 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/06 22:52:04 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:10:32 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "libft.h"
 #include "fdf.h"
 
 void	error_exit(char *str)

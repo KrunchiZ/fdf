@@ -6,10 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 16:09:39 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:14:42 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <mlx.h>
+#include <stdbool.h>
 #include "fdf.h"
 
 static void	handle_keypress_xtransform(t_mod *mod, int keyhold);

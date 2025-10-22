@@ -6,11 +6,11 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:44:04 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/04 14:50:59 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:13:20 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <stdint.h>
 
 int	encode_rgb(uint8_t red, uint8_t green, uint8_t blue)
 {

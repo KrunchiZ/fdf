@@ -6,10 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:52:45 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 18:28:52 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:11:33 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
+#include "libft.h"
 #include "fdf.h"
 
 static void	init_line(t_line *line, t_vect *p0, t_vect *p1);

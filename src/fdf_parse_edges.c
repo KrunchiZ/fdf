@@ -6,10 +6,11 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 23:00:24 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/07 20:04:54 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:24:33 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include "fdf.h"
 
 static void	qsort_edges(t_edge *edges, int start, int end);

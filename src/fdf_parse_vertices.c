@@ -6,10 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:41:20 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/09 15:27:08 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:27:14 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
+#include <stdlib.h>
+#include "libft.h"
 #include "fdf.h"
 
 static void	extract_coord(char *line, t_map *map, int i, int z);

@@ -6,20 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 18:36:38 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:08:37 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "libft.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <mlx.h>
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include <math.h>
+# include <stdint.h>
 
 # define TITLE			"FDF by kchiang"
 # define FRAME_WIDTH	1440

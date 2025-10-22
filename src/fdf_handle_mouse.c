@@ -6,10 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:49:59 by kchiang           #+#    #+#             */
-/*   Updated: 2025/09/10 18:41:59 by kchiang          ###   ########.fr       */
+/*   Updated: 2025/10/22 21:23:41 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <X11/X.h>
+#include <stdbool.h>
 #include "fdf.h"
 
 static void	handle_button4(t_mod *mod);
