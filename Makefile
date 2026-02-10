@@ -16,6 +16,7 @@ SRC		= \
 		  fdf_set_modifier.c	fdf_parse_edges.c
 
 LIBFT_DIR	= libft/
+MLX_DIR		= mlx_linux/
 SRC_DIR		= src/
 
 vpath %.c $(SRC_DIR)
@@ -30,6 +31,7 @@ WHITE	= \e[0m
 all: $(NAME)
 
 $(NAME): $(SRC) $(LIBFT)
+	make --no-print-directory -C $(MLX_DIR)
 	$(CC) $(CFLAGS) $(IFLAGS) $^ $(MLX_FLAGS) -o $@
 	echo "Compiling $(GREEN)$(NAME)$(WHITE)..."
 
@@ -39,6 +41,7 @@ $(LIBFT):
 	cp $(addprefix $(LIBFT_DIR), $(LIBFT)) $(LIBFT)
 
 fclean: clean
+	make -C $(MLX_DIR) clean
 	rm -f $(NAME)
 	echo "Removing $(GREEN)$(NAME)$(WHITE)..."
 
