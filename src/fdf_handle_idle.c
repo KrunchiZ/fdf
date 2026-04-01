@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:47:42 by kchiang           #+#    #+#             */
-/*   Updated: 2025/10/22 21:14:42 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/01 11:03:13 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ static void	print_message(t_data *data)
 		" [x]/[y]/[z] + [scroll] = single axis scaling");
 	mlx_string_put(data->mlx, data->window, 10, 220, PIXEL_BLUE,
 		" [b]      = Change background color");
+	mlx_string_put(data->mlx, data->window, 10, 240, PIXEL_BLUE,
+		" [a]      = Auto Rotate");
 	return ;
 }
 
@@ -80,7 +82,7 @@ static void	handle_keypress_xtransform(t_mod *mod, int keyhold)
 
 static void	handle_keypress_ytransform(t_mod *mod, int keyhold)
 {
-	if (keyhold & KEY_LEFT && mod->viewmode != TOP)
+	if ((mod->turntable_mode || keyhold & KEY_LEFT) && mod->viewmode != TOP)
 	{
 		mod->idle = false;
 		mod->rotate.y -= 1.0f;
@@ -95,7 +97,7 @@ static void	handle_keypress_ytransform(t_mod *mod, int keyhold)
 
 static void	handle_keypress_ztransform(t_mod *mod, int keyhold)
 {
-	if (keyhold & KEY_COMMA && mod->viewmode != FRONT)
+	if ((mod->turntable_mode || keyhold & KEY_COMMA) && mod->viewmode != FRONT)
 	{
 		mod->idle = false;
 		mod->rotate.z += 1.0f;

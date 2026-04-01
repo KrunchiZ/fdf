@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:56:09 by kchiang           #+#    #+#             */
-/*   Updated: 2025/10/22 21:30:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/01 11:02:33 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static void	print_first_message(void)
 		" [up]\t\t= --Rotate-X\n [down]\t\t= ++Rotate-X\n [,]\t\t= ++Rotate-Z\n"
 		" [.]\t\t= --Rotate-Z\n [mouse1]\t= 2D Camera-Pan\n"
 		" [r] + [mouse]\t= Rotate-Y\n"
-		" [u]\t\t= Reset transform\n", STDOUT_FILENO);
+		" [u]\t\t= Reset transform\n [a]\t\t= Auto Rotate\n", STDOUT_FILENO);
 	ft_putendl_fd(" Viewmode: ISOMETRIC", STDOUT_FILENO);
 	return ;
 }

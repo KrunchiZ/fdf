@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:10:55 by kchiang           #+#    #+#             */
-/*   Updated: 2025/10/22 21:31:12 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/01 11:05:01 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,25 @@ int	handle_destroykey(t_data *data)
 
 int	handle_keyrelease(int keysym, t_data *data)
 {
-	if (keysym == XK_Up)
+	if (!data->mod.turntable_mode && keysym == XK_Up)
 		data->mod.keyhold &= ~KEY_UP;
-	if (keysym == XK_Down)
+	if (!data->mod.turntable_mode && keysym == XK_Down)
 		data->mod.keyhold &= ~KEY_DOWN;
-	if (keysym == XK_Left)
+	if (!data->mod.turntable_mode && keysym == XK_Left)
 		data->mod.keyhold &= ~KEY_LEFT;
-	if (keysym == XK_Right)
+	if (!data->mod.turntable_mode && keysym == XK_Right)
 		data->mod.keyhold &= ~KEY_RIGHT;
-	if (keysym == XK_comma)
+	if (!data->mod.turntable_mode && keysym == XK_comma)
 		data->mod.keyhold &= ~KEY_COMMA;
-	if (keysym == XK_period)
+	if (!data->mod.turntable_mode && keysym == XK_period)
 		data->mod.keyhold &= ~KEY_PERIOD;
-	if (keysym == XK_x)
+	if (!data->mod.turntable_mode && keysym == XK_x)
 		data->mod.keyhold &= ~KEY_X;
-	if (keysym == XK_y)
+	if (!data->mod.turntable_mode && keysym == XK_y)
 		data->mod.keyhold &= ~KEY_Y;
-	if (keysym == XK_z)
+	if (!data->mod.turntable_mode && keysym == XK_z)
 		data->mod.keyhold &= ~KEY_Z;
-	if (keysym == XK_r)
+	if (!data->mod.turntable_mode && keysym == XK_r)
 		data->mod.mouse.rotate = false;
 	return (SUCCESS);
 }
@@ -78,6 +78,7 @@ int	handle_keypress(int keysym, t_data *data)
 	}
 	if (keysym == XK_u)
 	{
+		data->mod.turntable_mode = false;
 		data->mod.idle = false;
 		data->mod.scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
 		data->mod.rotate = (t_vect){0};
@@ -90,7 +91,7 @@ int	handle_keypress(int keysym, t_data *data)
 
 static void	handle_viewmode_keys(int keysym, t_data *data)
 {
-	if (keysym == XK_v)
+	if (!data->mod.turntable_mode && keysym == XK_v)
 	{
 		data->mod.idle = false;
 		data->mod.scale = (t_vect){.x = 1.0f, .y = 1.0f, .z = 1.0f};
@@ -109,30 +110,36 @@ static void	handle_viewmode_keys(int keysym, t_data *data)
 			ft_putendl_fd(" Viewmode: TOP", STDOUT_FILENO);
 		calc_rotate_matrix(&data->mod, VIEW_ANGLE);
 	}
-	return ;
 }
 
 static void	handle_transform_keys(int keysym, t_data *data)
 {
-	if (keysym == XK_Up)
+	if (keysym == XK_a && data->mod.viewmode != TOP)
+	{
+		data->mod.turntable_mode = !data->mod.turntable_mode;
+		if (data->mod.turntable_mode)
+			ft_putendl_fd(" Auto Rotate: ON", STDOUT_FILENO);
+		else
+			ft_putendl_fd(" Auto Rotate: OFF", STDOUT_FILENO);
+	}
+	if (!data->mod.turntable_mode && keysym == XK_Up)
 		data->mod.keyhold |= KEY_UP;
-	if (keysym == XK_Down)
+	if (!data->mod.turntable_mode && keysym == XK_Down)
 		data->mod.keyhold |= KEY_DOWN;
-	if (keysym == XK_Left)
+	if (!data->mod.turntable_mode && keysym == XK_Left)
 		data->mod.keyhold |= KEY_LEFT;
-	if (keysym == XK_Right)
+	if (!data->mod.turntable_mode && keysym == XK_Right)
 		data->mod.keyhold |= KEY_RIGHT;
-	if (keysym == XK_comma)
+	if (!data->mod.turntable_mode && keysym == XK_comma)
 		data->mod.keyhold |= KEY_COMMA;
-	if (keysym == XK_period)
+	if (!data->mod.turntable_mode && keysym == XK_period)
 		data->mod.keyhold |= KEY_PERIOD;
-	if (keysym == XK_x)
+	if (!data->mod.turntable_mode && keysym == XK_x)
 		data->mod.keyhold |= KEY_X;
-	if (keysym == XK_y)
+	if (!data->mod.turntable_mode && keysym == XK_y)
 		data->mod.keyhold |= KEY_Y;
-	if (keysym == XK_z)
+	if (!data->mod.turntable_mode && keysym == XK_z)
 		data->mod.keyhold |= KEY_Z;
-	if (keysym == XK_r)
+	if (!data->mod.turntable_mode && keysym == XK_r)
 		data->mod.mouse.rotate = true;
-	return ;
 }

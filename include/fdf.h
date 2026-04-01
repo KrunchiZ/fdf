@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:51:26 by kchiang           #+#    #+#             */
-/*   Updated: 2025/10/22 21:08:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/01 10:35:25 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define KEY_X			0b1000000
 # define KEY_Y			0b10000000
 # define KEY_Z			0b100000000
+# define KEY_A			0b1000000000
 
 # define VIEW_ANGLE		0
 # define ROTATE_MOD		1
@@ -107,6 +108,7 @@ typedef struct s_mod
 	float	z_plane;
 	int		scale_multiplier;
 	int		keyhold;
+	int		turntable_mode;
 	int		viewmode;
 	int		x_offset;
 	int		y_offset;
