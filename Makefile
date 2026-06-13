@@ -33,21 +33,21 @@ all: $(NAME)
 $(NAME): $(SRC) $(LIBFT)
 	make --no-print-directory -C $(MLX_DIR)
 	$(CC) $(CFLAGS) $(IFLAGS) $^ $(MLX_FLAGS) -o $@
-	echo "Compiling $(GREEN)$(NAME)$(WHITE)..."
+	printf "Compiling $(GREEN)$(NAME)$(WHITE)...\n"
 
 $(LIBFT):
-	echo "Making $(GREEN)$(LIBFT)$(WHITE)..."
+	printf "Making $(GREEN)$(LIBFT)$(WHITE)...\n"
 	make -C $(LIBFT_DIR)
 	cp $(addprefix $(LIBFT_DIR), $(LIBFT)) $(LIBFT)
 
 fclean: clean
 	make -C $(MLX_DIR) clean
 	rm -f $(NAME)
-	echo "Removing $(GREEN)$(NAME)$(WHITE)..."
+	printf "Removing $(GREEN)$(NAME)$(WHITE)...\n"
 
 clean:
 	make -C $(LIBFT_DIR) clean
 	rm -f $(LIBFT) $(LIBFT_DIR)/$(LIBFT)
-	echo "Removing $(GREEN)$(LIBFT)$(WHITE)..."
+	printf "Removing $(GREEN)$(LIBFT)$(WHITE)...\n"
 
 re: fclean all
